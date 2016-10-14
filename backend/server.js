@@ -23,11 +23,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '..', '/frontend')));
 
 // ROUTES
-app.use('/auth', require('./routes/authRoutes'));
-app.use('/reviews', require('./routes/genBookRoutes'));
+
 // ROUTES REQUIRING AUTHENTICATION
-app.use('/api', expressJwt({secret: config.secret}))
-app.use('/api/user', require('./routes/userRoutes'));
 
 
 app.listen(port, function() {
