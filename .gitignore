@@ -7,4 +7,6 @@ DS_Store/
 # user created ignore files
 *.ignore
 
+# database access
+/backend/config.js
 
