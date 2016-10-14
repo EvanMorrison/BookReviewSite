@@ -1,4 +1,4 @@
 module.exports = {
-    secret: '0tK-ofHafh3JEf#MoK]g',
+    secret: '',
     database: 'mongodb://localhost/bookReviews'
 }
