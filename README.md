@@ -13,7 +13,7 @@ This is a group project. It is as exercise in team coding and project developmen
 * Uses express routers
 * Uses MongoDB for the database and Mongoose for schema creation and the * ODM (Object-Document Mapper)
 
-# Include User Authentication in the project. Some details:
+# Include User Authentication in the project:
 * Use JWTs to create a token-based authentication system to authenticate users.
 * Include password hashing, so no un-encoded password strings are saved in the database
 * Save the JWT in web storage and set it up to send automatically with every request.

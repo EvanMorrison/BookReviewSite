@@ -1,0 +1,9 @@
+# dependency diretories
+node_modules/
+
+# OS generated files or directories
+DS_Store/
+
+# user created ignore files
+*.ignore
+
