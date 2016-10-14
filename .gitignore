@@ -8,5 +8,5 @@ DS_Store/
 *.ignore
 
 # database access
-/backend/config.js
+backend/config.js
 
