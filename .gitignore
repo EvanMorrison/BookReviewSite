@@ -7,3 +7,4 @@ DS_Store/
 # user created ignore files
 *.ignore
 
+config.js
