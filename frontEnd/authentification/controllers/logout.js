@@ -1,0 +1,2 @@
+/* BookReviewSite logout.js */
+
