@@ -5,6 +5,8 @@ node_modules/
 DS_Store/
 
 # user created ignore files
+ignore/
 *.ignore
+
 
 
