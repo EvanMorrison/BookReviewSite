@@ -8,8 +8,7 @@ DS_Store/
 ignore/
 *.ignore
 
-# configuration, environment variables etc.
+# environment config/authentication
 **/config.js
-
 
 
