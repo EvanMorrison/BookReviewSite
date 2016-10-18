@@ -14,10 +14,7 @@ var UserSchema = new Schema ({
         type: String,
         required: true
     },
-    name: {
-        firstname: String,
-        lastname: String
-    },
+    name: String,
     favBooks: [
         {
             type: Schema.Types.ObjectId,
