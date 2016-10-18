@@ -1,2 +1,0 @@
-/* BookReviewSite login.js */
-
