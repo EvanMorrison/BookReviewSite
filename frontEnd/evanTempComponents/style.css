@@ -23,3 +23,20 @@ body {
     line-height: 0;
 }
 
+/*******************************************
+****   User form validation  message:   **** 
+****   smooth fade-in-out transitions:  ****
+********************************************/
+
+input.ng-invalid.ng-touched.invalidForm {
+    border: 1px solid #DA3637;
+}
+
+input.ng-valid.ng-touched {
+    border: 1px solid #509D12;
+}
+
+.error {
+    color: #DA3637;
+    padding-bottom: 10px;
+}
