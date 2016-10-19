@@ -1,1 +1,29 @@
 <!-- BookReviewSite newReleases.html -->
+
+<main>
+
+    <div class="row">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+
+            <h2 id="HeaderNewReleases">New Releases</h2>
+
+            <div id="NewReleases" ng-repeat="book in bookReviewArray track by $index">
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/popularAndNewBook"><img class="img-responsive" src={{book.image}}></a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2"></div>
+
+    </div>
+
+</main>

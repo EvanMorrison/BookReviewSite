@@ -1,2 +1,30 @@
 /* BookReviewSite app.js */
-angular.module("myApp", ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'myApp.Auth'])
+var app = angular.module("BookReviewApp", ["ngRoute", 'ngAnimate', 'ui.bootstrap', 'myApp.Auth']);
+
+app.config(function($routeProvider) {
+
+    $routeProvider
+
+        .when("/", {
+            templateUrl: "./templates/home.html",
+            controller: "HomeController"
+        })
+        .when("/myReviews", {
+            templateUrl: "./templates/myReviews.html",
+            controller: "MyReviewsController"
+        })
+        .when("/newReleases", {
+            template: "./templates/newReleases.html",
+            controller: "NewReleasesController"
+        })
+        .when("/popularAndNewBook", {
+            template: "./templates/popularAndNewBook",
+            controller: "PopularAndNewBookController"
+        });
+});
+
+app.controller("MainController", ["$scope", function($scope)
+{
+
+
+}]);

@@ -39,4 +39,5 @@ app.use('/auth', require('./routes/authRoutes'));
 
 app.listen(port, function() {
     console.log('Server is listening on port ', port);
+
 })

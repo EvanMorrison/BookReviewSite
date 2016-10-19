@@ -1,1 +1,29 @@
-<!-- home.html -->
+<!-- BookReviewSite home.html -->
+
+<main>
+
+    <div class="row">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+
+           <h2 id="HeaderPopularBooks">Popular Books</h2>
+
+            <div class="row" id="HomePopularBooks">
+
+               <!-- <ul class="list-group BookListStyle">-->
+                    <div class="col-md-2" ng-repeat="book in bookReviewArray">
+                        <a href="/popularAndNewBook"><img style="height: 160px;" class="ImageStyle" ng-src={{book.image}}></a>
+                    </div>
+               <!-- </ul>-->
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2"></div>
+
+    </div>
+
+</main>
