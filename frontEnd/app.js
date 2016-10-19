@@ -1,6 +1,5 @@
 /* BookReviewSite app.js */
-
-var app = angular.module("BookReviewApp", ["ngRoute"]);
+var app = angular.module("BookReviewApp", ["ngRoute", 'ngAnimate', 'ui.bootstrap', 'myApp.Auth']);
 
 app.config(function($routeProvider) {
 
