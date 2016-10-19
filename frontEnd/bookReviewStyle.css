@@ -1,0 +1,186 @@
+/* BookReviewSite bookReviewStyle.css */
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    font:92%/1.5 Verdana, Arial, sans-serif;
+    color: #000;
+    margin: 0 auto;
+    padding: 0;
+    background: #FFF;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    margin: 10px 0 0 0;
+}
+
+li {
+    padding: 0;
+}
+
+main {
+    height: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    display: block;
+}
+
+label {
+    font: 500 12px Verdana, Arial, sans-serif;
+    color: #666;
+}
+
+textarea {
+    height: auto;
+    font: 12px/1.5 Verdana, Arial, sans-serif;
+    color: #A3A3A3;
+    margin: 0;
+    border: 1px solid #B7B7B7;
+    overflow: auto;
+}
+
+/* Ids */
+#HeaderRow {
+    padding: 0 0 5px 0;
+    border-bottom: 1px solid #CCC;
+}
+
+#HeaderHome {
+    font: 500 32px Tahoma, Geneva, serif;
+    color: #B7B7B7;
+    text-shadow: #F00 1px 1px 1px;
+    margin: 0;
+    padding: 5px 0 0 20px;
+    display: block;
+}
+
+#HomeLink, #MyReviewsLink, #NewReleasesLink {
+    font: 16px Roboto, sans-serif;
+    color: #A3A3A3;
+    text-shadow: #9F9 1px 1px 1px;
+}
+
+#HomeLink:hover, #MyReviewsLink:hover, #NewReleasesLink:hover {
+    font-weight: bold;
+    color: #7acc7a;
+    text-shadow: #A3A3A3 1px 1px 1px;
+    background: #FFF;
+    border: none;
+    box-shadow: none;
+}
+
+#HomeLink:focus, #MyReviewsLink:focus, #NewReleasesLink:focus {
+    font-weight: bold;
+    color: #CCC;
+    text-shadow: #9F9 1px 1px 1px;
+    background: #FFF;
+    border: none;
+    box-shadow: none;
+}
+
+#HeaderPopularBooks, #HeaderMyReviews, #HeaderNewReleases, #HeaderBookTitle {
+    font: 500 22px Tahoma, Geneva, serif;
+    color: #B7B7B7;
+    text-shadow: #FC0 1px 1px 1px;
+    margin: 0;
+    display: block;
+}
+
+#HomePopularBooks {
+
+}
+
+#BookSummary {
+    font: 15px Verdana, Arial, sans-serif;
+    color: #666;
+}
+
+#HeaderEditReviewTitle {
+    font: 500 12px Tahoma, Geneva, serif;
+    color: #8E8E8E;
+    text-shadow: #6CF 1px 1px 1px;
+    border-bottom: 1px solid #B7B7B7;
+}
+
+#HeaderUserReviewsTitle {
+    font: 500 14px Roboto, sans-serif;
+    color: #7A7A7A;
+    text-shadow: #6CF 1px 1px 1px;
+}
+
+#EditReviewButton, #SaveUpdatedReviewButton, #CancelEditReviewButton, #ReviewBookButton, #AddReviewButton, #CancelAddReviewButton {
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #7A7A7A;
+    text-align: center;
+    margin: 0;
+    padding: 10px 4px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background: #FFF;
+    border: none;
+    display: inline-block;
+}
+
+#EditReviewButton:focus, #SaveUpdatedReviewButton:focus, #CancelEditReviewButton:focus, #ReviewBookButton:focus, #AddReviewButton:focus, #CancelAddReviewButton:focus {
+    color: #7A7A7A;
+    text-decoration: none;
+    outline: none;
+    outline-offset: 0;
+}
+
+#EditReviewButton:hover, #SaveUpdatedReviewButton:hover, #CancelEditReviewButton:hover, #ReviewBookButton:hover, #AddReviewButton:hover, #CancelAddReviewButton:hover {
+    color: #7A7A7A;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Classes */
+.BookListStyle {
+    margin: 0;
+    padding: 0;
+    background-color: #FFF;
+    position: relative;
+}
+
+.BookListItemStyle {
+    width: 98px;
+    margin: 0;
+    padding: 0;
+    background-color: #FFF;
+    border: 1px solid #666;
+    display: inline-block;
+    list-style-type: none;
+}
+
+.AuthorStyle {
+    font: 14px Verdana, Arial, sans-serif;
+    color: #666;
+}
+
+.RatingStyle {
+    font: 12px Verdana, Arial, sans-serif;
+    color: #F00;
+}
+
+.PagesAndPublisherStyle {
+    font: 8px Verdana, Arial, sans-serif;
+    color: #666;
+}
+
+.BottomGrayDivider {
+    border-bottom: 1px solid #B7B7B7
+}
+
+
+
