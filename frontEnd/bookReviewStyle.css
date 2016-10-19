@@ -94,6 +94,10 @@ textarea {
     display: block;
 }
 
+ul.authLinks a {
+    font-size: 14px;
+}
+
 #HomePopularBooks {
 
 }

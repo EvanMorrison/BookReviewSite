@@ -23,38 +23,35 @@
 
         <header role="banner">
 
+
             <div class="col-md-3">
                 <h1 id="HeaderHome">BookLovers</h1>
             </div>
-            <div class="col-md-6">
-                <nav role="navigation">
-                    <ul class="nav nav-pills nav-justified">
+
+
+            <div class="col-md-9">
+                <nav role="navigation" class="pull-right">
+                    <ul class="nav nav-pills">
                         <li role="presentation"><a id="HomeLink" href="#/">Home</a></li>
                         <li role="presentation"><a id="MyReviewsLink" href="#/myReviews">My Reviews</a></li>
                         <li role="presentation"><a id="NewReleasesLink" href="#/newReleases">New Releases</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-md-3">
-                <nav role="navigation">
-                    <ul class="nav nav-pills  pull-right authLinks" ng-controller="AuthController">
-                        <li ng-hide="userService.isAuthenticated()"><a href ng-click="showLogin()">login</a></li>
-                        <li ng-hide="userService.isAuthenticated()"><a href ng-click="showSignup()">signup</a></li>
-                        <li ng-show="userService.isAuthenticated()">
-                            <nav uib-dropdown on-toggle="toggled(open)">
-                                <a href uib-dropdown-toggle><span class="glyphicon glyphicon-menu-hamburger"></span> {{userService.user.name}} </a>
-                                <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu>
-                                    <li ng-show="userService.isAuthenticated()"><a href="#/logout">logout</a></li>
-                                </ul>
-                            </nav>
+                        <li>
+                            <ul class="nav nav-pills authLinks" ng-controller="AuthController">
+                                <li ng-hide="userService.isAuthenticated()"><a href ng-click="showLogin()">login</a></li>
+                                <li ng-hide="userService.isAuthenticated()"><a href ng-click="showSignup()">signup</a></li>
+                                <li ng-show="userService.isAuthenticated()">
+                                    <nav uib-dropdown on-toggle="toggled(open)">
+                                        <a href uib-dropdown-toggle><span class="glyphicon glyphicon-menu-hamburger"></span> {{userService.user.name}} </a>
+                                        <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu>
+                                            <li ng-show="userService.isAuthenticated()"><a href="#/logout">logout</a></li>
+                                        </ul>
+                                    </nav>
+                                </li>
+                            </ul>
                         </li>
-                        
                     </ul>
-
-
                 </nav>
             </div>
-
         </header>
     </div>
     <!-- Header Row -->
