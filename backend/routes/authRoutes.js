@@ -32,6 +32,13 @@ authRouter.post('/signup', function (req, res) {
     }));
 })
 
+authRouter.get('/getusers', function(req, res) {
+    User.find({}, function(err, users) {
+        if(err) res.status(500).send(err);
+        res.send(users);
+    })
+})
+
 authRouter.post('/login', function (req, res) {
     User.findOne({
         email: req.body.email

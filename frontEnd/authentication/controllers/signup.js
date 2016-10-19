@@ -15,6 +15,7 @@ angular.module('myApp.Auth')
             else {
             UserService.signup($scope.user)
                 .then(function (response) {
+                    console.log('Ctrl response ', response);
                     $scope.success = response.success;
                     $timeout(function () {
                         $uibModalInstance.close();
@@ -23,6 +24,8 @@ angular.module('myApp.Auth')
                             controller: 'LoginController'
                         });
                     }, 2000);
+                }, function(error){
+                    console.log('Ctrl error msg ', error);
                 })
             }
         }

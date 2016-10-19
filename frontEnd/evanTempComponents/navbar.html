@@ -18,7 +18,7 @@
                 <li class="active"><a href="#/booklovers">Book Reactor <span class="sr-only">(current)</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-controller="AuthController">
-                <li ng-show="userService.isAuthenticated()"><a href class="text-primary">logged in as: {{userService.user.email}}</a></li>
+                <li ng-show="userService.isAuthenticated()"><a href class="text-primary">logged in: {{userService.user.name}}</a></li>
                 <li ng-hide="userService.isAuthenticated()"><a href ng-click="showLogin()">Login</a></li>
                 <li ng-hide="userService.isAuthenticated()"><a href ng-click="showSignup()">Signup</a></li>
                 <li ng-show="userService.isAuthenticated()"><a href="#/logout">Logout</a></li>
