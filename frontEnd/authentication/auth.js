@@ -45,6 +45,7 @@ app.service('TokenService', function() {
 app.service('UserService', ["$http", "$location", "TokenService", function($http, $location, TokenService){
     var self = this;
     self.user = {};
+    self.newSignin = null;
     this.signup = function(userObj) {
         return $http.post('/auth/signup', userObj)
         .then(function(response) {
