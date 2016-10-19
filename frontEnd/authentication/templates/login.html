@@ -9,7 +9,7 @@
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="form-group">
                     <label class="control-label">email</label>
-                    <input class="form-control" name="email" type="email" placeholder="email" ng-model="user.email" ng-required="true">
+                    <input class="form-control" name="email" type="email" ng-selected="enterPassword" placeholder="email" ng-model="user.email" ng-required="true">
                     <p class="error validationerror" ng-show="loginForm.email.$invalid && invalidForm">A valid email address is required to login.</p>
                 </div>
                 <div class="form-group"><label class="control-label">password</label>
