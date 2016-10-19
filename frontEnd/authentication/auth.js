@@ -4,14 +4,6 @@ var app = angular.module('myApp.Auth', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
 
 app.config(["$routeProvider", function($routeProvider) {
     $routeProvider
-    .when('/signup', {
-        templateUrl: '/authentication/templates/signup.html',
-        controller: 'SignupController'
-    })
-    .when('/login', {
-        templateUrl:  '/authentication/templates/login.html',
-        controller: 'LoginController'
-    })
     .when('/logout', {
         templateUrl: '/authentication/templates/logout.html',
         controller: 'LogoutController'
@@ -52,7 +44,7 @@ app.service('TokenService', function() {
 
 app.service('UserService', ["$http", "$location", "TokenService", function($http, $location, TokenService){
     var self = this;
-
+    self.user = {};
     this.signup = function(userObj) {
         return $http.post('/auth/signup', userObj)
         .then(function(response) {
@@ -70,6 +62,7 @@ app.service('UserService', ["$http", "$location", "TokenService", function($http
             return(response)
         }, function(error){
             console.log('UserService login error ', error);
+            return error
         })
     }
 
