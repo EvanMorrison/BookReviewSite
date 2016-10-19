@@ -86,10 +86,18 @@ textarea {
     box-shadow: none;
 }
 
-#HeaderPopularBooks, #HeaderMyReviews, #HeaderNewReleases, #HeaderBookTitle {
+#HeaderPopularBooks, #HeaderMyReviews, #HeaderNewReleases  {
     font: 500 22px Tahoma, Geneva, serif;
     color: #B7B7B7;
     text-shadow: #FC0 1px 1px 1px;
+    margin: 0;
+    display: block;
+}
+
+#HeaderBookTitle {
+    font: 500 18px Tahoma, Geneva, serif;
+    color: #8E8E8E;
+    text-shadow: #6CF 1px 1px 1px;
     margin: 0;
     display: block;
 }
@@ -146,19 +154,29 @@ textarea {
 }
 
 /* Classes */
+
+/*.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}*/
 .BookListStyle {
     margin: 0;
     padding: 0;
+    border: none;
+    outline: none;
     background-color: #FFF;
-    position: relative;
 }
 
 .BookListItemStyle {
-    width: 98px;
+
     margin: 0;
     padding: 0;
     background-color: #FFF;
-    border: 1px solid #666;
+    border: none;
     display: inline-block;
     list-style-type: none;
 }
@@ -166,16 +184,25 @@ textarea {
 .AuthorStyle {
     font: 14px Verdana, Arial, sans-serif;
     color: #666;
+    display: block;
 }
 
 .RatingStyle {
     font: 12px Verdana, Arial, sans-serif;
     color: #F00;
+    display: block;
 }
 
 .PagesAndPublisherStyle {
     font: 8px Verdana, Arial, sans-serif;
     color: #666;
+    display: block;
+}
+
+.ReviewStyle {
+    font: 12px Verdana, Arial, sans-serif;
+    color: #666;
+    display: block;
 }
 
 .BottomGrayDivider {

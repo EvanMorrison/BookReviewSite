@@ -1,0 +1,3 @@
+module.exports = {
+    genres: ["Art", "Biography", "Business", "Chick Lit", "Childres", "Classics", "Comics", "Contemporary", "Cookbooks", "Crime", "Fantasy", "Fiction", "Gay and Lesbian", "Graphic Novels", "Historical Fiction", "History", "Horror", "Humor and Comedy", "Memoir", "Music", "Mystery", "Nonfiction", "Paranormal", "Philosophy", "Psychology", "Poetry", "Religion", "Romance", "Science", "Science Fiction", "Self Help", "Spirituality", "Sports", "Suspense", "Thriller", "Travel", "Young Adult"]
+}

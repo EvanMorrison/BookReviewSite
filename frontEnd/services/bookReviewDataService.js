@@ -7,19 +7,13 @@ app.service("BookReviewDataService", function() {
     this.bookReviewArray = [
         {
             image: "./images/an-irish-country-love-story-thumbnail.jpg",
-            title: "",
-            author: "",
-            rating: 0,
-            pages: 0,
-            publisher: "",
+            title: "An Irish Country Love Story",
+            author: "Patrick Taylor",
+            rating: 4,
+            pages: 384,
+            publisher: "Forge Books",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: "I found myself wishing this book could be made into a movie. There is something about the way Patrick Taylor writes that makes visualizing the people and the activities very easy and natural. It's just logical that this book should be a movie. I loved this book!"
         },
         {
             image: "./images/crosstalk-thumbnail.jpg",
@@ -29,13 +23,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         },
         {
             image: "./images/hag-seed-thumbnail.jpg",
@@ -45,13 +33,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         },
         {
             image: "./images/head-lopper-thumbnail.jpg",
@@ -61,13 +43,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         },
         {
             image: "./images/news-of-the-world-thumbnail.jpg",
@@ -77,13 +53,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         },
         {
             image: "./images/small-great-things-thumbnail.jpg",
@@ -93,13 +63,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         },
         {
             image: "./images/the-mothers-thumbnail.jpg",
@@ -109,13 +73,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         },
         {
             image: "./images/today-will-be-different-thumbnail.jpg",
@@ -125,13 +83,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         },
         {
             image: "./images/two-by-two-thumbnail.jpg",
@@ -141,13 +93,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         },
         {
             image: "./images/wangs-vs-the-world-thumbnail.jpg",
@@ -157,13 +103,7 @@ app.service("BookReviewDataService", function() {
             pages: 0,
             publisher: "",
             summary: "",
-            reviews: [
-                {
-                    userName: "",
-                    userRating: 0,
-                    userReview: ""
-                }
-            ]
+            review: ""
         }];
 });
 
