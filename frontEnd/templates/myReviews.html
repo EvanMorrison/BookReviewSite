@@ -1,1 +1,53 @@
 <!-- BookReviewSite myReviews.html -->
+
+<main>
+
+    <div class="row">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+
+            <h2 id="HeaderMyReviews">My Reviews</h2>
+
+            <div id="MyBookReviews" ng-repeat="book in bookReviewArray track by $index">
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="col-md-3">{{book.image}}</div>
+                        <div class="col-md-5">
+                            <ul class="list-group">
+                                <li class="list-group-item"><h3 id="BookTitle">{{book.title}}</h3></li>
+                                <li class="list-group-item AuthorStyle">by {{book.author}}</li>
+                                <li class="list-group-item RatingStyle">
+                                    <span ng-show="!showTextareaCursorAndRatingInput">{{user.book.rating}} Stars</span>
+                                    <span ng-show="showTextareaCursorAndRatingInput"><input type="number" min="0" max="5" ng-model="revisedRatingNumber"></span>
+                                </li>
+                             </ul>
+                        </div>
+                        <!--light gray line -->
+                    </li>
+                    <li class="list-group-item">
+                        <h4 id="HeaderEditReviewTitle">Edit Review</h4>
+                        <!--light gray line -->
+                        <button class="btn" type="button" id="EditReviewButton" ng-show="!showTextareaCursorAndRatingInput" ng-click="editReview()">Edit Review</button>
+                        <div class="BottomGrayDivider" ng-show="showTextareaCursorAndRatingInput">
+                            <button class="btn" type="button" id="SaveUpdatedReviewButton" ng-click="saveUpdatedReview()">Save</button>
+                            <button class="btn" type="button" id="CancelEditReviewButton" ng-click="cancelEditReview()">Cancel</button>
+                        </div>
+                        <!--light   line -->
+                        <div class="input-group">
+                            <textarea class="form-control" ng-trim="false" ng-model="user.book.review"></textarea>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2"></div>
+
+    </div>
+
+</main>
