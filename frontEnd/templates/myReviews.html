@@ -12,22 +12,22 @@
 
             <div id="MyBookReviews" ng-repeat="book in bookReviewArray track by $index">
 
-                <ul class="list-group">
+                <ul class="list-group BookListStyle">
                     <li class="list-group-item">
                         <div class="col-md-3">{{book.image}}</div>
                         <div class="col-md-5">
-                            <ul class="list-group">
-                                <li class="list-group-item"><h3 id="BookTitle">{{book.title}}</h3></li>
-                                <li class="list-group-item AuthorStyle">by {{book.author}}</li>
-                                <li class="list-group-item RatingStyle">
-                                    <span ng-show="!showTextareaCursorAndRatingInput">{{user.book.rating}} Stars</span>
+                            <ul class="list-group BookListStyle">
+                                <li class="list-group-item BookListItemStyle"><h3 id="BookTitle">{{book.title}}</h3></li>
+                                <li class="list-group-item BookListItemStyle AuthorStyle">by {{book.author}}</li>
+                                <li class="list-group-item BookListItemStyle RatingStyle">
+                                    <span ng-show="!showTextareaCursorAndRatingInput">{{book.rating}} Stars</span>
                                     <span ng-show="showTextareaCursorAndRatingInput"><input type="number" min="0" max="5" ng-model="revisedRatingNumber"></span>
                                 </li>
                              </ul>
                         </div>
                         <!--light gray line -->
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item BookListItemStyle">
                         <h4 id="HeaderEditReviewTitle">Edit Review</h4>
                         <!--light gray line -->
                         <button class="btn" type="button" id="EditReviewButton" ng-show="!showTextareaCursorAndRatingInput" ng-click="editReview()">Edit Review</button>

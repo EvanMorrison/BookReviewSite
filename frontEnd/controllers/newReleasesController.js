@@ -2,7 +2,7 @@
 
 app = angular.module("BookReviewApp");
 
-app.controller("NewReleasesController", ["$scope", "BookReviewService", function($scope, BookReviewService) {
+app.controller("NewReleasesController", ["$scope", "BookReviewDataService", "HttpService", function($scope, BookReviewDataService, HttpService) {
 
         //get new releases
 }]);

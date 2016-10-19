@@ -1,9 +1,10 @@
-/* BookReviewSite myReviews.js */
+/* BookReviewSite myReviewsController.js */
 
 app = angular.module("BookReviewApp");
 
-app.controller("MyReviewsController", ["$scope", "BookReviewService", function($scope, BookReviewService) {
+app.controller("MyReviewsController", ["$scope", "BookReviewDataService", "HttpService", function($scope, BookReviewDataService, HttpService) {
 
+    $scope.bookReviewArray = BookReviewDataService.bookReviewArray;
     $scope.upDatedUserReview = "";
     $scope.updatedRatingNumber = 0;
     $scope.showEditButtonAndRating = false;
