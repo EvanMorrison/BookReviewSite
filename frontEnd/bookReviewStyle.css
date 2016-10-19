@@ -62,13 +62,13 @@ textarea {
     display: block;
 }
 
-#HomeLink, #MyReviewsLink, #NewReleasesLink, ul.authLinks a {
+#HomeLink, #MyReviewsLink, #NewReleasesLink, ul.auth-links a {
     font: 16px Roboto, sans-serif;
     color: #A3A3A3;
     text-shadow: #9F9 1px 1px 1px;
 }
 
-#HomeLink:hover, #MyReviewsLink:hover, #NewReleasesLink:hover, ul.authLinks a:hover {
+#HomeLink:hover, #MyReviewsLink:hover, #NewReleasesLink:hover, ul.auth-links a:hover {
     font-weight: bold;
     color: #7acc7a;
     text-shadow: #A3A3A3 1px 1px 1px;
@@ -77,7 +77,7 @@ textarea {
     box-shadow: none;
 }
 
-#HomeLink:focus, #MyReviewsLink:focus, #NewReleasesLink:focus, ul.authLinks a:focus {
+#HomeLink:focus, #MyReviewsLink:focus, #NewReleasesLink:focus, ul.auth-links a:focus {
     font-weight: bold;
     color: #CCC;
     text-shadow: #9F9 1px 1px 1px;
