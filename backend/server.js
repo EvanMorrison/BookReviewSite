@@ -34,6 +34,7 @@ app.use('/api', expressJwt({secret: config.db_secret}));
 app.use('api/userBooks', require('./routes/userBookRoutes'));
 // ROUTES WITHOUT AUTHENTICATION
 app.use('/auth', require('./routes/authRoutes'));
+app.use('/books', require('./routes/bookRoutes'));
 
 
 

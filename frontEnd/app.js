@@ -22,7 +22,7 @@ app.config(function($routeProvider) {
             controller: "PopularAndNewBookController"
         })
         .when('/search', {
-            templateUrl: './templates/googleAPISearch',
+            templateUrl: './templates/googleAPISearch.html',
             controller: 'GoogleBooksSearchController'
         })
 });
