@@ -28,8 +28,9 @@ li {
 
 main {
     height: 600px;
-    margin: 0 auto;
+    margin: 60px auto 0;
     padding: 20px;
+    border-top: 1px solid #CCC;
     display: block;
 }
 
@@ -50,7 +51,6 @@ textarea {
 /* Ids */
 #HeaderRow {
     padding: 0 0 5px 0;
-    border-bottom: 1px solid #CCC;
 }
 
 #HeaderHome {
@@ -90,7 +90,6 @@ textarea {
     font: 500 22px Tahoma, Geneva, serif;
     color: #B7B7B7;
     text-shadow: #FC0 1px 1px 1px;
-    margin: 0;
     display: block;
 }
 
@@ -102,8 +101,20 @@ textarea {
     display: block;
 }
 
-#HomePopularBooks {
+#PopularBooksImageStyle {
+    margin: 0 0 50px 0;
+}
 
+#NewBooksImageStyle {
+    margin: 0 0 50px 0;
+}
+
+#MyReviewsImageStyle {
+    padding: 0 20px 0 0;
+}
+
+#BookImageAndDataItemsMinHeight {
+    min-height:250px
 }
 
 #BookSummary {
@@ -155,26 +166,17 @@ textarea {
 
 /* Classes */
 
-/*.list-group-item {
-  position: relative;
-  display: block;
-  padding: 10px 15px;
-  margin-bottom: -1px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}*/
 .BookListStyle {
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 0;
     border: none;
     outline: none;
     background-color: #FFF;
 }
 
 .BookListItemStyle {
-
     margin: 0;
-    padding: 0;
+    padding: 0 0 5px 0;
     background-color: #FFF;
     border: none;
     display: inline-block;

@@ -10,10 +10,10 @@
 
            <h2 id="HeaderPopularBooks">Popular Books</h2>
 
-            <div class="row" id="HomePopularBooks">
+            <div class="row">
 
-                <div class="col-md-2" ng-repeat="book in bookReviewArray">
-                    <a href="/popularAndNewBook"><img style="height: 160px;" class="ImageStyle" ng-src={{book.image}}></a>
+                <div class="col-md-2" ng-repeat="book in bookReviewArray track by $index">
+                    <a href="#/popularAndNewBook" ng-click="passIndex($index)"><img id="PopularBooksImageStyle" style="height: 160px;" ng-src={{book.image}}></a>
                 </div>
 
             </div>

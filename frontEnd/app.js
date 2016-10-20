@@ -15,17 +15,25 @@ app.config(function($routeProvider) {
             controller: "MyReviewsController"
         })
         .when("/newReleases", {
-            template: "./templates/newReleases.html",
+            templateUrl: "./templates/newReleases.html",
             controller: "NewReleasesController"
         })
         .when("/popularAndNewBook", {
-            template: "./templates/popularAndNewBook",
+            templateUrl: "./templates/popularAndNewBook.html",
             controller: "PopularAndNewBookController"
         });
 });
 
-app.controller("MainController", ["$scope", function($scope)
+app.controller("MainController", ["$scope", "HttpService", "BookReviewDataService", function($scope, HttpService, BookReviewDataService)
 {
 
+    $scope.getBooks = function() {
 
+        HttpService.getBooks()
+
+            .then(function(books) {
+
+                BookReviewDataService.bookReviewArray = books;
+            });
+    }();
 }]);

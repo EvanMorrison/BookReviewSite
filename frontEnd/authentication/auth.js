@@ -1,4 +1,4 @@
-/* BookReviewSite auth.js */
+ø/* BookReviewSite auth.js */
 
 var app = angular.module('myApp.Auth', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 

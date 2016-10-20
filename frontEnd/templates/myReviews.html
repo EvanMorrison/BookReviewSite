@@ -9,17 +9,19 @@
         <div class="col-md-8">
 
             <h2 id="HeaderMyReviews">My Reviews</h2>
+
             <div class="row">
 
+                <div class="col-xs-12 col-md-6" id="BookImageAndDataItemsMinHeight" ng-repeat="book in bookReviewArray track by $index">
 
-                <div class="BookListStyle col-xs-12 col-md-6" ng-repeat="book in bookReviewArray" style="min-height:250px">
                     <div class="row">
-                        <div class="col-xs-3" style="width:110px;"><a href="/popularAndNewBook">
-                        <img style="height: 160px;" class="ImageStyle" ng-src={{book.image}}></a>
+
+                        <div class="col-xs-3"><a href="/popularAndNewBook">
+                            <img style="height: 160px;" id="MyReviewsImageStyle" ng-src={{book.image}}></a>
                         </div>
 
-                        <div class="col-xs-9" style="border: 1px solid #666;">
-                            <ul class="BookListStyle" style="border: 1px solid #666;">
+                        <div class="col-xs-9">
+                            <ul class="BookListStyle">
                                 <li class="BookListItemStyle"><h3 id="HeaderBookTitle">{{book.title}}</h3></li>
                                 <li class="BookListItemStyle AuthorStyle">by {{book.author}}</li>
                                 <li class="BookListItemStyle RatingStyle">
@@ -28,17 +30,16 @@
                                 </li>
                                 <li class="BookListItemStyle ReviewStyle"><p>Review: {{book.review}}</p></li>
                              </ul>
-
                         </div>
                         <!--light gray line -->
                     </div>
-                    <div class="clearfix"></div>
+
                 </div>
 
-
+            </div>
 
         </div>
-        </div>
+
         <div class="col-md-2"></div>
 
     </div>
