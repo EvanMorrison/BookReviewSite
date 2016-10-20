@@ -3,22 +3,24 @@ var Schema = mongoose.Schema;
 
 var BookSchema = new Schema({
     title: String,
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'Author'
-    },
-    isbn: String,
-    numberOfPages: Number,
-    publisher: {
-        type: Schema.Types.ObjectId,
-        ref: 'Publisher'
-    },
-    edition: String,
+    subtitle: String,
+    author: String,
     datePublished: Date,
-    coverUrl: String,
-    synopsis: String,
-    illustrator: String
-
+    publisher: String,
+    ISBN: Number,
+    thumbnail: String,
+    previewLink: String,
+    infoLink: String,
+    textSnippet: String,
+    description: String,
+    pageCount: Number,
+    genres: [
+       { type: String}
+    ],
+    listPrice: {
+        amount: Number,
+        currencyCode: String
+    }
 })
 
 BookSchema.virtual('reviews', {
