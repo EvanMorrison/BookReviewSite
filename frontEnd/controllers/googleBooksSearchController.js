@@ -4,11 +4,12 @@ angular.module("BookReviewApp")
     $scope.search = {}
 
     $scope.searchGoogle = function() {
+        $scope.resultsList = [];
         HttpService.searchGoogle($scope.search)
         .then(function(response){
             console.log("Controller response ", response);
             if(Array.isArray(response)) $scope.resultsList = response;
-            $scope.search = {};
+            
         })
     }
 
@@ -20,6 +21,10 @@ $scope.saveBook = function(book) {
     })
 }
 
+$scope.clearSearch = function(){
+    $scope.search = {};
+    $scope.resultsList = [];
+}
 
 }])
  

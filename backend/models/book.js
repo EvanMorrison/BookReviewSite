@@ -6,10 +6,7 @@ var BookSchema = new Schema({
     subtitle: String,
     author: String,
     datePublished: Date,
-    publisher: {
-        type: Schema.Types.ObjectId,
-        ref: 'Publisher'
-    },
+    publisher: String,
     ISBN: Number,
     thumbnail: String,
     previewLink: String,

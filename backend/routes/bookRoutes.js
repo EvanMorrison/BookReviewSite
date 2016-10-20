@@ -15,18 +15,19 @@ bookRouter.route('/')
     })
 
 .post(function (req, res) {
-    var book = new Book(req.body);
-    var publisher = new Publisher({name: req.body.publisher});
-    Publisher.findOneAndUpdate({name: publisher.name}, publisher, {new: true, upsert:true}, function(err, returnPublisher){
+    var book = req.body;
+    Book.find({title: book.title, author: book.author}, (function(err, existingBook){
         if(err) res.status(500).send(err);
-     else {   
-         book.publisher = returnPublisher._id;
-        Book.findOneAndUpdate({title: book.title}, book, {new: true, upsert: true}, function(err, returnBook){
-            if(err) res.status(500).send(err);
-            res.send(returnBook);
-        });
-    }
-    });
+         else if (existingBook.length) { 
+            res.send(existingBook[0])
+        } else {
+            book = new Book(req.body);
+            book.save(book, function(err, newBook){
+                if(err) res.status(500).send(err);
+                res.send(newBook)
+            })
+        }
+    }))
 });
 
 bookRouter.route('/isbn/:isbn')

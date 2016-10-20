@@ -4,8 +4,8 @@ var app = angular.module("BookReviewApp");
 app.service("HttpService", ["$http", "$httpParamSerializer", function($http, $httpParamSerializer) {
 
 var self = this;
-self.searchResults = [];
     this.searchGoogle = function(searchTerms) {
+        self.searchResults = [];
         console.log("searchTerms ", searchTerms);
         return $http.get('https://www.googleapis.com/books/v1/volumes?q='+ $httpParamSerializer(searchTerms), {key:"AIzaSyCwksoIDtAlB4Z5ERWcuJViup8dzJRY6ao"})
         .then(function(response){
@@ -14,21 +14,34 @@ self.searchResults = [];
                 self.searchResults.push({
                     title: item.volumeInfo.title,
                     subtitle: item.volumeInfo.subtitle,
-                    author: item.volumeInfo.authors[0],
                     publishedDate: item.volumeInfo.publishedDate,
                     publisher: item.volumeInfo.publisher,
                     previewLink: item.volumeInfo.previewLink,
                     pageCount: item.volumeInfo.pageCount,
                     infoLink: item.volumeInfo.infoLink,
-                    ISBN: item.volumeInfo.industryIdentifiers[0].identifier,
-                    thumbnail: item.volumeInfo.imageLinks.thumbnail,
                     description: item.volumeInfo.description,
-                    textSnippet: item.searchInfo.textSnippet,
-                    // listPrice: {
-                    //     amount: item.saleInfo.listPrice.amount || 0,
-                    //     currencyCode: item.saleInfo.listPrice.currencyCode ||''}
+                    genres: item.volumeInfo.categories
                 });
-                    // genres: item.volumeInfo.categories,
+                if(item.volumeInfo.industryIdentifiers) {
+                    self.searchResults[index].ISBN = item.volumeInfo.industryIdentifiers[0].identifier
+                }
+                if (item.volumeInfo.imageLinks){
+                    self.searchResults[index].thumbnail = item.volumeInfo.imageLinks.thumbnail;
+                }
+                    
+                if (item.volumeInfo.searchInfo){
+                    self.searchResults[index].textSnippet = item.volumeInfo.searchInfo.textSnippet || ''
+                }
+                if (item.volumeInfo.authors){
+                    self.searchResults[index].author = item.volumeInfo.authors[0]
+                }
+                if (item.saleInfo.listPrice) {
+                    self.searchResults[index].listPrice = {
+                        amount: item.saleInfo.listPrice.amount,
+                        currencyCode: item.saleInfo.listPrice.currencyCode
+                    }
+
+                }
             });
             return self.searchResults;
         }, function(error){

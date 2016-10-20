@@ -21,12 +21,12 @@ var UserSchema = new Schema ({
             ref: 'Book'
         }
     ],
-    favAuthors: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Author'
-        }
-    ],
+    // favAuthors: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Author'
+    //     }
+    // ],
     favGenres: [
         {
             type: String,

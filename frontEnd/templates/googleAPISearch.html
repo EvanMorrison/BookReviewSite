@@ -24,6 +24,7 @@
                 <input type="text" class="form-control" placeholder="isbn" ng-model="search.isbn" />
             </div>
             <input type="submit" value="search" class="btn btn-default" ng-click="searchGoogle()">
+         <button class="btn btn-default" ng-click="clearSearch()">reset search</button>
         </form>
     </div>
 </div>
@@ -59,17 +60,18 @@
                     </li>
                     <li>
                         by:
-                        <p ng-repeat="author in book.authors">{{author.name}}</p>
+                        <p >{{book.author}}</p>
                     </li>
                     <li>
                         Published: {{book.publishedDate}} <br/>
-                        by: {{book.publisher.name}}
+                        by: {{book.publisher}}
                     </li>
                     <li>
                         ISBN: {{book.ISBN}}
                     </li>
                     <li>
                         <button class="btn btn-default" ng-click="saveBook(book)">save to DB</button>
+                       
                     </li>
                 </ul>
             </div>
