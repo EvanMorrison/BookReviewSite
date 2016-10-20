@@ -4,10 +4,7 @@ var Schema = mongoose.Schema;
 var BookSchema = new Schema({
     title: String,
     subtitle: String,
-    authors:[ {
-        type: Schema.Types.ObjectId,
-        ref: 'Author'
-    }],
+    author: String,
     datePublished: Date,
     publisher: {
         type: Schema.Types.ObjectId,

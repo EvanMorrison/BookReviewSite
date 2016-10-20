@@ -14,13 +14,9 @@ self.searchResults = [];
                 self.searchResults.push({
                     title: item.volumeInfo.title,
                     subtitle: item.volumeInfo.subtitle,
-                    author: {
-                        name: item.volumeInfo.authors[0]
-                    },
+                    author: item.volumeInfo.authors[0],
                     publishedDate: item.volumeInfo.publishedDate,
-                    publisher: {
-                        name: item.volumeInfo.publisher
-                    },
+                    publisher: item.volumeInfo.publisher,
                     previewLink: item.volumeInfo.previewLink,
                     pageCount: item.volumeInfo.pageCount,
                     infoLink: item.volumeInfo.infoLink,
