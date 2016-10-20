@@ -6,12 +6,12 @@ var BookSchema = new Schema({
     subtitle: String,
     authors:[ {
         type: Schema.Types.ObjectId,
-        ref: 'author'
+        ref: 'Author'
     }],
     datePublished: Date,
     publisher: {
         type: Schema.Types.ObjectId,
-        ref: 'publisher'
+        ref: 'Publisher'
     },
     ISBN: Number,
     thumbnail: String,
@@ -30,7 +30,7 @@ var BookSchema = new Schema({
 })
 
 BookSchema.virtual('reviews', {
-    ref: 'review',
+    ref: 'Review',
     localField: '_id',
     foreignField: 'book'
 })

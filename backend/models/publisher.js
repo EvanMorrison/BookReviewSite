@@ -17,10 +17,10 @@ var PublisherSchema = new Schema({
     
 });
 
-// PublisherSchema.virtual('books', {
-//     ref: 'Book',
-//     localField: '_id',
-//     foreignField: 'publisher'
-// });
+PublisherSchema.virtual('books', {
+    ref: 'Book',
+    localField: '_id',
+    foreignField: 'publisher'
+});
 
 module.exports = mongoose.model('Publisher', PublisherSchema);
