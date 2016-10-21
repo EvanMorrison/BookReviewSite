@@ -49,7 +49,6 @@ authRouter.post('/login', function (req, res) {
         if (!user) res.status(401).send({
             success: false,
             cause: 'username',
-            message: "No user with that email was found"
         });
 
         // If user is found, check password and create token

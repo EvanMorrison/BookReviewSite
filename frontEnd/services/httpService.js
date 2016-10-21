@@ -4,22 +4,63 @@ var app = angular.module("BookReviewApp");
 app.service("HttpService", ["$http", "$httpParamSerializer", function($http, $httpParamSerializer) {
 
 var self = this;
-    this.getBooks = function() {
+    this.getAllBooks = function() {
         return $http.get('/books')
         .then(function(response){
             self.bookList = response.data;
+            return response.data;
         }, function(error){
             console.log('Service get bookList error ', error);
         })
     }
 
-    this.saveBook = function(book) {
-        return $http.post('/books', book)
-        .then(function(response){
-            console.log('service response ', response)
-        }, function(error){
-            console.log('service savebook error ', error)
-        })
-    }
+    this.getUserBooks = function() {
 
+        return $http.get("/api/books")
+
+            .then(function(response) {
+                console.log(response);
+                return response.data;
+            },
+            function(response) {
+                alert("Error" + response.status + ":" + response.statusText);
+            });
+    };
+
+    this.saveNewBookReview = function(newBookReview) {
+
+        return $http.put("api/books", newBookReview)
+
+            .then(function(response) {
+                return response.data;
+            },
+            function(response) {
+                alert("Error" + response.status + ":" + response.statusText);
+            });
+    };
+
+    this.getUserReviews = function() {
+
+        return $http.get("/api/userBooks")
+
+            .then(function (response) {
+                console.log(response);
+                return response.data;
+            },
+             function (response) {
+                alert("Error" + response.status + ":" + response.statusText);
+             });
+    };
+
+    this.saveUpdatedUserReview = function(updatedUserReview) {
+
+        return $http.put("api/userBooks", updatedUserReview)
+
+            .then(function (response) {
+                return response.data;
+            },
+            function (response) {
+                alert("Error" + response.status + ":" + response.statusText);
+            });
+    }
 }]);

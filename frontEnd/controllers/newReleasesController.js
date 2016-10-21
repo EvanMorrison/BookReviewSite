@@ -1,8 +1,8 @@
 /* BookReviewSite newReleases.js */
 
-app = angular.module("BookReviewApp");
+var app = angular.module("BookReviewApp");
 
 app.controller("NewReleasesController", ["$scope", "BookReviewDataService", "HttpService", function($scope, BookReviewDataService, HttpService) {
 
-        //get new releases
+    $scope.bookReviewArray = BookReviewDataService.bookReviewArray;
 }]);
