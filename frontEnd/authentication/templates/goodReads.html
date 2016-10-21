@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+
+        <h3>Search for books</h3>
+        <form name="bookSearchForm" class="col-xs-8 col-xs-offset-2">
+            <div class="form-group">
+                <label class="controll-label">title</label>
+                <input type="text" class="form-control" autofocus placeholder="title" ng-model="search.intitle" />
+            </div>
+            <div class="form-group">
+                <label class="controll-label">isbn</label>
+                <input type="text" class="form-control" placeholder="isbn" ng-model="search.isbn" />
+            </div>
+            <input type="submit" value="search" class="btn btn-default" ng-click="searchGoogle()">
+         <button class="btn btn-default" ng-click="clearSearch()">reset search</button>
+        </form>
+    </div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <ul>
+            <li>An Irish Country Love Story</li>
+            <li>Cross Talk</li>
+            <li>Hag-Seed</li>
+            <li>Head Lopper</li>
+            <li>News of the World</li>
+            <li>small great things</li>
+            <li>The Mothers</li>
+            <li>Maria Semple</li>
+            <li>Two by Two</li>
+            <li>
+                The Wangs vs. the World
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="container">
+        <hr/>
+        <div class="media" ng-repeat="book in resultsList">
+            <div class="media-left">
+                <img src="{{book.thumbnail}}" width="100px" alt="" class="media-object">
+            </div>
+            <div class="media-body">
+                <ul class="list-unstyled">
+                    <li class="media-heading">
+                        <h4>Title: {{book.title}}</h4>
+                    </li>
+                    <li>
+                        by:
+                        <p >{{book.author}}</p>
+                    </li>
+                    <li>
+                        Published: {{book.publishedDate}} <br/>
+                        by: {{book.publisher}}
+                    </li>
+                    <li>
+                        ISBN: {{book.ISBN}}
+                    </li>
+                    <li>
+                        <button class="btn btn-default" ng-click="saveBook(book)">save to DB</button>
+                       
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
