@@ -14,8 +14,9 @@ var app = express();
 
 // DATABASE
 var database = path.join(config.db_host,config.db_name);
-mongoose.connect('mongodb://' + config.db_user + ":" + config.db_pass +"@" + database, function(){
-    console.log('Connected to MongoDB ' + database);
+mongoose.connect('mongodb://' + config.db_user + ":" + config.db_pass +"@" + database, function(err){
+    if(err) console.log('Error connecting to MongoDB: ', err.message)
+    else console.log('Connected to MongoDB ' + database);
 });
 
 // MIDDLEWARE
@@ -38,4 +39,5 @@ app.use('/auth', require('./routes/authRoutes'));
 
 app.listen(port, function() {
     console.log('Server is listening on port ', port);
+
 })
