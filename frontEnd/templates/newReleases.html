@@ -10,13 +10,13 @@
 
             <h2 id="HeaderNewReleases">New Releases</h2>
 
-            <div id="NewReleases" ng-repeat="book in bookReviewArray track by $index">
+            <div class="row">
 
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="/popularAndNewBook"><img class="img-responsive" src={{book.image}}></a>
-                    </li>
-                </ul>
+                <div class="col-md-2" ng-repeat="book in bookReviewArray">
+
+                    <a href="/popularAndNewBook"><img id="NewBooksImageStyle" style="height: 160px;" ng-src={{book.image}}></a>
+
+                </div>
 
             </div>
 
