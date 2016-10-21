@@ -7,7 +7,6 @@ var self = this;
     this.getAllBooks = function() {
         return $http.get('/books')
         .then(function(response){
-            self.bookList = response.data;
             return response.data;
         }, function(error){
             console.log('Service get bookList error ', error);
