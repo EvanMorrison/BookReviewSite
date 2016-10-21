@@ -21,10 +21,7 @@ app.config(function($routeProvider) {
             template: "./templates/popularAndNewBook",
             controller: "PopularAndNewBookController"
         })
-        .when('/search', {
-            templateUrl: './templates/googleAPISearch.html',
-            controller: 'GoogleBooksSearchController'
-        })
+       
 });
 
 app.controller("MainController", ["$scope", function($scope)

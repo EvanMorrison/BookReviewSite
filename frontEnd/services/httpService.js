@@ -4,49 +4,12 @@ var app = angular.module("BookReviewApp");
 app.service("HttpService", ["$http", "$httpParamSerializer", function($http, $httpParamSerializer) {
 
 var self = this;
-    this.searchGoogle = function(searchTerms) {
-        self.searchResults = [];
-        console.log("searchTerms ", searchTerms);
-        return $http.get('https://www.googleapis.com/books/v1/volumes?q='+ $httpParamSerializer(searchTerms), {key:"AIzaSyCwksoIDtAlB4Z5ERWcuJViup8dzJRY6ao"})
+    this.getBooks = function() {
+        return $http.get('/books')
         .then(function(response){
-            console.log(response.data)
-            response.data.items.forEach(function(item, index) {
-                self.searchResults.push({
-                    title: item.volumeInfo.title,
-                    subtitle: item.volumeInfo.subtitle,
-                    publishedDate: item.volumeInfo.publishedDate,
-                    publisher: item.volumeInfo.publisher,
-                    previewLink: item.volumeInfo.previewLink,
-                    pageCount: item.volumeInfo.pageCount,
-                    infoLink: item.volumeInfo.infoLink,
-                    description: item.volumeInfo.description,
-                    genres: item.volumeInfo.categories
-                });
-                if(item.volumeInfo.industryIdentifiers) {
-                    self.searchResults[index].ISBN = item.volumeInfo.industryIdentifiers[0].identifier
-                }
-                if (item.volumeInfo.imageLinks){
-                    self.searchResults[index].thumbnail = item.volumeInfo.imageLinks.thumbnail;
-                }
-                    
-                if (item.volumeInfo.searchInfo){
-                    self.searchResults[index].textSnippet = item.volumeInfo.searchInfo.textSnippet || ''
-                }
-                if (item.volumeInfo.authors){
-                    self.searchResults[index].author = item.volumeInfo.authors[0]
-                }
-                if (item.saleInfo.listPrice) {
-                    self.searchResults[index].listPrice = {
-                        amount: item.saleInfo.listPrice.amount,
-                        currencyCode: item.saleInfo.listPrice.currencyCode
-                    }
-
-                }
-            });
-            return self.searchResults;
+            self.bookList = response.data;
         }, function(error){
-            console.log(error);
-            return(error);
+            console.log('Service get bookList error ', error);
         })
     }
 
