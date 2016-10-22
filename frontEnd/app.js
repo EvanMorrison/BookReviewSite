@@ -21,6 +21,10 @@ app.config(function($routeProvider) {
             template: "./templates/popularAndNewBook",
             controller: "PopularAndNewBookController"
         })
+        .when('/search', {
+            templateUrl: '/templates/goodReads.html',
+            controller: 'GoodReadsController'
+        })
        
 });
 
