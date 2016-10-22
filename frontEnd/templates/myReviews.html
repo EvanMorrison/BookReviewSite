@@ -10,37 +10,31 @@
 
             <h2 id="HeaderMyReviews">My Reviews</h2>
 
-            <div id="MyBookReviews" ng-repeat="book in bookReviewArray track by $index">
+            <div class="row">
 
-                <ul class="list-group BookListStyle">
-                    <li class="list-group-item">
-                        <div class="col-md-3">{{book.image}}</div>
-                        <div class="col-md-5">
-                            <ul class="list-group BookListStyle">
-                                <li class="list-group-item BookListItemStyle"><h3 id="BookTitle">{{book.title}}</h3></li>
-                                <li class="list-group-item BookListItemStyle AuthorStyle">by {{book.author}}</li>
-                                <li class="list-group-item BookListItemStyle RatingStyle">
-                                    <span ng-show="!showTextareaCursorAndRatingInput">{{book.rating}} Stars</span>
+                <div class="col-xs-12 col-md-6" id="BookImageAndDataItemsMinHeight" ng-repeat="review in bookReviewArray track by $index">
+
+                    <div class="row">
+
+                        <div class="col-xs-3"><a href="/popularAndNewBook">
+                            <img style="height: 160px;" id="MyReviewsImageStyle" ng-src={{review.book.thumbnail}}></a>
+                        </div>
+
+                        <div class="col-xs-9">
+                            <ul class="BookListStyle">
+                                <li class="BookListItemStyle"><h3 id="HeaderBookTitle">{{review.book.title}}</h3></li>
+                                <li class="BookListItemStyle AuthorStyle">by {{review.book.author}}</li>
+                                <li class="BookListItemStyle RatingStyle">
+                                    <span ng-show="!showTextareaCursorAndRatingInput">{{review.book.rating}} Stars</span>
                                     <span ng-show="showTextareaCursorAndRatingInput"><input type="number" min="0" max="5" ng-model="revisedRatingNumber"></span>
                                 </li>
+                                <li class="BookListItemStyle ReviewStyle"><p>Review: {{review.body}}</p></li>
                              </ul>
                         </div>
                         <!--light gray line -->
-                    </li>
-                    <li class="list-group-item BookListItemStyle">
-                        <h4 id="HeaderEditReviewTitle">Edit Review</h4>
-                        <!--light gray line -->
-                        <button class="btn" type="button" id="EditReviewButton" ng-show="!showTextareaCursorAndRatingInput" ng-click="editReview()">Edit Review</button>
-                        <div class="BottomGrayDivider" ng-show="showTextareaCursorAndRatingInput">
-                            <button class="btn" type="button" id="SaveUpdatedReviewButton" ng-click="saveUpdatedReview()">Save</button>
-                            <button class="btn" type="button" id="CancelEditReviewButton" ng-click="cancelEditReview()">Cancel</button>
-                        </div>
-                        <!--light   line -->
-                        <div class="input-group">
-                            <textarea class="form-control" ng-trim="false" ng-model="user.book.review"></textarea>
-                        </div>
-                    </li>
-                </ul>
+                    </div>
+
+                </div>
 
             </div>
 

@@ -1,10 +1,10 @@
 /* BookReviewSite myReviewsController.js */
 
-app = angular.module("BookReviewApp");
+var app = angular.module("BookReviewApp");
 
-app.controller("MyReviewsController", ["$scope", "BookReviewDataService", "HttpService", function($scope, BookReviewDataService, HttpService) {
+app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "BookReviewDataService", function($scope, HttpService, UserService, BookReviewDataService) {
 
-    $scope.bookReviewArray = BookReviewDataService.bookReviewArray;
+    /*$scope.bookReviewArray = BookReviewDataService.bookReviewArray;*/
     $scope.upDatedUserReview = "";
     $scope.updatedRatingNumber = 0;
     $scope.showEditButtonAndRating = false;
@@ -28,5 +28,23 @@ app.controller("MyReviewsController", ["$scope", "BookReviewDataService", "HttpS
     $scope.cancelEditReview = function() {
 
         $scope.showTextareaCursorAndRatingInput = false;
-    }
+    };
+
+    $scope.getUserReviews = function() {
+
+        var isAuthenticated = UserService.isAuthenticated();
+
+        if (isAuthenticated) {
+
+            $scope.getUserReviews = function () {
+
+                HttpService.getUserReviews()
+
+                    .then(function (userReviews) {
+                        $scope.bookReviewArray = userReviews
+                        BookReviewDataService.userBookReviewsArray = userReviews;
+                    });
+            }();
+        }
+    }();
 }]);

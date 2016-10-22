@@ -4,7 +4,6 @@ var express = require('express');
 var bookRouter = express.Router();
 
 var Book = require('../models/book');
-var Publisher = require('../models/publisher')
 
 bookRouter.route('/')
     .get(function (req, res) {
