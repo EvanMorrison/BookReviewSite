@@ -15,7 +15,7 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
 
     this.getUserBooks = function () {
 
-        return $http.get("/api/books")
+        return $http.get("/api/userReviews")
 
         .then(function (response) {
                 console.log(response);
@@ -23,6 +23,7 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
             },
             function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
+
             });
     };
 
@@ -35,12 +36,13 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
             },
             function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
+
             });
     };
 
     this.getUserReviews = function () {
 
-        return $http.get("/api/userBooks")
+        return $http.get("/api/userReviews")
 
         .then(function (response) {
                 console.log(response);
@@ -48,12 +50,13 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
             },
             function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
+
             });
     };
 
     this.saveUpdatedUserReview = function (updatedUserReview) {
 
-        return $http.put("api/userBooks", updatedUserReview)
+            return $http.put("api/userReviews", updatedUserReview)
 
         .then(function (response) {
                 return response.data;
@@ -63,24 +66,13 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
             });
     }
 
-    this.getUserBooks = function () {
+    this.getUserReviews = function () {
         return $http.get('/api/userReviews')
             .then(function (response) {
                 return response.data;
             }, function (error) {
-                console.log('Error in UserService getting user books ', error)
+                console.log('Error in UserService getting user reviews ', error)
             })
     }
 
-
-
-    this.getAPIKey = function () {
-        return $http.get('/services/config.goodReads.ignore.js')
-            .then(function (response) {
-                console.log('apikey service ', response.data);
-                return response.data
-            }, function (error) {
-                console.log('apikey error ', error)
-            })
-    }
 }]);

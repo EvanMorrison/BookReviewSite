@@ -1,6 +1,6 @@
 /* BookReviewSite myReviewsController.js */
 
-app = angular.module("BookReviewApp");
+var app = angular.module("BookReviewApp");
 
 app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "BookReviewDataService", function($scope, HttpService, UserService, BookReviewDataService) {
 
@@ -41,10 +41,10 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
                 HttpService.getUserReviews()
 
                     .then(function (userReviews) {
-
+                        $scope.bookReviewArray = userReviews
                         BookReviewDataService.userBookReviewsArray = userReviews;
                     });
-            };
+            }();
         }
     }();
 }]);
