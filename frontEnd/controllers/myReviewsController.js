@@ -41,10 +41,10 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
                 HttpService.getUserReviews()
 
                     .then(function (userReviews) {
-
+                        $scope.userReviewsList = userReviews
                         BookReviewDataService.userBookReviewsArray = userReviews;
                     });
-            };
+            }();
         }
     }();
 }]);
