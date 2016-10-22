@@ -35,7 +35,7 @@ app.use('/api/userReviews', require('./routes/userReviewRoutes'));
 // ROUTES WITHOUT AUTHENTICATION
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/books', require('./routes/bookRoutes'));
-
+app.use('/reviews', require('./routes/reviewRoutes'))
 
 
 app.listen(port, function() {
