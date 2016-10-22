@@ -25,7 +25,7 @@
                 <h1 id="HeaderHome">BookLovers</h1>
             </div>
             
-                <!-- Brand and toggle get grouped for better mobile display -->
+            <!-- The hamburger menu button for small screens-->
                 <div class="navbar-default">
                     <button type="button" class="navbar-toggle collapsed" ng-click="showMenu=!showMenu" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -35,6 +35,7 @@
                     </button>
                 </div>
 
+            <!-- the nav and login links show in toolbar on md to large screens and collapse to button menu on small screens-->
                 <nav  class="collapse navbar-collapse pull-right" uib-collapse="!showMenu">
                         <ul class="nav nav-pills auth-links">
                             <li role="presentation"><a id="HomeLink" href="#/">Home</a></li>
@@ -58,9 +59,7 @@
                                 </ul>
                             </li>
                         </ul>
-              
                 </nav>
-            
         </header>
     </div>
     <!-- Header Row -->
@@ -82,7 +81,6 @@
     <script src="./controllers/myReviewsController.js"></script>
     <script src="./controllers/newReleasesController.js"></script>
     <script src="./controllers/popularAndNewBookController.js"></script>
-    <script src="./controllers/googleBooksSearchController.js"></script>
     <script src="/authentication/auth.js"></script>
     <script src="/authentication/controllers/signup.js"></script>
     <script src="/authentication/controllers/login.js"></script>
