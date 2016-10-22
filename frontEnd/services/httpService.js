@@ -66,7 +66,11 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
         // ROUTES FOR CONNECTING TO GOODREADS API
 
     this.searchGoodReads = function (searchTerms) {
-        return $http.get('/goodreads', )
+        return $http.get('/goodreads', {
+            params: {
+                q: searchTerms.title
+            }
+            })
             
             
             // {

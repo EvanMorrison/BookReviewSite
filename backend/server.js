@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
 var expressJwt = require('express-jwt');
-
+var https = require('https')
 // CONFIG ENVIRONMENT VARIABLES
 var config = require('./config');
 var port = process.env.PORT || 5000;
@@ -39,7 +39,20 @@ app.use('/auth', require('./routes/authRoutes'));
 app.use('/books', require('./routes/bookRoutes'));
 
 // ROUTES FOR GOODREADS API
-app.use('/goodreads', require('./routes/goodReadsRoutes'));
+var url = "https://www.goodreads.com/search/index.xml?key=";
+var key = "4PLWf3daVHpz78W7OJoAw"
+app.get('/goodreads', (function(req, res){
+        console.log('Goodreads Route',req.query);
+    // https.get(url + key + "&" + "title=" + req.query.q, function(response){
+        res.send({
+            message: 'you reached the goodReads Route',
+            success: true,
+            data: response
+        })
+    // })
+    
+}))
+
 
 app.listen(port, function() {
     console.log('Server is listening on port ', port);
