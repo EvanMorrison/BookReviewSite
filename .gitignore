@@ -6,7 +6,7 @@ DS_Store/
 
 # user created ignore files
 ignore/
-*.ignore
+*.ignore*
 
 # environment config/authentication
 **/config.js
