@@ -59,4 +59,24 @@ var self = this;
         })
     }
 
+    this.getUserBooks = function() {
+        return $http.get('/api/userReviews')
+        .then(function(response){
+            return response.data;
+        }, function(error){
+            console.log('Error in UserService getting user books ', error)
+        })
+    }
+
+    
+
+    this.getAPIKey = function(){
+        return $http.get('/services/config.goodReads.ignore.js')
+        .then(function(response){
+            console.log('apikey service ', response.data);
+            return response.data
+        }, function(error){
+            console.log('apikey error ', error)
+        })
+    }
 }]);

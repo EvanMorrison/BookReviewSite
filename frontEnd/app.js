@@ -22,9 +22,16 @@ app.config(function($routeProvider) {
             controller: "PopularAndNewBookController"
         })
         .when('/search', {
+<<<<<<< Updated upstream
             templateUrl: './templates/googleAPISearch.html',
             controller: 'GoogleBooksSearchController'
         })
+=======
+            templateUrl: '/templates/goodReads.html',
+            controller: 'GoodReadsController'
+        })
+       
+>>>>>>> Stashed changes
 });
 
 app.controller("MainController", ["$scope", function($scope)
