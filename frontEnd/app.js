@@ -20,21 +20,13 @@ app.config(function($routeProvider) {
         .when("/popularAndNewBook", {
             templateUrl: "./templates/popularAndNewBook.html",
             controller: "PopularAndNewBookController"
-        });
+        })
+       
 });
 
 app.controller("MainController", ["$scope", "HttpService", "BookReviewDataService", function($scope, HttpService, BookReviewDataService)
 {
 
-    $scope.getBooks = function() {
-
-
-        HttpService.getBooks()
-
-            .then(function(books) {
-
-                BookReviewDataService.bookReviewArray = books;
-            });
-    }();
+    
 }]);
 

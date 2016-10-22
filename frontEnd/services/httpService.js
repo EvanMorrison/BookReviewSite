@@ -1,55 +1,78 @@
 /* BookReviewSite httpService */
 var app = angular.module("BookReviewApp");
 
-app.service("HttpService", ["$http", function($http) {
+app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $httpParamSerializer) {
 
-    this.getBooks = function() {
+    var self = this;
+    this.getAllBooks = function () {
+        return $http.get('/books')
+            .then(function (response) {
+                return response.data;
+            }, function (error) {
+                console.log('Service get bookList error ', error);
+            })
+    }
 
-        return $http.get("/api/books")
+    this.getUserBooks = function () {
 
-            .then(function(response) {
+        return $http.get("/api/userReviews")
+
+        .then(function (response) {
                 console.log(response);
                 return response.data;
             },
-            function(response) {
+            function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
+
             });
     };
 
-    this.saveNewBookReview = function(newBookReview) {
+    this.saveNewBookReview = function (newBookReview) {
 
         return $http.put("api/books", newBookReview)
 
-            .then(function(response) {
+        .then(function (response) {
                 return response.data;
             },
-            function(response) {
+            function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
+
             });
     };
 
-    this.getUserReviews = function() {
+    this.getUserReviews = function () {
 
-        return $http.get("/api/userBooks")
+        return $http.get("/api/userReviews")
 
-            .then(function (response) {
+        .then(function (response) {
                 console.log(response);
                 return response.data;
             },
-             function (response) {
+            function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
-             });
+
+            });
     };
 
-    this.saveUpdatedUserReview = function(updatedUserReview) {
+    this.saveUpdatedUserReview = function (updatedUserReview) {
 
-        return $http.put("api/userBooks", updatedUserReview)
+            return $http.put("api/userReviews", updatedUserReview)
 
-            .then(function (response) {
+        .then(function (response) {
                 return response.data;
             },
             function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
             });
     }
+
+    this.getUserReviews = function () {
+        return $http.get('/api/userReviews')
+            .then(function (response) {
+                return response.data;
+            }, function (error) {
+                console.log('Error in UserService getting user reviews ', error)
+            })
+    }
+
 }]);
