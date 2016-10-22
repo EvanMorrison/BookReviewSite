@@ -65,10 +65,11 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
         }
 // ROUTES FOR CONNECTING TO GOODREADS API
 
-    this.getGoodReads = function(searchTerms){
-        return $http.get('/services/config.goodReads.ignore.js')
+    this.searchGoodReads = function(searchTerms){
+        $http.get('/services/config.goodReads.ignore.js')
         .then(function(goodReadsAPIKey){
-            return $http.get('https://www.goodreads.com/search/index.xml', $httpParamSerializer(searchTerms), goodReadsAPIKey.data)
+            // console.log(goodReadsAPIKey.data)
+            return $http.get('https://www.goodreads.com/search/index.xml?key=' + goodReadsAPIKey.data.key + '&q=' + $httpParamSerializer(searchTerms))
             .then(function(response){
                 console.log('service goodreads search ', response.data);
                 return response.data

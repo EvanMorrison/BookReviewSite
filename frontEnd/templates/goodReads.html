@@ -23,26 +23,35 @@
                 <label class="controll-label">isbn</label>
                 <input type="text" class="form-control" placeholder="isbn" ng-model="search.isbn" />
             </div>
-            <input type="submit" value="search" class="btn btn-default" ng-click="searchGoogle()">
-         <button class="btn btn-default" ng-click="clearSearch()">reset search</button>
+            <input type="submit" value="search" class="btn btn-default" ng-click="searchGoodReads()">
+            <button class="btn btn-default" ng-click="clearSearch()">reset search</button>
         </form>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <ul>
-            <li>An Irish Country Love Story</li>
-            <li>Cross Talk</li>
-            <li>Hag-Seed</li>
-            <li>Head Lopper</li>
-            <li>News of the World</li>
-            <li>small great things</li>
-            <li>The Mothers</li>
-            <li>Maria Semple</li>
-            <li>Two by Two</li>
-            <li>
-                The Wangs vs. the World
-            </li>
+        <ul class="list-unstyled h4" style="position:absolute;right:0;top:-350px">
+            <li>1. An Irish Country Love Story,</li>
+            <li>2. Cross Talk,</li>
+            <li>3. Hag-Seed,</li>
+            <li>4. Head Lopper,</li>
+            <li>5. News of the World,</li>
+            <li>6. small great things,</li>
+            <li>7. The Mothers,</li>
+            <li>8. Maria Semple,</li>
+            <li>9. Two by Two,</li>
+            <li>10. The Wangs vs. the World,</li>
+            <li>11. blood mirror</li>
+            <li>12. gemima</li>
+            <li>13. go set a watchman</li>
+            <li>14. holding up the universe</li>
+            <li>15. magnus chase</li>
+            <li>16. midnight star</li>
+            <li>17. punk 57</li>
+            <li>18. replica</li>
+            <li>19. royally screwed</li>
+            <li>20. trespasser</li>
+
         </ul>
     </div>
 </div>
@@ -60,18 +69,17 @@
                     </li>
                     <li>
                         by:
-                        <p >{{book.author}}</p>
+                        <p>{{book.author}}</p>
                     </li>
                     <li>
-                        Published: {{book.publishedDate}} <br/>
-                        by: {{book.publisher}}
+                        Published: {{book.publishedDate}} <br/> by: {{book.publisher}}
                     </li>
                     <li>
                         ISBN: {{book.ISBN}}
                     </li>
                     <li>
                         <button class="btn btn-default" ng-click="saveBook(book)">save to DB</button>
-                       
+
                     </li>
                 </ul>
             </div>

@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var path = require('path');
 var expressJwt = require('express-jwt');
 
@@ -21,6 +22,7 @@ mongoose.connect('mongodb://' + config.db_user + ":" + config.db_pass +"@" + dat
 
 // MIDDLEWARE
 app.use(logger('dev'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
