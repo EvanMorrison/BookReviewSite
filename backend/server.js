@@ -38,7 +38,8 @@ app.use('/api/userReviews', require('./routes/userReviewRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/books', require('./routes/bookRoutes'));
 
-
+// ROUTES FOR GOODREADS API
+app.use('/goodreads', require('./routes/goodReadsRoutes'));
 
 app.listen(port, function() {
     console.log('Server is listening on port ', port);

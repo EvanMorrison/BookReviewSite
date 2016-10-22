@@ -5,19 +5,11 @@
         <form name="bookSearchForm" class="col-xs-8 col-xs-offset-2">
             <div class="form-group">
                 <label class="controll-label">title</label>
-                <input type="text" class="form-control" autofocus placeholder="title" ng-model="search.intitle" />
+                <input type="text" class="form-control" autofocus placeholder="title" ng-model="search.title" />
             </div>
             <div class="form-group">
                 <label class="controll-label">author</label>
-                <input type="text" class="form-control" placeholder="author" ng-model="search.inauthor" />
-            </div>
-            <div class="form-group">
-                <label class="controll-label">publisher</label>
-                <input type="text" class="form-control" placeholder="publisher" ng-model="search.inpublisher" />
-            </div>
-            <div class="form-group">
-                <label class="controll-label">subject</label>
-                <input type="text" class="form-control" placeholder="subject" ng-model="search.subject" />
+                <input type="text" class="form-control" placeholder="author" ng-model="search.author" />
             </div>
             <div class="form-group">
                 <label class="controll-label">isbn</label>
@@ -30,7 +22,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <ul class="list-unstyled h4" style="position:absolute;right:0;top:-350px">
+        <ul class="list-unstyled h4" style="position:absolute;right:0;top:-250px">
             <li>1. An Irish Country Love Story,</li>
             <li>2. Cross Talk,</li>
             <li>3. Hag-Seed,</li>
@@ -60,7 +52,7 @@
         <hr/>
         <div class="media" ng-repeat="book in resultsList">
             <div class="media-left">
-                <img src="{{book.thumbnail}}" width="100px" alt="" class="media-object">
+                <img ng-src="{{book.thumbnail}}" width="100px" alt="" class="media-object">
             </div>
             <div class="media-body">
                 <ul class="list-unstyled">

@@ -63,20 +63,31 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
                 });
 
         }
-// ROUTES FOR CONNECTING TO GOODREADS API
+        // ROUTES FOR CONNECTING TO GOODREADS API
 
-    this.searchGoodReads = function(searchTerms){
-        $http.get('/services/config.goodReads.ignore.js')
-        .then(function(goodReadsAPIKey){
-            // console.log(goodReadsAPIKey.data)
-            return $http.get('https://www.goodreads.com/search/index.xml?key=' + goodReadsAPIKey.data.key + '&q=' + $httpParamSerializer(searchTerms))
-            .then(function(response){
-                console.log('service goodreads search ', response.data);
-                return response.data
-            }, function(error){
+    this.searchGoodReads = function (searchTerms) {
+        return $http.get('/goodreads', )
+            
+            
+            // {
+            //     method: 'GET`',
+            //     url: '/goodreads',
+            //     data: searchTerms,
+            //     transformResponse: function (data) {
+            //         if (data) {
+            //             var x2js = new X2JS();
+            //             var data = x2js.xml2json(data)
+            //         }
+            //             return data
+            //     }
+            // })
+            .success(function (response) {
+                console.log('service goodreads search ', response)
+                return response
+            })
+            .error(function (error) {
                 console.log('Error in service goodReads search ', error)
             })
-        })
     }
 
 }]);
