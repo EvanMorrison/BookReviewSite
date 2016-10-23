@@ -1,10 +1,9 @@
 /* BookReviewSite httpService */
 var app = angular.module("BookReviewApp");
 
-app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $httpParamSerializer) {
+app.service("HttpService", ["$http", function ($http) {
 
-    var self = this;
-    this.getAllBooks = function () {
+    this.getBooks = function () {
 
         return $http.get("/books")
 
@@ -57,15 +56,5 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
             function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
             });
-    }
-
-    this.getUserReviews = function () {
-        return $http.get('/api/userReviews')
-            .then(function (response) {
-                return response.data;
-            }, function (error) {
-                console.log('Error in UserService getting user reviews ', error)
-            })
     };
-
 }]);

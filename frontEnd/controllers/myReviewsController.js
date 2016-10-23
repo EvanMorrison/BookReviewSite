@@ -41,8 +41,9 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
                 HttpService.getUserReviews()
 
                     .then(function (userReviews) {
-                        $scope.bookReviewArray = userReviews
+
                         BookReviewDataService.userBookReviewsArray = userReviews;
+                        $scope.userBookReviewsArray = userReviews;
                         console.log(BookReviewDataService.userBookReviewsArray);
                     });
             }();
