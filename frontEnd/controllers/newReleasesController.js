@@ -7,7 +7,7 @@ app.controller("NewReleasesController", ["$scope", "BookReviewDataService", "Htt
     $scope.bookReviewsArray = BookReviewDataService.bookReviewsArray;
 
     $scope.passIndex = function(index) {
-
+        
         BookReviewDataService.index = index;
         console.log(BookReviewDataService.index);
     };
