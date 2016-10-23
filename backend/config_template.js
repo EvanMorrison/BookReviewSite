@@ -10,8 +10,4 @@ module.exports = {
     db_pass: '',
     db_secret: 'secret',
     googleBks_apiKey: 'googlebooks api key'
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> dev

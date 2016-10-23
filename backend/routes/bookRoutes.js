@@ -13,21 +13,32 @@ bookRouter.route('/')
         })
     })
 
-.post(function (req, res) {
-    var book = req.body;
-    Book.find({title: book.title, author: book.author}, (function(err, existingBook){
-        if(err) res.status(500).send(err);
-         else if (existingBook.length) { 
-            res.send(existingBook[0])
-        } else {
-            book = new Book(req.body);
-            book.save(book, function(err, newBook){
-                if(err) res.status(500).send(err);
-                res.send(newBook)
-            })
-        }
-    }))
-});
+// .post(function (req, res) {
+//     var book = req.body;
+//     Book.find({title: book.title, author: book.author}, (function(err, existingBook){
+//         if(err) res.status(500).send(err);
+//          else if (existingBook.length) { 
+//             res.send(existingBook[0])
+//         } else {
+//             book = new Book(req.body);
+//             book.save(book, function(err, newBook){
+//                 if(err) res.status(500).send(err);
+//                 res.send(newBook)
+//             })
+//         }
+//     }))
+// })
+.put(function(req,res){
+    var book = {
+        title: req.body.title,
+        author: req.body.author,
+        publishedDate: req.body.publishedDate
+    };
+    Book.findOneAndUpdate({title: book.title, author: book.author}, book, {new:true, upsert: true}, function(err, updatedBook){
+        if(err)res.status(500).send(err);
+        res.send(updatedBook)
+    })
+})
 
 bookRouter.route('/isbn/:isbn')
     .get(function (req, res) {
