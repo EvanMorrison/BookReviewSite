@@ -25,12 +25,5 @@ app.config(function($routeProvider) {
             templateUrl: '/templates/goodReads.html',
             controller: 'GoodReadsController'
         })
-
 });
-
-app.controller("MainController", ["$scope", "HttpService", "BookReviewDataService", function($scope, HttpService, BookReviewDataService)
-{
-
-    
-}]);
 
