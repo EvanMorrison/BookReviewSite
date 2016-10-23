@@ -5,20 +5,12 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
 
     var self = this;
     this.getAllBooks = function () {
-        return $http.get('/books')
-            .then(function (response) {
-                return response.data;
-            }, function (error) {
-                console.log('Service get bookList error ', error);
-            })
-    }
 
-    this.getUserBooks = function () {
+        return $http.get("/books")
 
-        return $http.get("/api/userReviews")
+            .then(function(response) {
+                console.log(response.data);
 
-        .then(function (response) {
-                console.log(response);
                 return response.data;
             },
             function (response) {
@@ -29,7 +21,7 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
 
     this.saveNewBookReview = function (newBookReview) {
 
-        return $http.put("api/books", newBookReview)
+        return $http.put("/books", newBookReview)
 
         .then(function (response) {
                 return response.data;
@@ -44,8 +36,9 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
 
         return $http.get("/api/userReviews")
 
-        .then(function (response) {
-                console.log(response);
+            .then(function (response) {
+                console.log(response.data);
+
                 return response.data;
             },
             function (response) {
@@ -56,7 +49,7 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
 
     this.saveUpdatedUserReview = function (updatedUserReview) {
 
-            return $http.put("api/userReviews", updatedUserReview)
+        return $http.put("api/userReviews", updatedUserReview)
 
         .then(function (response) {
                 return response.data;
@@ -73,6 +66,6 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
             }, function (error) {
                 console.log('Error in UserService getting user reviews ', error)
             })
-    }
+    };
 
 }]);

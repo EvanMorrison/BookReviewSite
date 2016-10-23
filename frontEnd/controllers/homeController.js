@@ -4,23 +4,23 @@ var app = angular.module("BookReviewApp");
 
 app.controller("HomeController", ["$scope", "BookReviewDataService", "HttpService", function ($scope, BookReviewDataService, HttpService) {
 
-   
-    $scope.getBooks = function () {
-
-
-        HttpService.getAllBooks()
-
-        .then(function (books) {
-
-     BookReviewDataService.bookReviewArray = books;
-     $scope.bookReviewArray = BookReviewDataService.bookReviewArray;
-
-        });
-    }();
+    BookReviewDataService.bookReviewArray = books;
+    $scope.bookReviewArray = BookReviewDataService.bookReviewArray;
 
     $scope.passIndex = function (index) {
 
         BookReviewDataService.index = index;
         console.log(BookReviewDataService.index);
     };
+
+    $scope.getBooks = function() {
+
+    HttpService.getBooks()
+
+        .then(function(books) {
+
+            BookReviewDataService.bookReviewsArray = books;
+            console.log( BookReviewDataService.bookReviewsArray);
+            });
+    }();
 }]);

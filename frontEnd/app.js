@@ -26,7 +26,7 @@ app.config(function($routeProvider) {
 
 app.controller("MainController", ["$scope", "HttpService", "BookReviewDataService", function($scope, HttpService, BookReviewDataService)
 {
+    $scope.bookReviewsArray = BookReviewDataService.bookReviewsArray;
 
-    
 }]);
 
