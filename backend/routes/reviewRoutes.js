@@ -1,14 +1,16 @@
 var express = require('express');
-
-var goodReadsRouter = express.Router();
+var reviewsByBookRouter = express.Router();
 var Reviews = require('../models/review')
 
-goodReadsRouter.route('/')
+reviewsByBookRouter.route('/')
 .get(function(req, res) {
-    Reviews.find({}, function(err, reviews){
+    Reviews.find({_id: req.body._id})
+    .populate('book')
+    .populate('user')
+    .exec(function(err, reviews){
         if(err) res.status(500).send(err);
         res.send(reviews);
     })
 })
 
-module.exports = goodReadsRouter;
+module.exports = reviewsByBookRouter;

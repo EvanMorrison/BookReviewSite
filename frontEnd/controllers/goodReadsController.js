@@ -8,12 +8,11 @@ angular.module("BookReviewApp")
         var searchStr = ''
         // contatenat the user input into a query string
         searchStr += ($scope.search.title) ? $scope.search.title : '';
-        searchStr += ($scope.search.author) ? '&' + $scope.search.title : '';
+        searchStr += ($scope.search.author) ? '&' + $scope.search.author : '';
         searchStr += ($scope.search.isbn) ? '&' + $scope.search.isbn : '';
         // call the applicable Service, send it the query string
         APIService.searchGoodReads(searchStr)
         .then(function(response){
-            searchStr = '';
             console.log("Controller response ", response);
             if(Array.isArray(response)) $scope.resultsList = response;
         })

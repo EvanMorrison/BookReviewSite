@@ -19,8 +19,7 @@ var endpoint = "/search/index.xml?key=" + key + "&q=";
 
 goodReadsRouter.route('/books')
     .get(function (req, res) {
-        // endpoint += querystring.stringify(req.query);
-        endpoint += "ender's game"
+        endpoint += req.query.q;
         request(host + endpoint, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     parseString(body, function (err, result) {

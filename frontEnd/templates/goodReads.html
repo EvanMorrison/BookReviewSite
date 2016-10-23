@@ -5,7 +5,7 @@
         <form name="bookSearchForm" class="col-xs-4 col-xs-offset-1">
             <div class="form-group">
                 <label class="controll-label">title</label>
-                <input type="text" class="form-control" value="Ender's Game" autofocus placeholder="title" ng-model="search.title" />
+                <input type="text" class="form-control" autofocus placeholder="title" ng-model="search.title" />
             </div>
             <div class="form-group">
                 <label class="controll-label">author</label>
@@ -31,7 +31,7 @@
             <li>5. News of the World</li>
             <li>6. small great things</li>
             <li>7. The Mothers</li>
-            <li>8. Maria Semple</li>
+            <li>8. Today Will Be Different</li>
             <li>9. Two by Two</li>
             <li>10. The Wangs vs. the World</li>
             <li>New Releases</li>
@@ -56,6 +56,7 @@
             <div class="media-left">
                 <img ng-src="{{book.thumbnail}}" width="100px" alt="" class="media-object">
             </div>
+           
             <div class="media-body">
                 <ul class="list-unstyled">
                     <li class="media-heading">
@@ -70,6 +71,15 @@
                     </li>
                     <li>
                         ISBN: {{book.ISBN}}
+                    </li>
+                    <li>
+                        Average Rating: {{book.averageRating}}
+                    </li>
+                    <li>
+                        Rating Count: {{book.ratingsCount}}
+                    </li>
+                    <li>
+                        Reviews Count: {{book.reviewsCount}}
                     </li>
                     <li>
                         <button class="btn btn-default" ng-click="saveBook(book)">save to DB</button>
