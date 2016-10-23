@@ -39,7 +39,10 @@ app.use('/auth', require('./routes/authRoutes'));
 app.use('/books', require('./routes/bookRoutes'));
 
 // ROUTES FOR GOODREADS API
-var url = "https://www.goodreads.com/search/index.xml?key=";
+var querystring = require('querystring')
+// var url = "https://www.goodreads.com/search/index.xml?key=";
+    var host = "www.goodreads.com"
+    var endpoint = "search/index.xml"
 var key = "4PLWf3daVHpz78W7OJoAw"
 app.get('/goodreads', (function(req, res){
         console.log('Goodreads Route',req.query);
@@ -47,7 +50,7 @@ app.get('/goodreads', (function(req, res){
         res.send({
             message: 'you reached the goodReads Route',
             success: true,
-            data: response
+            query: req.query
         })
     // })
     

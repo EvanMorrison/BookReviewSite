@@ -1,7 +1,9 @@
 /* BookReviewSite httpService */
 var app = angular.module("BookReviewApp");
 
-  // ROUTES FOR CONNECTING TO GOODREADS API
+ app.service("HttpService", ["$http", function ($http) {
+
+ // ROUTES FOR CONNECTING TO GOODREADS API
     var self = this;
     
     this.searchGoodReads = function (searchTerms) {
@@ -9,7 +11,7 @@ var app = angular.module("BookReviewApp");
             params: {
                 q: searchTerms.title
             }
-            })
+        })
             
             
             // {
@@ -26,14 +28,13 @@ var app = angular.module("BookReviewApp");
             // })
             .success(function (response) {
                 console.log('service goodreads search ', response)
-                return response
+                return response;
             })
             .error(function (error) {
                 console.log('Error in service goodReads search ', error)
             })
     }
 
-app.service("HttpService", ["$http", function ($http) {
 
     this.getBooks = function () {
 
