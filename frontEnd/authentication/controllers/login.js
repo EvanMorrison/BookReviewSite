@@ -24,7 +24,6 @@ angular.module('myApp.Auth')
                                 $scope.loginError = false;
                                 $scope.user.password = '';
                                 if (response.data.cause === 'username') {
-                                    $scope.user.email = '';
                                     var el = $document.find('input');
                                     el[0].focus();
                                 }
