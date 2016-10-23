@@ -59,7 +59,7 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
     }
 
     this.saveBook = function (book) {
-        return $http.put('/books', book)
+        return $http.post('/books', book)
             .then(function (response) {
                 console.log('service response ', response)
             }, function (error) {
