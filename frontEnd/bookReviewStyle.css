@@ -37,6 +37,7 @@ main {
 label {
     font: 500 12px Verdana, Arial, sans-serif;
     color: #666;
+    display: block;
 }
 
 textarea {
@@ -168,6 +169,14 @@ ul.auth-links a {
     color: #7A7A7A;
     text-decoration: none;
     cursor: pointer;
+}
+
+#NewUserRating {
+    display: inline-block;
+}
+
+#NewUserReview {
+    width: 300%;
 }
 
 /* Classes */

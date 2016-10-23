@@ -32,27 +32,27 @@
                     <li class="BookListItemStyle">
                         <button class="btn" type="button" id="ReviewBookButton" ng-show="!showAddAndCancelButtonsAndTextarea" ng-click="showButtonsAndTextarea()">Review Book</button>
                         <!--light gray line -->
-                        <div ng-show="showTextareaCursorAndRatingInput">
+                        <div ng-show="showAddAndCancelButtonsAndTextarea">
                             <button class="btn" type="button" id="AddReviewButton" ng-click="addReview()">Add</button>
                             <button class="btn" type="button" id="CancelAddReviewButton" ng-click="cancelAddReview()">Cancel</button>
                             <label for="NewUserRating">Rating: </label>
                             <input id="NewUserRating" type="number" min="0" max="5" ng-model="newUserRating">
                             <div class="input-group">
-                                <label for="NewUserReview">Rating: </label><br>
+                                <label for="NewUserReview">Review</label><br>
                                 <textarea class="form-control" id="NewUserReview" rows="5" autofocus ng-model="newUserReview"> </textarea>
                             </div>
                         </div>
                     </li>
 
-                    <li class="BookListItemStyle">
+                   <!-- <li class="BookListItemStyle">
                         <h4 id="HeaderUserReviewsTitle">User Reviews</h4>
-                        <!--light gray line -->
-                        <ul ng-repeat="review in bookReviewsArray[index].reviews">
-                            <li>{{review.userName}}</li>
-                            <li>Rating: {{review.userRating}}</li>
-                            <li><p>{{review.userReview}}</p></li>
+                        light gray line -->
+                    <!--<ul ng-repeat="review in bookReviewsArray[index].reviews">
+                        <li>{{review.userName}}</li>
+                        <li>Rating: {{review.userRating}}</li>
+                        <li><p>{{review.userReview}}</p></li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
 
