@@ -3,39 +3,6 @@ var app = angular.module("BookReviewApp");
 
  app.service("HttpService", ["$http", function ($http) {
 
- // ROUTES FOR CONNECTING TO GOODREADS API
-    var self = this;
-    
-    this.searchGoodReads = function (searchTerms) {
-        return $http.get('/goodreads', {
-            params: {
-                q: searchTerms.title
-            }
-        })
-            
-            
-            // {
-            //     method: 'GET`',
-            //     url: '/goodreads',
-            //     data: searchTerms,
-            //     transformResponse: function (data) {
-            //         if (data) {
-            //             var x2js = new X2JS();
-            //             var data = x2js.xml2json(data)
-            //         }
-            //             return data
-            //     }
-            // })
-            .success(function (response) {
-                console.log('service goodreads search ', response)
-                return response;
-            })
-            .error(function (error) {
-                console.log('Error in service goodReads search ', error)
-            })
-    }
-
-
     this.getBooks = function () {
 
         return $http.get("/books")
