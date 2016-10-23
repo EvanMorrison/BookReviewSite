@@ -20,7 +20,7 @@ angular.module("BookReviewApp")
 
 $scope.saveBook = function(book) {
     console.log('saving book ', book)
-    APIService.saveBook(book)
+    APIService.saveBookRatingInfo(book)
     .then(function(response){
         console.log('controller response ', response)
     })

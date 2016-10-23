@@ -20,7 +20,10 @@ var BookSchema = new Schema({
     listPrice: {
         amount: Number,
         currencyCode: String
-    }
+    },
+    averageRating: Number,
+    ratingsCount: Number,
+    reviewsCount: Number
 })
 
 BookSchema.virtual('reviews', {

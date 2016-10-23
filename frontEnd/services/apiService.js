@@ -39,7 +39,15 @@ app.service("APIService", ["$http", "$httpParamSerializer", function ($http, $ht
         }, function (error) {
             console.log('Error in service goodReads search ', error)
         })
+    }
 
+    this.saveBookRatingInfo = function(book) {
+        return $http.put('goodreads/books', book)
+        .then(function(response){
+            console.log('Save book ratings service response ', response)
+        }, function(error){
+            console.log('Error saving book rating ', error)
+        })
     }
 
 }]);
