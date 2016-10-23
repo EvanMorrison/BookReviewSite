@@ -2,9 +2,9 @@
 
 app = angular.module("BookReviewApp");
 
-app.controller("MyReviewsController", ["$scope", "HttpService", "BookReviewDataService", function($scope, HttpService, UserService, BookReviewDataService) {
+app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "BookReviewDataService", function($scope, HttpService, UserService, BookReviewDataService) {
 
-    /*$scope.bookReviewArray = BookReviewDataService.bookReviewArray;*/
+    $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
     $scope.upDatedUserReview = "";
     $scope.updatedRatingNumber = 0;
     $scope.showEditButtonAndRating = false;
@@ -43,8 +43,9 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "BookReviewDataS
                     .then(function (userReviews) {
 
                         BookReviewDataService.userBookReviewsArray = userReviews;
+                        console.log(BookReviewDataService.userBookReviewsArray);
                     });
-            };
+            }();
         }
     }();
 }]);

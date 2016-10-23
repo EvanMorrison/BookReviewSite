@@ -12,23 +12,23 @@
 
             <div class="row">
 
-                <div class="col-xs-12 col-md-6" id="BookImageAndDataItemsMinHeight" ng-repeat="book in bookReviewArray track by $index">
+                <div class="col-xs-12 col-md-6" id="BookImageAndDataItemsMinHeight" ng-repeat="review in userBookReviewsArray track by $index">
 
                     <div class="row">
 
-                        <div class="col-xs-3"><a href="/popularAndNewBook">
-                            <img style="height: 160px;" id="MyReviewsImageStyle" ng-src={{book.image}}></a>
+                        <div class="col-xs-3"><a href="#/popularAndNewBook">
+                            <img style="height: 160px;" id="MyReviewsImageStyle" ng-src={{review.book.thumbnail}}></a>
                         </div>
 
                         <div class="col-xs-9">
                             <ul class="BookListStyle">
-                                <li class="BookListItemStyle"><h3 id="HeaderBookTitle">{{book.title}}</h3></li>
-                                <li class="BookListItemStyle AuthorStyle">by {{book.author}}</li>
+                                <li class="BookListItemStyle"><h3 id="HeaderBookTitle">{{review.book.title}}</h3></li>
+                                <li class="BookListItemStyle AuthorStyle">by {{review.book. author}}</li>
                                 <li class="BookListItemStyle RatingStyle">
-                                    <span ng-show="!showTextareaCursorAndRatingInput">{{book.rating}} Stars</span>
+                                    <span ng-show="!showTextareaCursorAndRatingInput">{{review.rating}} Stars</span>
                                     <span ng-show="showTextareaCursorAndRatingInput"><input type="number" min="0" max="5" ng-model="revisedRatingNumber"></span>
                                 </li>
-                                <li class="BookListItemStyle ReviewStyle"><p>Review: {{book.review}}</p></li>
+                                <li class="BookListItemStyle ReviewStyle"><p>Review: {{review.body}}</p></li>
                              </ul>
                         </div>
                         <!--light gray line -->

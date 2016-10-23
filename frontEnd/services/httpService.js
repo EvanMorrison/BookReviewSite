@@ -5,10 +5,10 @@ app.service("HttpService", ["$http", function($http) {
 
     this.getBooks = function() {
 
-        return $http.get("/api/books")
+        return $http.get("/books")
 
             .then(function(response) {
-                console.log(response);
+                console.log(response.data);
                 return response.data;
             },
             function(response) {
@@ -18,7 +18,7 @@ app.service("HttpService", ["$http", function($http) {
 
     this.saveNewBookReview = function(newBookReview) {
 
-        return $http.put("api/books", newBookReview)
+        return $http.put("/books", newBookReview)
 
             .then(function(response) {
                 return response.data;
@@ -30,10 +30,10 @@ app.service("HttpService", ["$http", function($http) {
 
     this.getUserReviews = function() {
 
-        return $http.get("/api/userBooks")
+        return $http.get("/api/userReviews")
 
             .then(function (response) {
-                console.log(response);
+                console.log(response.data);
                 return response.data;
             },
              function (response) {
@@ -43,7 +43,7 @@ app.service("HttpService", ["$http", function($http) {
 
     this.saveUpdatedUserReview = function(updatedUserReview) {
 
-        return $http.put("api/userBooks", updatedUserReview)
+        return $http.put("api/userReviews", updatedUserReview)
 
             .then(function (response) {
                 return response.data;
