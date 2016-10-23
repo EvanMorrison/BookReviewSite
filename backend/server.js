@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, '..', '/frontend')));
 // any route with '/api'' will use express-jwt authentication
 app.use('/api', expressJwt({secret: config.db_secret}));
 app.use('/api/userReviews', require('./routes/userReviewRoutes'));
+
 // ROUTES WITHOUT AUTHENTICATION
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/books', require('./routes/bookRoutes'));
