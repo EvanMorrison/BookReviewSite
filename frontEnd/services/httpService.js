@@ -1,9 +1,8 @@
 /* BookReviewSite httpService */
 var app = angular.module("BookReviewApp");
 
-app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $httpParamSerializer) {
-
-    var self = this;
+app.service("HttpService", ["$http", function ($http) {
+var self = this;
 
     // GOOGLEBOOKS API SERVICES
     this.searchGoogle = function (searchTerms) {
@@ -68,23 +67,13 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
     }
 
     // END GOOGLEBOOKS API SERVICES
+    this.getBooks = function () {
 
+        return $http.get("/books")
 
-    this.getAllBooks = function () {
-        return $http.get('/books')
-            .then(function (response) {
-                return response.data;
-            }, function (error) {
-                console.log('Service get bookList error ', error);
-            })
-    }
+            .then(function(response) {
+                console.log(response.data);
 
-    this.getUserBooks = function () {
-
-        return $http.get("/api/userReviews")
-
-        .then(function (response) {
-                console.log(response);
                 return response.data;
             },
             function (response) {
@@ -95,7 +84,7 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
 
     this.saveNewBookReview = function (newBookReview) {
 
-        return $http.put("api/books", newBookReview)
+        return $http.put("/books", newBookReview)
 
         .then(function (response) {
                 return response.data;
@@ -110,8 +99,9 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
 
         return $http.get("/api/userReviews")
 
-        .then(function (response) {
-                console.log(response);
+            .then(function (response) {
+                console.log(response.data);
+
                 return response.data;
             },
             function (response) {
@@ -130,15 +120,5 @@ app.service("HttpService", ["$http", "$httpParamSerializer", function ($http, $h
             function (response) {
                 alert("Error" + response.status + ":" + response.statusText);
             });
-    }
-
-    this.getUserReviews = function () {
-        return $http.get('/api/userReviews')
-            .then(function (response) {
-                return response.data;
-            }, function (error) {
-                console.log('Error in UserService getting user reviews ', error)
-            })
-    }
-
+    };
 }]);
