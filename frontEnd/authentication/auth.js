@@ -2,6 +2,7 @@
 
 var app = angular.module('myApp.Auth', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
+// only the Logout has a route with a view because signup and login are handled in pop-up modals
 app.config(["$routeProvider", function($routeProvider) {
     $routeProvider
     .when('/logout', {
@@ -10,8 +11,10 @@ app.config(["$routeProvider", function($routeProvider) {
     })
 }])
 
+// Controller for the login/signup navbar
 app.controller('AuthController', ["$scope", "$uibModal", "UserService", function($scope, $uibModal, UserService){
     $scope.userService = UserService;
+    // launches Signup Modal from navbar link
     $scope.showSignup = function() {
         $uibModal.open({
             templateUrl: '/authentication/templates/signup.html',
@@ -19,14 +22,27 @@ app.controller('AuthController', ["$scope", "$uibModal", "UserService", function
         });
     }
 
+    // launches Login Modal from navbar link
     $scope.showLogin = function() {
         $uibModal.open({
             templateUrl: '/authentication/templates/login.html',
             controller: 'LoginController'
         })
     }
+
+// Retrieve the logged-in user's' information after a page reload using the Authentication Token
+    $scope.getUserFromToken = function(){
+        if (UserService.isAuthenticated()){
+        UserService.getUserFromToken()
+        .then(function(response){
+            UserService.user = response
+        });
+        }
+    }();
+
 }]);
 
+// Set, Get and Remove Token for user authentication
 app.service('TokenService', function() {
     var userToken = 'token';
     this.setToken = function(token) {
@@ -42,6 +58,7 @@ app.service('TokenService', function() {
     }
 });
 
+// Service to handle user signup, login, and logout
 app.service('UserService', ["$http", "$location", "TokenService", function($http, $location, TokenService){
     var self = this;
     self.user = {};
@@ -75,8 +92,27 @@ app.service('UserService', ["$http", "$location", "TokenService", function($http
     this.isAuthenticated = function() {
         return !!TokenService.getToken();
     }
+
+    this.getUserFromToken = function() {
+        if(this.user.email) {
+            return this.user
+        } else if (this.isAuthenticated()){
+          return  $http.post('/auth/verifyuser', {token: TokenService.getToken()})
+            .then(function(response){
+                console.log('Service getUserFromToken ', response.data)
+                return response.data
+            }, function(error){
+                console.log('Error verifying loggedin user: ', error)
+                $location.path('/');
+            })
+        } else {
+            return 'user not logged in';
+        }
+    }
+
 }]);
 
+// interceptor to add the user authentication token to all CRUD methods
 app.factory("AuthInterceptor", ["$q", "$location", "TokenService", function($q, $location, TokenService) {
     return {
         request: function(config) {
@@ -98,6 +134,7 @@ app.factory("AuthInterceptor", ["$q", "$location", "TokenService", function($q, 
     }
 }]);
 
+// add the AuthInterceptor to the httpProvider settings. 
 app.config(function($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
 });

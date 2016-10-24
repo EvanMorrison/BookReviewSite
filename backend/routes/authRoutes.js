@@ -26,15 +26,26 @@ authRouter.post('/signup', function (req, res) {
                 });
                 else {
                     console.log('user saved, but nothing returned ', userObj);
-                } 
+                }
             });
         }
     }));
 })
 
-authRouter.get('/getusers', function(req, res) {
-    User.find({}, function(err, users) {
-        if(err) res.status(500).send(err);
+authRouter.post('/verifyuser', function (req, res) {
+    jwt.verify((req.body.token), config.db_secret, function (err, decoded) {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            delete decoded.password;
+            res.send(decoded);
+        }
+    })
+})
+
+authRouter.get('/getusers', function (req, res) {
+    User.find({}, function (err, users) {
+        if (err) res.status(500).send(err);
         res.send(users);
     })
 })

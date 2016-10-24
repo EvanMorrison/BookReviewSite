@@ -47,7 +47,7 @@
                                     <li ng-hide="userService.isAuthenticated()"><a href ng-click="showLogin()">login</a></li>
                                     <li ng-hide="userService.isAuthenticated()"><a href ng-click="showSignup()">signup</a></li>
                                     <li ng-show="userService.isAuthenticated()">
-                                        <a href="#/logout" ng-if="showMenu">logout {{userService.user.name}}</a>
+                                        <a href="#/logout" ng-if="showMenu">logout {{user.name}}</a>
                                         <nav ng-if="!showMenu" uib-dropdown on-toggle="toggled(open)" class="pull-right">
                                             <a href uib-dropdown-toggle><span class="glyphicon glyphicon-menu-hamburger"></span> {{userService.user.name}} </a>
                                             <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu>

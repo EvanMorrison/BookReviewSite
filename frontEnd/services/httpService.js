@@ -57,4 +57,16 @@ app.service("HttpService", ["$http", function ($http) {
                 alert("Error" + response.status + ":" + response.statusText);
             });
     };
+
+
+    // Get all reviews for a specific books
+    this.getReviewsByBook = function(bookId){
+        return $http.get('/reviews/' + bookId)
+        .then(function(response){
+            console.log('Service getReviewsByBook ', response.data)
+            return response.data;
+        }, function(error){
+            console.log('Error in service getReviewsByBook ', error);
+        })
+    }
 }]);
