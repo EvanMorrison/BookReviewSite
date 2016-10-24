@@ -26,15 +26,30 @@ authRouter.post('/signup', function (req, res) {
                 });
                 else {
                     console.log('user saved, but nothing returned ', userObj);
-                } 
+                }
             });
         }
     }));
 })
 
-authRouter.get('/getusers', function(req, res) {
-    User.find({}, function(err, users) {
-        if(err) res.status(500).send(err);
+
+// Verify and return the user object for the logged-in user when passed the token saved in localstorage
+// Used after a page reload to restore the user information to the app services.
+authRouter.post('/verifyuser', function (req, res) {
+    jwt.verify((req.body.token), config.db_secret, function (err, decoded) {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            delete decoded.password;
+            res.send(decoded);
+        }
+    })
+})
+
+// Get an array of all users (not currently in use)
+authRouter.get('/getusers', function (req, res) {
+    User.find({}, function (err, users) {
+        if (err) res.status(500).send(err);
         res.send(users);
     })
 })
@@ -49,6 +64,7 @@ authRouter.post('/login', function (req, res) {
         if (!user) res.status(401).send({
             success: false,
             cause: 'username',
+            message: 'Sorry, there\'s no account with that email.'
         });
 
         // If user is found, check password and create token

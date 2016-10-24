@@ -16,23 +16,43 @@
 
                     <div class="row">
 
-                        <div class="col-xs-3"><a href="#/popularAndNewBook">
-
-                            <img style="height: 160px;" id="MyReviewsImageStyle" ng-src={{review.book.thumbnail}}></a>
+                        <div class="col-xs-3">
+                        <img style="height: 160px;" id="MyReviewsImageStyle" ng-src={{review.book.thumbnail}}>
                         </div>
 
                         <div class="col-xs-9">
+
                             <ul class="BookListStyle">
                                 <li class="BookListItemStyle"><h3 id="HeaderBookTitle">{{review.book.title}}</h3></li>
                                 <li class="BookListItemStyle AuthorStyle">by {{review.book. author}}</li>
-                                <li class="BookListItemStyle RatingStyle">
-                                    <span ng-show="!showTextareaCursorAndRatingInput">{{review.rating}} Stars</span>
-                                    <span ng-show="showTextareaCursorAndRatingInput"><input type="number" min="0" max="5" ng-model="revisedRatingNumber"></span>
-                                </li>
-                                <li class="BookListItemStyle ReviewStyle"><p>Review: {{review.body}}</p></li>
+                                <li class="BookListItemStyle RatingStyle"><span class="Bold">Rating: </span><span class="Red" uib-rating ng-model="review.rating" max="max" read-only="isReadonly"></span></li>
+                                <li class="BookListItemStyle PagesAndPublisherStyle"><span class="Bold">Hardcover: </span>{{review.book.pageCount}}</li>
+                                <li class="BookListItemStyle PagesAndPublisherStyle"><span class="Bold">Published Date: </span>{{review.book.publishedDate}}</li>
+                                <li class="BookListItemStyle PagesAndPublisherStyle"><span class="Bold">Publisher: </span>{{review.book.publisher}}<div class="BottomGrayDivider"></div></li>
                              </ul>
+
                         </div>
-                        <!--light gray line -->
+
+                        <div class="col-xs-12">
+
+                            <h4 id="HeaderReviewsTitle">Reviews</h4>
+                            <button class="btn" type="button" id="EditReviewButton" ng-click="editReview($index)">Edit Review</button>
+                            <div class="ReviewsBottomGrayDivider"></div>
+                            <div class="BookSummaryOrReview" ng-hide="showTextareaCursorAndRatingInput && reviewBeingEdited===$index "><p>{{review.body}}</p></div>
+                            <div ng-show="showTextareaCursorAndRatingInput && reviewBeingEdited===$index">
+                                <button class="btn" type="button" id="SaveUpdatedReviewButton" ng-click="saveUpdatedReview($index)">Save</button>
+                                <button class="btn" type="button" id="CancelEditReviewButton" ng-click="cancelEditReview($index)">Cancel</button>
+                                <div class="SaveCancelBottomGrayDivider"></div>
+                                <span class="Bold">Rating: </span><span class="Red" uib-rating ng-model="review.rating" max="max" read-only="false"></span>
+                                <div class="input-group">
+                                    <label for="UpdateUserReview">Review: </label>
+                                    <textarea class="form-control" id="UpdateUserReview" rows="10" ng-trim="false" ng-model="review.body"></textarea>
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>

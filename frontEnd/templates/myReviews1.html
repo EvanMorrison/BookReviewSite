@@ -1,0 +1,53 @@
+<!--  BookReviewSite myReviews.html 
+
+<main>
+
+   <div class="row">
+
+       <div class="col-md-2"></div>
+
+       <div class="col-md-8">
+
+           <h2 id="HeaderMyReviews">My Reviews</h2>
+
+           <div id="MyBookReviews" ng-repeat="book in bookReviewArray">
+
+               <ul class="list-group BookListStyle">
+                   <li class="list-group-item BookListItemStyle">
+                       <div class="col-md-3"><a href="/popularAndNewBook"><img style="height: 160px;" class="ImageStyle" ng-src={{book.image}}></a></div>
+                       <div class="col-md-5">
+                           <ul class="list-group BookListStyle">
+                               <li class="list-group-item BookListItemStyle"><h3 id="BookTitle">{{book.title}}</h3></li>
+                               <li class="list-group-item BookListItemStyle AuthorStyle">by {{book.author}}</li>
+                               <li class="list-group-item BookListItemStyle RatingStyle">
+                                   <span ng-show="!showTextareaCursorAndRatingInput">{{book.rating}} Stars</span>
+                                   <span ng-show="showTextareaCursorAndRatingInput"><input type="number" min="0" max="5" ng-model="revisedRatingNumber"></span>
+                               </li>
+                            </ul>
+                       </div>
+                       light gray line
+                   </li>
+                   <li class="list-group-item BookListItemStyle">
+                       <h4 id="HeaderEditReviewTitle">Edit Review</h4>
+                       light gray line
+                       <button class="btn" type="button" id="EditReviewButton" ng-show="!showTextareaCursorAndRatingInput" ng-click="editReview()">Edit Review</button>
+                       <div class="BottomGrayDivider" ng-show="showTextareaCursorAndRatingInput">
+                           <button class="btn" type="button" id="SaveUpdatedReviewButton" ng-click="saveUpdatedReview()">Save</button>
+                           <button class="btn" type="button" id="CancelEditReviewButton" ng-click="cancelEditReview()">Cancel</button>
+                       </div>
+                       light   line
+                       <div class="input-group">
+                           <textarea class="form-control" ng-trim="false" ng-model="user.book.review"></textarea>
+                       </div>
+                   </li>
+               </ul>
+
+           </div>
+
+       </div>
+
+       <div class="col-md-2"></div>
+
+   </div>
+
+</main> -->

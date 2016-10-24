@@ -8,7 +8,6 @@ app.service("HttpService", ["$http", function ($http) {
         return $http.get("/books")
 
             .then(function(response) {
-                console.log(response.data);
 
                 return response.data;
             },
@@ -18,9 +17,11 @@ app.service("HttpService", ["$http", function ($http) {
             });
     };
 
+
+// Save a new book review (requires authrentication)
     this.saveNewBookReview = function (newBookReview) {
 
-        return $http.put("/books", newBookReview)
+        return $http.post("/api/userReviews", newBookReview)
 
         .then(function (response) {
                 return response.data;
@@ -57,4 +58,19 @@ app.service("HttpService", ["$http", function ($http) {
                 alert("Error" + response.status + ":" + response.statusText);
             });
     };
+
+
+    // Get all reviews for a specific books (no authentication required)
+    this.getReviewsByBook = function(bookId){
+        
+        return $http.get('/reviews/' + bookId)
+
+        .then(function(response){
+            return response.data;
+
+        }, function(error){
+            console.log('Error in service getReviewsByBook ', error);
+        })
+    }
+
 }]);

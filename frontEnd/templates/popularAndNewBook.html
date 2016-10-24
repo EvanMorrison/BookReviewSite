@@ -17,7 +17,7 @@
                 <ul class="BookListStyle">
                     <li class="BookListItemStyle"><h2 id="HeaderBookTitle">{{bookReviewsArray[index].title}}</h2></li>
                     <li class="BookListItemStyle AuthorStyle">by {{bookReviewsArray[index].author}}</li>
-                    <li class="BookListItemStyle RatingStyle">{{bookReviewsArray[index].rating}} Stars</li>
+                    <li class="BookListItemStyle RatingStyle">Average Rating: <span uib-rating ng-model="bookReviewsArray[index].averageRating" max="max" read-only="isReadonly"></span><p>({{bookReviewsArray[index].ratingsCount}} ratings/<a href="">{{bookReviewsArray[index].reviewsCount}} reviews)</a></p></li>
                     <li class="BookListItemStyle BottomGrayDivider" id="BookSummary"><p>{{bookReviewsArray[index].description}}</p></li>
                      <li class="BookListItemStyle PagesAndPublisherStyle">Hardcover: {{bookReviewsArray[index].pageCount}}</li>
                      <li class="BookListItemStyle BottomGrayDivider">Publisher: {{bookReviewsArray[index].publisher}}</li>
@@ -30,29 +30,30 @@
              <div>
                 <ul class="BookListStyle">
                     <li class="BookListItemStyle">
-                        <button class="btn" type="button" id="ReviewBookButton" ng-show="!showAddAndCancelButtonsAndTextarea" ng-click="showButtonsAndTextarea()">Review Book</button>
+                        <button class="btn" type="button" id="ReviewBookButton" ng-show="!showAddAndCancelButtonsAndTextarea && userService.isAuthenticated() && !hasReviewed" ng-click="showButtonsAndTextarea()">Review Book</button>
                         <!--light gray line -->
-                        <div ng-show="showTextareaCursorAndRatingInput">
+                        <div ng-show="showAddAndCancelButtonsAndTextarea">
                             <button class="btn" type="button" id="AddReviewButton" ng-click="addReview()">Add</button>
                             <button class="btn" type="button" id="CancelAddReviewButton" ng-click="cancelAddReview()">Cancel</button>
                             <label for="NewUserRating">Rating: </label>
-                            <input id="NewUserRating" type="number" min="0" max="5" ng-model="newUserRating">
+                            <span uib-rating ng-model="newUserReview.rating" max="max" read-only="false"></span>
                             <div class="input-group">
-                                <label for="NewUserReview">Rating: </label><br>
-                                <textarea class="form-control" id="NewUserReview" rows="5" autofocus ng-model="newUserReview"> </textarea>
+                                <label for="NewUserReview">Review</label><br>
+                                <textarea class="form-control" id="NewUserReview" rows="5" autofocus ng-model="newUserReview.body"> </textarea>
                             </div>
                         </div>
                     </li>
 
-                    <li class="BookListItemStyle">
-                        <h4 id="HeaderUserReviewsTitle">User Reviews</h4>
-                        <!--light gray line -->
-                        <ul ng-repeat="review in bookReviewsArray[index].reviews">
-                            <li>{{review.userName}}</li>
-                            <li>Rating: {{review.userRating}}</li>
-                            <li><p>{{review.userReview}}</p></li>
-                        </ul>
-                    </li>
+                 <li class="BookListItemStyle" ng-if="reviewsList.length">
+                      <h4 id="HeaderUserReviewsTitle">User Reviews</h4>
+                      <!--light gray line-->
+                  <ul class="list-unstyled" ng-repeat="review in reviewsList">
+                      <li>By: {{review.user.name}}</li>
+                      <li>Rating: <span uib-rating ng-model="review.newUserRating" max="max" read-only="isReadonly"></span></li>
+                      <li>{{review.createdAt | date: "MMM-dd-yyyy"}}</li>
+                      <li><p>{{review.body}}</p></li>
+                      </ul>
+                  </li>
                 </ul>
             </div>
 

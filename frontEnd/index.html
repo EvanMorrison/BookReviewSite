@@ -24,7 +24,7 @@
             <div class="col-xs-3 col-md-3">
                 <h1 id="HeaderHome">BookLovers</h1>
             </div>
-            
+            <div class="col-xs-9">
             <!-- The hamburger menu button for small screens-->
                 <div class="navbar-default">
                     <button type="button" class="navbar-toggle collapsed" ng-click="showMenu=!showMenu" aria-expanded="false">
@@ -36,18 +36,18 @@
                 </div>
 
             <!-- the nav and login links show in toolbar on md to large screens and collapse to button menu on small screens-->
-                <nav  class="collapse navbar-collapse pull-right" uib-collapse="!showMenu">
+                <nav  class="collapse navbar-collapse pull-right" uib-collapse="!showMenu" ng-controller="AuthController">
                         <ul class="nav nav-pills auth-links">
                             <li role="presentation"><a id="HomeLink" href="#/">Home</a></li>
-                            <li role="presentation"><a id="MyReviewsLink" href="#/myReviews">My Reviews</a></li>
+                            <li role="presentation" ng-show="userService.isAuthenticated()"><a id="MyReviewsLink" href="#/myReviews">My Reviews</a></li>
                             <li role="presentation"><a id="NewReleasesLink" href="#/newReleases">New Releases</a></li>
                                 <li role="presentation"><a id="bookSearchLink" href="#/search"><span class="glyphicon glyphicon-search"></span></a></li>
                             <li>
-                                <ul class="nav nav-pills auth-links" ng-controller="AuthController">
+                                <ul class="nav nav-pills auth-links">
                                     <li ng-hide="userService.isAuthenticated()"><a href ng-click="showLogin()">login</a></li>
                                     <li ng-hide="userService.isAuthenticated()"><a href ng-click="showSignup()">signup</a></li>
                                     <li ng-show="userService.isAuthenticated()">
-                                        <a href="#/logout" ng-if="showMenu">logout {{userService.user.name}}</a>
+                                        <a href="#/logout" ng-if="showMenu">logout {{user.name}}</a>
                                         <nav ng-if="!showMenu" uib-dropdown on-toggle="toggled(open)" class="pull-right">
                                             <a href uib-dropdown-toggle><span class="glyphicon glyphicon-menu-hamburger"></span> {{userService.user.name}} </a>
                                             <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu>
@@ -59,6 +59,7 @@
                             </li>
                         </ul>
                 </nav>
+                </div>
         </header>
     </div>
     <!-- Header Row -->
