@@ -34,5 +34,13 @@ userReviewRouter.route('/')
     })
 })
 
+.put(function(req, res){
+    editedReview = req.body;
+    Review.findOneAndUpdate({_id: req.body._id}, req.body, {new:true}, function(err, updatedReview){
+        if (err) res.status(500).send(err);
+        res.send(updatedReview);
+    })
+})
+
 
 module.exports = userReviewRouter;

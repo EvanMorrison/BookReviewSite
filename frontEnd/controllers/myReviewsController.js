@@ -9,36 +9,34 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
     $scope.max = 5;
     $scope.isReadonly = true;
 
-    
-    $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
-    $scope.index = BookReviewDataService.index;
-    console.log($scope.index);
-    //$scope.upDateUserReview = "";
+    $scope.userBookReviewsArray = [];
     $scope.updateUserRating = 0;
     $scope.showEditButtonAndRating = false;
     $scope.showTextareaCursorAndRatingInput = false;
     $scope.reviewBeingEdited = 0;
 
-
     $scope.editReview = function(index) {
+ console.log("index ", index);
 
         $scope.showTextareaCursorAndRatingInput = true;
         $scope.reviewBeingEdited = index;
     };
 
-    $scope.saveUpdatedReview = function() {
-
+    $scope.saveUpdatedReview = function(index) {
         $scope.showTextareaCursorAndRatingInput = false;
-        $scope.userBookReviewsArray[$scope.index].rating = $scope.updateUserRating;
-        HttpService.saveUpdatedUserReview(userBookReviewsArray[$scope.index]);
-        console.log($scope.userBookReviewsArray[$scope.index].body);
-        console.log($scope.updateUserRating);
+
+        HttpService.saveUpdatedUserReview($scope.userBookReviewsArray[index])
+        .then(function(response){
+            BookReviewDataService.userBookReviewsArray[index] = response;
+        });
 
     };
 
-    $scope.cancelEditReview = function() {
+    $scope.cancelEditReview = function(index) {
 
         $scope.showTextareaCursorAndRatingInput = false;
+        $scope.userBookReviewsArray[index].body = BookReviewDataService.userBookReviewsArray[index].body;
+        $scope.userBookReviewsArray[index].rating = BookReviewDataService.userBookReviewsArray[index].rating;
     };
 
     $scope.getUserReviews = function() {
@@ -54,8 +52,8 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
                     .then(function (userReviews) {
 
                         BookReviewDataService.userBookReviewsArray = userReviews;
-                        $scope.userBookReviewsArray = userReviews;
-                        console.log(BookReviewDataService.userBookReviewsArray);
+                        $scope.userBookReviewsArray = JSON.parse(JSON.stringify(BookReviewDataService.userBookReviewsArray))
+                        console.log('BookReviewArray ', BookReviewDataService.userBookReviewsArray);
                     });
             }();
         }
