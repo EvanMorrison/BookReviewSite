@@ -72,4 +72,5 @@ app.service("HttpService", ["$http", function ($http) {
             console.log('Error in service getReviewsByBook ', error);
         })
     }
+
 }]);
