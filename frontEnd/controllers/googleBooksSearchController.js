@@ -1,40 +1,44 @@
 angular.module("BookReviewApp")
-.controller("GoogleBooksSearchController", ["$scope", "HttpService", function($scope, HttpService) {
+    .controller("GoogleBooksSearchController", ["$scope", "HttpService", "$timeout", function ($scope, HttpService, $timeout) {
 
-    $scope.search = {};
-    $scope.resultsList = [];
-    $scope.searchParams = '';
+        $scope.search = {};
+        $scope.resultsList = [];
+        $scope.searchParams = '';
 
-    $scope.searchGoogle = function() {
-        for(var key in $scope.search) {
-            if($scope.search[key].length) {
-                $scope.searchParams += '+' + key + ':' + $scope.search[key]
+        $scope.searchGoogle = function () {
+            for (var key in $scope.search) {
+                if ($scope.search[key].length) {
+                    $scope.searchParams += '+' + key + ':' + $scope.search[key]
+                }
             }
+            console.log('scope.searchParams ', $scope.searchParams)
+            HttpService.searchGoogle($scope.searchParams)
+                .then(function (response) {
+                    $scope.searchParams = '';
+                    console.log("Controller response ", response);
+                    if (Array.isArray(response)) $scope.resultsList = response;
+                    else $scope.error = response.data.message;
+                })
         }
-        console.log('scope.searchParams ', $scope.searchParams)
-        HttpService.searchGoogle($scope.searchParams)
-        .then(function(response){
+
+        $scope.saveBook = function (book) {
+            HttpService.saveBook(book)
+                .then(function (response) {
+                    if (response.status === 200) {
+                        console.log('controller response ', response.data)
+                        $scope.success = true;
+                        $timeout(function () {
+                            $scope.success = false;
+                        }, 2500)
+                    }
+                })
+        }
+
+
+        $scope.clearSearch = function () {
+            $scope.search = {};
             $scope.searchParams = '';
-            console.log("Controller response ", response);
-            if(Array.isArray(response)) $scope.resultsList = response;
-            
-        })
-    }
+            $scope.resultsList = [];
+        }
 
-$scope.saveBook = function(book) {
-    console.log('saving book ', book)
-    HttpService.saveBook(book)
-    .then(function(response){
-        console.log('controller response ', response)
-    })
-}
-
-
-$scope.clearSearch = function(){
-    $scope.search = {};
-    $scope.searchParams = '';
-    $scope.resultsList = [];
-}
-
-}])
- 
+    }])

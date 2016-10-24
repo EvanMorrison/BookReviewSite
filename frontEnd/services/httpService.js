@@ -61,8 +61,10 @@ var self = this;
         return $http.post('/books', book)
             .then(function (response) {
                 console.log('service response ', response)
+                return response
             }, function (error) {
                 console.log('service savebook error ', error)
+                return error
             })
     }
 

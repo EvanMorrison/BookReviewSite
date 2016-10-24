@@ -2,6 +2,7 @@
     <div class="container">
 
         <h3>Search for books</h3>
+        <h3 ng-if="error.message">Search failed. Server returned an error: {{error.message}}</h3>
         <form name="bookSearchForm" class="col-xs-4 col-xs-offset-1">
             <div class="form-group">
                 <label class="controll-label">title</label>
@@ -29,35 +30,6 @@
         <div class="col-xs-7"></div>
     </div>
 </div>
-<div class="row">
-    <div class="" style="position:absolute;top:100px;right:20px">
-        <ul class="list-unstyled">
-            <li class="h4">Popular Titles (10/20/2016):</li>
-            <li>1. An Irish Country Love Story</li>
-            <li>2. Cross Talk</li>
-            <li>3. Hag-Seed</li>
-            <li>4. Head Lopper</li>
-            <li>5. News of the World</li>
-            <li>6. small great things</li>
-            <li>7. The Mothers</li>
-            <li>8. Today Will Be Different</li>
-            <li>9. Two by Two</li>
-            <li>10. The Wangs vs. the World</li>
-        </ul>
-        <ul class="list-unstyled">
-            <li class="h4">New Releases</li>
-            <li>1. blood mirror</li>
-            <li>2. Gemina</li>
-            <li>3. go set a watchman</li>
-            <li>4. holding up the universe</li>
-            <li>5. magnus chase</li>
-            <li>6. midnight star</li>
-            <li>7. punk 57</li>
-            <li>8. replica</li>
-            <li>9. royally screwed</li>
-            <li>10. trespasser</li>
-        </ul>
-    </div>
 </div>
 <div class="row">
     <div class="container">
@@ -72,8 +44,7 @@
                         <h4>Title: {{book.title}}</h4>
                     </li>
                     <li>
-                        by:
-                        <p>{{book.author}}</p>
+                        by: {{book.author}}
                     </li>
                     <li>
                         Published: {{book.publishedDate}} <br/> by: {{book.publisher}}
@@ -81,9 +52,11 @@
                     <li>
                         ISBN: {{book.ISBN}}
                     </li>
+                    <li ng-if="success" class="text-success">
+                        <strong>Book was successfully added to MongoDB</strong>
+                    </li>
                     <li>
                         <button class="btn btn-default" ng-click="saveBook(book)">save to DB</button>
-
                     </li>
                 </ul>
             </div>
