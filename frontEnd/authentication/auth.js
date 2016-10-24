@@ -99,7 +99,6 @@ app.service('UserService', ["$http", "$location", "TokenService", function($http
         } else if (this.isAuthenticated()){
           return  $http.post('/auth/verifyuser', {token: TokenService.getToken()})
             .then(function(response){
-                console.log('Service getUserFromToken ', response.data)
                 return response.data
             }, function(error){
                 console.log('Error verifying loggedin user: ', error)

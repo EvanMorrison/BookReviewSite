@@ -4,6 +4,12 @@ var app = angular.module("BookReviewApp");
 
 app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "BookReviewDataService", function($scope, HttpService, UserService, BookReviewDataService) {
 
+
+    // Display average rating as stars.
+    $scope.max = 5;
+    $scope.isReadonly = true;
+
+    
     $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
     $scope.index = BookReviewDataService.index;
     console.log($scope.index);

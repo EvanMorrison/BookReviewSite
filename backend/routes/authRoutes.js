@@ -32,6 +32,9 @@ authRouter.post('/signup', function (req, res) {
     }));
 })
 
+
+// Verify and return the user object for the logged-in user when passed the token saved in localstorage
+// Used after a page reload to restore the user information to the app services.
 authRouter.post('/verifyuser', function (req, res) {
     jwt.verify((req.body.token), config.db_secret, function (err, decoded) {
         if (err) {
@@ -43,6 +46,7 @@ authRouter.post('/verifyuser', function (req, res) {
     })
 })
 
+// Get an array of all users (not currently in use)
 authRouter.get('/getusers', function (req, res) {
     User.find({}, function (err, users) {
         if (err) res.status(500).send(err);

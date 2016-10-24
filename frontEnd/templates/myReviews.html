@@ -44,7 +44,7 @@
                                 <button class="btn" type="button" id="CancelEditReviewButton" ng-click="cancelEditReview()">Cancel</button>
                                 <div class="SaveCancelBottomGrayDivider"></div>
                                 <label for="UpdateUserRating">Rating: </label>
-                                <input id="UpdateUserRating" type="number" min="0" max="5" ng-model="updateUserRating">
+                                <span class="Bold">Rating: </span><span class="Red" uib-rating ng-model="review.rating" max="max" read-only="false"></span>
                                 <div class="input-group">
                                     <label for="UpdateUserReview">Review: </label>
                                     <textarea class="form-control" id="UpdateUserReview" rows="10" ng-trim="false" ng-model="review.body"></textarea>

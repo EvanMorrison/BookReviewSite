@@ -17,6 +17,7 @@ app.controller("PopularAndNewBookController", ["$scope", "BookReviewDataService"
     $scope.newUserRating = 0;
     $scope.showAddAndCancelButtonsAndTextarea = false;
     $scope.showTextareaCursorAndRatingInput = false;
+    $scope.userService = UserService;
 
     $scope.showButtonsAndTextarea = function () {
 
@@ -26,21 +27,24 @@ app.controller("PopularAndNewBookController", ["$scope", "BookReviewDataService"
     };
 
     $scope.addReview = function () {
-
-
-
+        $scope.newUserReview.book = $scope.book._id;
+        HttpService.saveNewBookReview($scope.newUserReview)
+        .then(function(response){
+            console.log(response.data)
+        });
 
 
         //add review to db
-        $scope.showAddAndCancelButtonsAndTextArea = false;
-        console.log($scope.newUserReview);
-        console.log($scope.newUserRating);
+        $scope.showAddAndCancelButtonsAndTextarea = false;
+        console.log($scope.newUserReview.body);
+        console.log($scope.newUserReview.rating);
     };
 
 
     $scope.cancelAddReview = function () {
 
-        $scope.showAddAndCancelButtonsAndTextArea = false;
+        $scope.showAddAndCancelButtonsAndTextarea = false;
+        console.log('cancel button clicked')
     }
 
 
