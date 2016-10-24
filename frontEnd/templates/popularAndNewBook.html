@@ -49,7 +49,7 @@
                       <!--light gray line-->
                   <ul class="list-unstyled" ng-repeat="review in reviewsList">
                       <li>By: {{review.user.name}}</li>
-                      <li>Rating: <span uib-rating ng-model="review.newUserRating" max="max" read-only="isReadonly"></span></li>
+                      <li>Rating: <span uib-rating ng-model="review.rating" max="max" read-only="isReadonly"></span></li>
                       <li>{{review.createdAt | date: "MMM-dd-yyyy"}}</li>
                       <li><p>{{review.body}}</p></li>
                       </ul>

@@ -31,6 +31,9 @@ app.controller("PopularAndNewBookController", ["$scope", "BookReviewDataService"
         HttpService.saveNewBookReview($scope.newUserReview)
         .then(function(response){
             console.log(response.data)
+            $scope.bookReviewsArray.push(response.data);
+            $digest();
+            
         });
 
 
