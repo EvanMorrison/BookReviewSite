@@ -10,6 +10,7 @@ angular.module("BookReviewApp")
         searchStr += ($scope.search.title) ? $scope.search.title : '';
         searchStr += ($scope.search.author) ? '&' + $scope.search.author : '';
         searchStr += ($scope.search.isbn) ? '&' + $scope.search.isbn : '';
+        if (searchStr.charAt(0) == '&') searchStr = searchStr.slice(1);
         // call the applicable Service, send it the query string
         APIService.searchGoodReads(searchStr)
         .then(function(response){
