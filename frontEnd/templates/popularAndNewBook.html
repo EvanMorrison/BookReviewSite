@@ -17,7 +17,7 @@
                 <ul class="BookListStyle">
                     <li class="BookListItemStyle"><h2 id="HeaderBookTitle">{{bookReviewsArray[index].title}}</h2></li>
                     <li class="BookListItemStyle AuthorStyle">by {{bookReviewsArray[index].author}}</li>
-                    <li class="BookListItemStyle RatingStyle">{{bookReviewsArray[index].rating}} Stars</li>
+                    <li class="BookListItemStyle RatingStyle">Average Rating: <span uib-rating ng-model="bookReviewsArray[index].averageRating" max="max" read-only="isReadonly"></span><p>({{bookReviewsArray[index].ratingsCount}} ratings/<a href="">{{bookReviewsArray[index].reviewsCount}} reviews)</a></p></li>
                     <li class="BookListItemStyle BottomGrayDivider" id="BookSummary"><p>{{bookReviewsArray[index].description}}</p></li>
                      <li class="BookListItemStyle PagesAndPublisherStyle">Hardcover: {{bookReviewsArray[index].pageCount}}</li>
                      <li class="BookListItemStyle BottomGrayDivider">Publisher: {{bookReviewsArray[index].publisher}}</li>

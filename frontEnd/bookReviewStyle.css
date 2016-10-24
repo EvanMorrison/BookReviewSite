@@ -27,7 +27,7 @@ li {
 }
 
 main {
-    height: 600px;
+    /*height: 600px;*/
     margin: 60px auto 0;
     padding: 20px;
     border-top: 1px solid #CCC;
@@ -38,15 +38,6 @@ label {
     font: 500 12px Verdana, Arial, sans-serif;
     color: #666;
     display: block;
-}
-
-textarea {
-    height: auto;
-    font: 12px/1.5 Verdana, Arial, sans-serif;
-    color: #A3A3A3;
-    margin: 0;
-    border: 1px solid #B7B7B7;
-    overflow: auto;
 }
 
 /* Ids */
@@ -116,40 +107,50 @@ ul.auth-links a {
 }
 
 #MyReviewsImageStyle {
-    padding: 0 20px 0 0;
+
 }
 
 #BookImageAndDataItemsMinHeight {
     min-height:250px
 }
 
-
-#BookSummary {
-    font: 15px Verdana, Arial, sans-serif;
-    color: #666;
-}
-
 #HeaderEditReviewTitle {
-    font: 500 12px Tahoma, Geneva, serif;
+    font: 500 14px Tahoma, Geneva, serif;
     color: #8E8E8E;
     text-shadow: #6CF 1px 1px 1px;
-    border-bottom: 1px solid #B7B7B7;
 }
 
-#HeaderUserReviewsTitle {
-    font: 500 14px Roboto, sans-serif;
+#HeaderReviewsTitle {
+    font: 500 16px Roboto, sans-serif;
     color: #7A7A7A;
+    margin: 10px 0 7px 0;
     text-shadow: #6CF 1px 1px 1px;
 }
 
-#EditReviewButton, #SaveUpdatedReviewButton, #CancelEditReviewButton, #ReviewBookButton, #AddReviewButton, #CancelAddReviewButton {
-    font-size: 10px;
+#EditReviewButton, #ReviewBookButton, #AddReviewButton, #CancelAddReviewButton {
+    font-size: 12px;
     font-weight: normal;
     line-height: 1.42857143;
     color: #7A7A7A;
     text-align: center;
     margin: 0;
-    padding: 10px 4px;
+    padding: 7px 2px 5px 0;/*px 4px;*/
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background: #FFF;
+    border: none;
+    display: inline-block;
+}
+
+#SaveUpdatedReviewButton, #CancelEditReviewButton {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #7A7A7A;
+    text-align: center;
+    margin: 0;
+    padding: 16px 7px 3px 0;/*px 4px;*/
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
@@ -173,6 +174,32 @@ ul.auth-links a {
 
 #NewUserRating {
     display: inline-block;
+    height: auto;
+    font: 12px/1.5 Verdana, Arial, sans-serif;
+    color: #A3A3A3;
+    margin: 0;
+    border: 1px solid #B7B7B7;;
+    overflow: auto;
+}
+
+#UpdateUserRating {
+    display: inline-block;
+    height: auto;
+    font: 12px/1.5 Verdana, Arial, sans-serif;
+    color: #A3A3A3;
+    margin: 0 0 13px 0;
+    border: 1px solid #B7B7B7;;
+    overflow: auto;
+}
+
+#UpdateUserReview {
+    width: 220%;
+    height: auto;
+    font: 13px/1.5 Verdana, Arial, sans-serif;
+    color: #A3A3A3;
+    margin: 0;
+    border: 1px solid #CCC;
+    overflow: auto;
 }
 
 #NewUserReview {
@@ -183,7 +210,7 @@ ul.auth-links a {
 
 .BookListStyle {
     margin: 0;
-    padding: 0 0 0 0;
+    padding: 0 0 0 10px;
     border: none;
     outline: none;
     background-color: #FFF;
@@ -205,14 +232,15 @@ ul.auth-links a {
 }
 
 .RatingStyle {
-    font: 12px Verdana, Arial, sans-serif;
-    color: #F00;
+    font: 500 12px Verdana, Arial, sans-serif;
+    margin: 5px 0 0 0;
     display: block;
 }
 
 .PagesAndPublisherStyle {
-    font: 8px Verdana, Arial, sans-serif;
+    font: 500 12px Verdana, Arial, sans-serif;
     color: #666;
+    margin: 5px 0 0 0;
     display: block;
 }
 
@@ -222,8 +250,33 @@ ul.auth-links a {
     display: block;
 }
 
+.BookSummaryOrReview {
+    font: 13px Verdana, Arial, sans-serif;
+    color: #666;
+    margin: 10px 0 0 0;
+}
+
 .BottomGrayDivider {
+    margin: 15px 0 0 0;
     border-bottom: 1px solid #B7B7B7
+}
+
+.ReviewsBottomGrayDivider {
+    margin: 5px 0 0 0;
+    border-bottom: 1px solid #B7B7B7
+}
+
+.SaveCancelBottomGrayDivider {
+    margin: 0 0 16px 0;
+    border-bottom: 1px solid #B7B7B7
+}
+
+.Red {
+    color: red;
+}
+
+.Bold {
+    font-weight: bold;
 }
 
 

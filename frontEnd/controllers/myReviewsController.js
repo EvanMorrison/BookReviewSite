@@ -5,24 +5,29 @@ var app = angular.module("BookReviewApp");
 app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "BookReviewDataService", function($scope, HttpService, UserService, BookReviewDataService) {
 
     $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
-    $scope.upDatedUserReview = "";
-    $scope.updatedRatingNumber = 0;
+    $scope.index = BookReviewDataService.index;
+    console.log($scope.index);
+    //$scope.upDateUserReview = "";
+    $scope.updateUserRating = 0;
     $scope.showEditButtonAndRating = false;
     $scope.showTextareaCursorAndRatingInput = false;
+    $scope.reviewBeingEdited = 0;
 
 
-    $scope.editReview = function() {
+    $scope.editReview = function(index) {
 
         $scope.showTextareaCursorAndRatingInput = true;
-        //show cursor
-        //save User revised review
+        $scope.reviewBeingEdited = index;
     };
 
     $scope.saveUpdatedReview = function() {
 
         $scope.showTextareaCursorAndRatingInput = false;
-        //add user.book.review to database
-        //addUpdatedRatingNumber to database
+        $scope.userBookReviewsArray[$scope.index].rating = $scope.updateUserRating;
+        HttpService.saveUpdatedUserReview(userBookReviewsArray[$scope.index]);
+        console.log($scope.userBookReviewsArray[$scope.index].body);
+        console.log($scope.updateUserRating);
+
     };
 
     $scope.cancelEditReview = function() {

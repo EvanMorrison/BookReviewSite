@@ -4,11 +4,15 @@ app = angular.module("BookReviewApp");
 
 app.controller("PopularAndNewBookController", ["$scope", "BookReviewDataService", "HttpService", function($scope, BookReviewDataService, HttpService) {
 
-    //console.log($routeParams);
+    // Display average rating as stars.
+    $scope.max = 5;
+    $scope.isReadonly = true;
+
     $scope.bookReviewsArray = BookReviewDataService.bookReviewsArray;
     $scope.index = BookReviewDataService.index;
+    console.log($scope.index);
     $scope.newUserReview = "";
-    $scope.newuserRating = 0;
+    $scope.newUserRating = 0;
     $scope.showAddAndCancelButtonsAndTextarea = false;
     $scope.showTextareaCursorAndRatingInput = false;
 
@@ -22,8 +26,8 @@ app.controller("PopularAndNewBookController", ["$scope", "BookReviewDataService"
 
         //add review to db
         $scope.showAddAndCancelButtonsAndTextArea = false;
-        console.log("addReview");
         console.log($scope.newUserReview);
+        console.log($scope.newUserRating);
     };
 
     $scope.cancelAddReview = function() {
