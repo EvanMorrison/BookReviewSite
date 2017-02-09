@@ -21,8 +21,11 @@ goodReadsRouter.route('/books')
         var endpoint = "/search/index.xml?key=" + key + "&q=";
         endpoint += req.query.q;
         console.log('endpoint ', endpoint)
+        // server makes the api request separate from the client request
+        // to avoid cors issues 
         request(host + endpoint, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
+                    // parseString will convert xml response to json
                     parseString(body, function (err, result) {
                         res.send(result);
                     });

@@ -53,8 +53,9 @@ input.ng-valid.ng-touched {
 
 .error {
     color: #DA3637;
-    font-size: 1.5em;
-    line-height: 1.7em;
+    font-size: 1em;
+    line-height: 1.25em;
+    text-align: center;
     padding:0;
     margin:0;
 }
