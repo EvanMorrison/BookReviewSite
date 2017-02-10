@@ -7,13 +7,15 @@ var self = this;
     // GOOGLEBOOKS API SERVICES
     this.searchGoogle = function (searchTerms) {
         self.searchResults = [];
-        console.log("searchTerms ", searchTerms);
+            // get the locally stored API key
         return $http.get('services/ignore/config.googleBooksAPI.ignore.js')
             .then(function (googleBooksAPIKey) {
+                // send the get request to GoogleBooks
                 return $http.get('https://www.googleapis.com/books/v1/volumes?q=' + searchTerms + '&key=' + googleBooksAPIKey.data.key)
                     .then(function (response) {
-                        console.log(response)
                         var searchResponse = response.data;
+                        // due to inconsistency of GoogleBooks API return data, check for presence of
+                        // various properties to ensure each is present and in the form needed.
                         if (searchResponse.items) {
                             searchResponse.items.forEach(function (item, index) {
                                 self.searchResults.push({
@@ -60,7 +62,6 @@ var self = this;
     this.saveBook = function (book) {
         return $http.post('/books', book)
             .then(function (response) {
-                console.log('service response ', response)
                 return response
             }, function (error) {
                 console.log('service savebook error ', error)
@@ -69,12 +70,13 @@ var self = this;
     }
 
     // END GOOGLEBOOKS API SERVICES
+
+    // get all books in the collection
     this.getBooks = function () {
 
         return $http.get("/books")
 
             .then(function(response) {
-                console.log(response.data);
 
                 return response.data;
             },
@@ -87,8 +89,31 @@ var self = this;
     this.saveNewBookReview = function (newBookReview) {
 
         return $http.put("/books", newBookReview)
-
         .then(function (response) {
+            return response.data;
+        },
+        function (response) {
+            alert("Error" + response.status + ":" + response.statusText);
+        });
+    };
+
+    // get info for a specific book
+    this.getBookDetail = function (bookID) {
+        return $http.get('/books/bookDetail/' + bookID)
+        .then(function(response){
+            return response.data;
+        }, function(err) {
+            console.log('error getting book detail: ', err.status)
+        })
+    }
+
+    // get all reviews written by a single user
+    this.getUserReviews = function () {
+
+        return $http.get("/api/userReviews")
+
+            .then(function (response) {
+
                 return response.data;
             },
             function (response) {
@@ -97,17 +122,14 @@ var self = this;
             });
     };
 
-    this.getUserReviews = function () {
-
-        return $http.get("/api/userReviews")
-
+    // get all reviews for a single book
+    this.getBookReviews = function(bookID) {
+        return $http.get("/reviews/" + bookID)
             .then(function (response) {
-                console.log(response.data);
-
                 return response.data;
             },
-            function (response) {
-                alert("Error" + response.status + ":" + response.statusText);
+            function (err) {
+                console.log("Error " + err.status + ":" + err.statusText);
 
             });
     };

@@ -54,9 +54,9 @@ textarea {
 }
 
 #HeaderHome {
-    font: 500 32px Tahoma, Geneva, serif;
-    color: #B7B7B7;
-    text-shadow: #F00 1px 1px 1px;
+    font: 900 32px Tahoma, Geneva, serif;
+    color: #E91E63;
+    text-shadow: #F8BBD0 2px 2px 1px;
     margin: 0;
     padding: 5px 0 0 20px;
     display: block;
@@ -87,10 +87,10 @@ textarea {
     box-shadow: none;
 }
 
-#HeaderPopularBooks, #HeaderMyReviews, #HeaderNewReleases  {
-    font: 500 22px Tahoma, Geneva, serif;
-    color: #B7B7B7;
-    text-shadow: #FC0 1px 1px 1px;
+#HeaderPopularBooks, #HeaderMyReviews, #HeaderNewReleases, #NotLoggedInMsg  {
+    font: 300 30px Tahoma, Geneva, serif;
+    color: #66BB6A;
+    text-shadow: #252 1px 1px 2px;
     display: block;
 }
 
@@ -127,7 +127,10 @@ ul.auth-links a {
 
 
 #BookSummary {
-    font: 15px Verdana, Arial, sans-serif;
+    font: 12px Verdana, Arial, sans-serif;
+    line-height: 1.6em;
+    max-width: 700px;
+    text-align: justify;
     color: #666;
 }
 
@@ -205,13 +208,17 @@ ul.auth-links a {
 }
 
 .PagesAndPublisherStyle {
-    font: 8px Verdana, Arial, sans-serif;
+    margin-top: 5px;
+    font: 10px Verdana, Arial, sans-serif;
     color: #666;
     display: block;
 }
 
 .ReviewStyle {
     font: 12px Verdana, Arial, sans-serif;
+    line-height: 1.5em;
+    max-width: 700px;
+    text-align: justify;
     color: #666;
     display: block;
 }
@@ -219,6 +226,7 @@ ul.auth-links a {
 .BottomGrayDivider {
     border-bottom: 1px solid #B7B7B7
 }
+
 
 
 

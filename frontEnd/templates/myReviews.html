@@ -8,15 +8,15 @@
 
         <div class="col-md-10 col-sm-10">
 
-            <h2 id="HeaderMyReviews">My Reviews</h2>
+            <h2 ng-show="isAuthenticated" id="HeaderMyReviews">My Reviews</h2>
+            <h1 ng-hide="isAuthenticated" id="NotLoggedInMsg">Login or Signup to add your own reviews.</h1>
 
             <div class="row">
 
                 <div class="col-xs-12 col-sm-12 col-md-6" id="BookImageAndDataItemsMinHeight" ng-repeat="review in userBookReviewsArray track by $index">
 
                     <div class="row">
-
-                        <div class="col-xs-3"><a href="#/bookDetails">
+                        <div class="col-xs-3"><a ng-href="#/bookDetails/{{review.book._id}}">
 
                             <img id="MyReviewsImageStyle" ng-src={{review.book.thumbnail}}></a>
                         </div>

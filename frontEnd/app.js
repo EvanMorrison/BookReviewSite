@@ -18,7 +18,11 @@ app.config(function($routeProvider) {
             controller: "NewReleasesController"
         })
         .when("/bookDetails", {
-            templateUrl: "./templates/bookDetail.html",
+            templateUrl: "./templates/bookDetails.html",
+            controller: "bookDetailsController"
+        })
+        .when("/bookDetails/:bookID", {
+            templateUrl: "./templates/bookDetails.html",
             controller: "bookDetailsController"
         })
         .when('/search', {

@@ -5,7 +5,6 @@ app.controller('GoodReadsController', ["$scope", "HttpService", function($scope,
     $scope.getKey = function(){
         HttpService.getAPIKey()
         .then(function(response){
-        console.log("controller response ", response);
             $scope.key = response;
         })
     }();
@@ -13,7 +12,6 @@ app.controller('GoodReadsController', ["$scope", "HttpService", function($scope,
     $scope.getUserBooks = function(){
         HttpService.getUserBooks()
         .then(function(response){
-            console.log('controller getUserBooks ', response)
             $scope.resultsList = response;
         })
     }();

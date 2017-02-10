@@ -5,10 +5,12 @@ var app = angular.module("BookReviewApp");
 app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "BookReviewDataService", function($scope, HttpService, UserService, BookReviewDataService) {
 
     $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
+    $scope.bookDetail = {}
     $scope.upDatedUserReview = "";
     $scope.updatedRatingNumber = 0;
     $scope.showEditButtonAndRating = false;
     $scope.showTextareaCursorAndRatingInput = false;
+    $scope.isAuthenticated = UserService.isAuthenticated();
 
 
     $scope.editReview = function() {
@@ -32,21 +34,28 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
 
     $scope.getUserReviews = function() {
 
-        var isAuthenticated = UserService.isAuthenticated();
+        if ($scope.isAuthenticated) {
 
-        if (isAuthenticated) {
+            if (BookReviewDataService.userBookReviewsArray.length === 0) {
+                $scope.getUserReviews = function () {
 
-            $scope.getUserReviews = function () {
+                    HttpService.getUserReviews()
 
-                HttpService.getUserReviews()
+                        .then(function (userReviews) {
 
-                    .then(function (userReviews) {
+                            BookReviewDataService.userBookReviewsArray = userReviews;
+                            $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
+                        });
+                }();
+            } else {
 
-                        BookReviewDataService.userBookReviewsArray = userReviews;
-                        $scope.userBookReviewsArray = userReviews;
-                        console.log(BookReviewDataService.userBookReviewsArray);
-                    });
-            }();
+                $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
+            }
+        } else {
+            // display message to login in or signup to add reviews
+            $scope.isAuthenticated = false;
+
         }
+
     }();
 }]);

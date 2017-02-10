@@ -11,11 +11,9 @@ angular.module("BookReviewApp")
                     $scope.searchParams += '+' + key + ':' + $scope.search[key]
                 }
             }
-            console.log('scope.searchParams ', $scope.searchParams)
             HttpService.searchGoogle($scope.searchParams)
                 .then(function (response) {
                     $scope.searchParams = '';
-                    console.log("Controller response ", response);
                     if (Array.isArray(response)) $scope.resultsList = response;
                     else $scope.error = response.data.message;
                 })
@@ -25,7 +23,6 @@ angular.module("BookReviewApp")
             HttpService.saveBook(book)
                 .then(function (response) {
                     if (response.status === 200) {
-                        console.log('controller response ', response.data)
                         $scope.success = true;
                         $timeout(function () {
                             $scope.success = false;

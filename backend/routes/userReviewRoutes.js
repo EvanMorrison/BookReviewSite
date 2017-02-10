@@ -23,14 +23,14 @@ userReviewRouter.route('/')
             });
     })
 
-// saves a new book review with the user's id to the database   
-.post(function (req, res) {
-    review = new Review(req.body);
-    review.user = req.user;
-    review.save(function (err, newReview) {
-        if (err) res.status(500).send(err);
-        res.status(201).send(newReview);
+    // saves a new book review with the user's id to the database   
+    .post(function (req, res) {
+        review = new Review(req.body);
+        review.user = req.user;
+        review.save(function (err, newReview) {
+            if (err) res.status(500).send(err);
+            res.status(201).send(newReview);
+        })
     })
-})
 
 module.exports = userReviewRouter;
