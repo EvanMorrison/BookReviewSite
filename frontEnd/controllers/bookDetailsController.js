@@ -84,6 +84,7 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
             console.log(response)
             
             $scope.reviews.unshift(response);
+
             
         });
     }
