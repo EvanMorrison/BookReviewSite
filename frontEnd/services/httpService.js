@@ -86,16 +86,21 @@ var self = this;
             });
     };
 
+
+    // Save a new book review (requires authrentication)
     this.saveNewBookReview = function (newBookReview) {
 
-        return $http.put("/books", newBookReview)
+        return $http.post("/api/userReviews", newBookReview)
+
         .then(function (response) {
-            return response.data;
-        },
-        function (response) {
-            alert("Error" + response.status + ":" + response.statusText);
-        });
+                return response.data;
+            },
+            function (response) {
+                alert("Error" + response.status + ":" + response.statusText);
+
+            });
     };
+
 
     // get info for a specific book
     this.getBookDetail = function (bookID) {

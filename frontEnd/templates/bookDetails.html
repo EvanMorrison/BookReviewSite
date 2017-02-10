@@ -35,11 +35,12 @@
                         <div ng-show="showAddAndCancelButtonsAndTextarea">
                             <button class="btn" type="button" id="AddReviewButton" ng-click="addReview()">Add</button>
                             <button class="btn" type="button" id="CancelAddReviewButton" ng-click="cancelAddReview()">Cancel</button>
+                            <br/>
                             <label for="NewUserRating">Rating: </label>
-                            <input id="NewUserRating" type="number" min="0" max="5" ng-model="newUserRating">
+                            <div uib-rating ng-model="newUserReview.rating" max="max" read-only="false"></div>
                             <div class="input-group">
                                 <label for="NewUserReview">Rating: </label><br>
-                                <textarea class="form-control" id="NewUserReview" rows="5" autofocus ng-model="newUserReview"> </textarea>
+                                <textarea class="form-control" id="NewUserReview" rows="5" autofocus ng-model="newUserReview.body"> </textarea>
                             </div>
                         </div>
                     </li>
