@@ -1,4 +1,4 @@
-/* BookReviewSite popularAndNewBookController.js */
+/* BookReviewSite bookDetailsController.js */
 
 app = angular.module("BookReviewApp"); //, ["ngRoute"]
 
@@ -6,13 +6,13 @@ app = angular.module("BookReviewApp"); //, ["ngRoute"]
 
     $routeProvider
 
-        .when("/popularAndNewBook", {
-            templateUrl: "../templates/popularAndNewBook.html",
-            controller: "PopularAndNewBookController"
+        .when("/bookDetails", {
+            templateUrl: "../templates/bookDetails.html",
+            controller: "bookDetailsController"
         });
 });*/
 
-app.controller("PopularAndNewBookController", ["$scope", "BookReviewDataService", "HttpService", function($scope, BookReviewDataService, HttpService) {
+app.controller("bookDetailsController", ["$scope", "BookReviewDataService", "HttpService", function($scope, BookReviewDataService, HttpService) {
 
     //console.log($routeParams);
     $scope.bookReviewArray = BookReviewDataService.bookReviewArray;

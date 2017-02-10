@@ -29,7 +29,7 @@ li {
 main {
     height: 600px;
     margin: 10px auto 0;
-    padding: 20px;
+    padding: 20px 10px 20px 10px;
     border-top: 1px solid #CCC;
     display: block;
 }
@@ -115,7 +115,10 @@ ul.auth-links a {
 }
 
 #MyReviewsImageStyle {
-    padding: 0 20px 0 0;
+    padding: 0 0px 0 0;
+    width: 93px;
+    position: absolute;
+    right: 10px;
 }
 
 #BookImageAndDataItemsMinHeight {
