@@ -20,8 +20,6 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
     $scope.hasReviewed = false;
 
     $scope.hasUserReviewedBook = function () {
-        console.log('checking if user reviewed ', $scope.reviews)
-        console.log('user name ', UserService.user._id)
         if ($scope.isAuthenticated) {
             var found = false;
             var i = 0;
@@ -35,6 +33,7 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
     }
 
     $scope.getBookDetail = function () {
+    // get the full book information
         if ( BookReviewDataService.bookReviewsArray.length ) {
             
             $scope.bookDetail = BookReviewDataService.bookReviewsArray.filter(function(book) {
@@ -49,6 +48,7 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
         }
     }();
 
+    // get all the review for the specific book
     $scope.getBookReviews = function() {
 
         var currentID = BookReviewDataService.bookDetail.ID || '';
@@ -61,12 +61,15 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
 
                             BookReviewDataService.bookDetailsAllReviews = reviews;
                             $scope.reviews = BookReviewDataService.bookDetailsAllReviews;
+                            console.log(reviews)
+
                             $scope.hasUserReviewedBook();
                         });
                 
             } else {
 
                 $scope.reviews = BookReviewDataService.bookDetailsAllReviews;
+                                            console.log(reviews)
                 $scope.hasUserReviewedBook();
             }
     }();
@@ -87,7 +90,8 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
             BookReviewDataService.bookDetailAllReviews.unshift(response);
             $scope.reviews = BookReviewDataService.bookDetailAllReviews;
             response.book = $scope.bookDetail;
-            // BookReviewDataService.userBookReviewsArray.unshift(response);
+            BookReviewDataService.userBookReviewsArray.unshift(response);
+            
             console.log(BookReviewDataService.userBookReviewsArray);
             
         });

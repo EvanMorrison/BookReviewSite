@@ -90,7 +90,7 @@ var self = this;
     // Save a new book review (requires authrentication)
     this.saveNewBookReview = function (newBookReview) {
 
-        return $http.post("/api/userReviews", newBookReview)
+        return $http.post("/api/userReviews/", newBookReview)
 
         .then(function (response) {
                 return response.data;
@@ -102,7 +102,7 @@ var self = this;
     };
 
 
-    // get info for a specific book
+    // get all information for a specific book
     this.getBookDetail = function (bookID) {
         return $http.get('/books/bookDetail/' + bookID)
         .then(function(response){
@@ -141,7 +141,7 @@ var self = this;
 
     this.saveUpdatedUserReview = function (updatedUserReview) {
 
-        return $http.put("api/userReviews", updatedUserReview)
+        return $http.post("/api/userReviews/updateReview", updatedUserReview)
 
         .then(function (response) {
                 return response.data;
@@ -150,4 +150,15 @@ var self = this;
                 alert("Error" + response.status + ":" + response.statusText);
             });
     };
+
+    this.deleteReview = function(reviewId) {
+        console.log('reviewId ', reviewId)
+        return $http.delete("/api/userReviews/deleteReview/" + reviewId)
+        .then(function(response) {
+            console.log('response ', response)
+            return response
+        }, function(error) {
+            console.log('error deleting review, error status: ', error)
+        })
+    }
 }]);

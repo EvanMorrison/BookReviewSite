@@ -6,13 +6,14 @@ var bookRouter = express.Router();
 var Book = require('../models/book');
 
 bookRouter.route('/')
+    // get all books
     .get(function (req, res) {
         Book.find({}, function (err, books) {
             if (err) req.status(500).send(err);
             res.send(books);
         })
     })
-
+    // post a new book, but check to make sure it is not already in the DB
     .post(function (req, res) {
         var book = req.body;
         Book.find({title: book.title, author: book.author}, (function(err, existingBook){
@@ -32,6 +33,7 @@ bookRouter.route('/')
             }
         }))
     })
+    // update a book's information
     .put(function(req,res){
         var book = req.body;
         Book.findOneAndUpdate({title: book.title, author: book.author}, book, {new:true, upsert: true}, function(err, updatedBook){
@@ -40,7 +42,9 @@ bookRouter.route('/')
         })
     })
 
+
 bookRouter.route('/bookDetail/:bookID')
+    // get a book based on its id in the DB
     .get(function (req, res) {
         Book.findOne({ 
             _id: req.params.bookID
@@ -50,6 +54,7 @@ bookRouter.route('/bookDetail/:bookID')
         })
     })
 
+//get a book based on its ISBN
 bookRouter.route('/isbn/:isbn')
     .get(function (req, res) {
         Book.findOne({

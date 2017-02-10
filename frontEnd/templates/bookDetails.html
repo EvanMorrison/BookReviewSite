@@ -49,7 +49,7 @@
                         <h4 id="HeaderUserReviewsTitle">User Reviews</h4>
                         <!--light gray line -->
                         <h5 ng-hide="reviews.length">Be the first to review this book. <span ng-hide="isAuthenticated">Login or Signup</span></h5>
-                        <ul class="list-group" ng-repeat="review in reviews">
+                        <ul class="list-group" id="NewUserReview" ng-repeat="review in reviews">
                             <li class="list-group-item list-group-item-success">
                             <p class="ReviewStyle">By: {{review.user.name}}</p>
                             <p class="ReviewStyle">created: {{review.createdAt | date: 'MM/dd/yyyy'}}</p>

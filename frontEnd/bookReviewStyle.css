@@ -118,7 +118,7 @@ ul.auth-links a {
     padding: 0 0px 0 0;
     width: 93px;
     position: absolute;
-    right: 10px;
+    left: 10px;
 }
 
 #BookImageAndDataItemsMinHeight {
@@ -147,10 +147,11 @@ ul.auth-links a {
     text-shadow: #6CF 1px 1px 1px;
 }
 
-#NewUserReview {
+#NewUserReview, #UpdateUserReview {
     position:relative;
     width:600px;
-    max-width:90vw
+    max-width:90vw;
+    margin-bottom: 30px;
 }
 
 #EditReviewButton, #ReviewBookButton, #AddReviewButton, #CancelAddReviewButton {
