@@ -16,13 +16,21 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
     $scope.newUserReview = "";
     $scope.newuserRating = 0;
     $scope.showAddAndCancelButtonsAndTextarea = false;
-    $scope.showTextareaCursorAndRatingInput = false;
-    
-    $scope.checkIfLoggedIn = function () {
-        var isAuthenticated = UserService.isAuthenticated();
-        if (isAuthenticated) {
-            $scope.showAddAndCancelButtonsAndTextarea = true;
+    $scope.isAuthenticated = UserService.isAuthenticated();
+    $scope.hasReviewed = false;
 
+    $scope.hasUserReviewedBook = function () {
+        console.log('checking if user reviewed ', $scope.reviews)
+        console.log('user name ', UserService.user._id)
+        if ($scope.isAuthenticated) {
+            var found = false;
+            var i = 0;
+            while (i < $scope.reviews.length && found === false) {
+                found = $scope.reviews[i].user._id === UserService.user._id;
+                i ++;
+            }
+            $scope.hasReviewed = found;
+            console.log('has user reviewed? ', $scope.hasReviewed)
         }
     }
 
@@ -53,29 +61,36 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
 
                             BookReviewDataService.bookDetailsAllReviews = reviews;
                             $scope.reviews = BookReviewDataService.bookDetailsAllReviews;
+                            $scope.hasUserReviewedBook();
                         });
                 
             } else {
 
                 $scope.reviews = BookReviewDataService.bookDetailsAllReviews;
+                $scope.hasUserReviewedBook();
             }
     }();
 
 
     $scope.showButtonsAndTextarea = function() {
-
         $scope.showAddAndCancelButtonsAndTextarea = true;
     };
 
-    $scope.addReview = function() {
-
-        //add review to db
-        $scope.showAddAndCancelButtonsAndTextArea = false;
-    };
+    $scope.addReview = function () {
+        showAddAndCancelButtonsAndTextarea = false;
+        $scope.newUserReview.book = $scope.book._id;
+        HttpService.saveNewBookReview($scope.newUserReview)
+        .then(function(response){
+            console.log(response.data)
+            
+            $scope.bookReviewsArray.push(response.data);
+            
+        });
+    }
 
     $scope.cancelAddReview = function() {
-
-        $scope.showAddAndCancelButtonsAndTextArea = false;
+console.log('cancel add review')
+        $scope.showAddAndCancelButtonsAndTextarea = false;
     }
 
     
