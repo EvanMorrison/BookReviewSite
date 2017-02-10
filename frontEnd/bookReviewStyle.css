@@ -147,14 +147,36 @@ ul.auth-links a {
     text-shadow: #6CF 1px 1px 1px;
 }
 
-#EditReviewButton, #SaveUpdatedReviewButton, #CancelEditReviewButton, #ReviewBookButton, #AddReviewButton, #CancelAddReviewButton {
-    font-size: 10px;
+#NewUserReview {
+    position:relative;
+    width:600px;
+    max-width:90vw
+}
+
+#EditReviewButton, #ReviewBookButton, #AddReviewButton, #CancelAddReviewButton {
+    font-size: 12px;
     font-weight: normal;
     line-height: 1.42857143;
     color: #7A7A7A;
     text-align: center;
     margin: 0;
-    padding: 10px 4px;
+    padding: 7px 2px 5px 0;/*px 4px;*/
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background: #FFF;
+    border: none;
+    display: inline-block;
+}
+
+#SaveUpdatedReviewButton, #CancelEditReviewButton {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #7A7A7A;
+    text-align: center;
+    margin: 0;
+    padding: 16px 7px 3px 0;/*px 4px;*/
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
@@ -175,6 +197,10 @@ ul.auth-links a {
     text-decoration: none;
     cursor: pointer;
 }
+
+/**
+/**
+/**
 
 /* Classes */
 
@@ -201,9 +227,10 @@ ul.auth-links a {
     display: block;
 }
 
+
 .RatingStyle {
-    font: 12px Verdana, Arial, sans-serif;
-    color: #F00;
+    font: 500 12px Verdana, Arial, sans-serif;
+    margin: 5px 0 0 0;
     display: block;
 }
 
