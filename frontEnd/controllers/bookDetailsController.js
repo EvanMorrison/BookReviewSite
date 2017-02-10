@@ -6,8 +6,10 @@ app = angular.module("BookReviewApp");
 
 app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDataService", "HttpService", "UserService", function($scope, $routeParams, BookReviewDataService, HttpService, UserService) {
 
-    // $scope.bookReviewsArray = BookReviewDataService.bookReviewsArray;
-    // $scope.userReviewsArray = BookReviewDataService.userReviewsArray;
+    // display ratings as stars
+    $scope.max = 5;
+    $scope.isReadonly = true;
+
     $scope.bookID = $routeParams.bookID;
     $scope.bookDetail = {}
     $scope.reviews = BookReviewDataService.bookDetailAllReviews;
