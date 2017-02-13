@@ -10,6 +10,19 @@ var Review = require('../models/review');
 
 
 userReviewRouter.route('/')
+ // gets all reviews belonging to the currently logged in user
+    // and populates the book field with the full book profile 
+    .get(function (req, res) {
+        Review.find({
+                user: req.user._id
+            })
+            .populate('book')
+            .exec(function (err, userReviews) {
+                if (err) res.status(500).send(err);
+                res.send(userReviews)
+            });
+    })
+
     // saves a new book review with the user's id to the database   
     .post(function (req, res) {
         var newReview = new Review(req.body);
@@ -22,10 +35,6 @@ userReviewRouter.route('/')
 
     // saves an updated review
     .put(function(req, res){
-            console.log('review id ', req.body._id);
-            console.log('review body ', req.body.body);
-            console.log('book ', req.body.book.title);
-            console.log('book id ', req.body.book._id);
             var editedReview = req.body;
             editedReview.user = req.user._id;
     Review.findOneAndUpdate({'_id': req.body._id}, editedReview, {new:true}, function(err, updatedReview) {
