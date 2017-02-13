@@ -70,13 +70,11 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
 
                             BookReviewDataService.userBookReviewsArray = userReviews;
                             $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
-                            console.log('got reviews ', $scope.userBookReviewsArray)
                         });
 
             } else {
 
                 $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
-                console.log('had reviews already ', $scope.userBookReviewsArray)
             }
         } else {
             // display message to login in or signup to add reviews

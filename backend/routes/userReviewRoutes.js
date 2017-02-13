@@ -45,7 +45,6 @@ userReviewRouter.route('/')
 
     // delete a review using its DB id no.
     .delete(function(req, res) {
-        console.log(req.body)
         Review.findOneAndRemove({ _id: req.body._id}, function(err, deletedReview) {
                 if(err) res.status(500).send(err);
                 res.status(200).send(deletedReview)
@@ -64,7 +63,6 @@ userReviewRouter.route('/reviews/:reviewID')
 // delete a specific review
 userReviewRouter.route('/:id')
 .delete(function(req, res){
-    console.log('deleting review id # ', req.params)
     Review.findOneAndRemove({_id: req.params.id}, function(err, deletedReview) {
         if(err) res.status(500).send(err);
         res.status(200).send(deletedReview);

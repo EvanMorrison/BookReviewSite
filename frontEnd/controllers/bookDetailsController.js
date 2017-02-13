@@ -28,7 +28,6 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
                 i ++;
             }
             $scope.hasReviewed = found;
-            console.log('has user reviewed? ', $scope.hasReviewed)
         }
     }
 
@@ -61,7 +60,6 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
 
                             BookReviewDataService.bookDetailsAllReviews = reviews;
                             $scope.reviews = BookReviewDataService.bookDetailsAllReviews;
-                            console.log(reviews)
 
                             $scope.hasUserReviewedBook();
                         });
@@ -69,7 +67,6 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
             } else {
 
                 $scope.reviews = BookReviewDataService.bookDetailsAllReviews;
-                                            console.log(reviews)
                 $scope.hasUserReviewedBook();
             }
     }();
@@ -101,7 +98,6 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
 
 
     $scope.cancelAddReview = function() {
-console.log('cancel add review')
         $scope.showAddAndCancelButtonsAndTextarea = false;
     }
 
