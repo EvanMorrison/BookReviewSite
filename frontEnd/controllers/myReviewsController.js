@@ -4,7 +4,6 @@ var app = angular.module("BookReviewApp");
 
 app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "BookReviewDataService", function($scope, HttpService, UserService, BookReviewDataService) {
 
-    
     // Display average rating as stars.
     $scope.max = 5;
     $scope.isReadonly = true;
@@ -82,7 +81,6 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
         } else {
             // display message to login in or signup to add reviews
             $scope.isAuthenticated = false;
-
         }
 
     }

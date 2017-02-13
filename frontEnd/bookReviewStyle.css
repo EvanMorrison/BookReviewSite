@@ -139,10 +139,9 @@ ul.auth-links a {
 }
 
 #HeaderEditReviewTitle {
-    font: 500 12px Tahoma, Geneva, serif;
+    font: 500 14px Tahoma, Geneva, serif;
     color: #8E8E8E;
     text-shadow: #6CF 1px 1px 1px;
-    border-bottom: 1px solid #B7B7B7;
 }
 
 #HeaderUserReviewsTitle {
@@ -204,15 +203,12 @@ ul.auth-links a {
     cursor: pointer;
 }
 
-/**
-/**
-/**
 
 /* Classes */
 
 .BookListStyle {
     margin: 0;
-    padding: 0 0 0 0;
+    padding: 0 0 0 10px;
     border: none;
     outline: none;
     background-color: #D7CCC8;
@@ -244,6 +240,7 @@ ul.auth-links a {
     margin-top: 5px;
     font: 10px Verdana, Arial, sans-serif;
     color: #666;
+    margin: 5px 0 0 0;
     display: block;
 }
 
@@ -256,6 +253,12 @@ ul.auth-links a {
     display: block;
 }
 
+.BookSummaryOrReview {
+    font: 13px Verdana, Arial, sans-serif;
+    color: #666;
+    margin: 10px 0 0 0;
+}
+
 .BottomGrayDivider {
     border-bottom: 1px solid #4E342E
 }
@@ -263,7 +266,3 @@ ul.auth-links a {
 .review-header {
     background-color: #EFEBE9;
 }
-
-
-
-

@@ -5,6 +5,7 @@ var bookRouter = express.Router();
 
 var Book = require('../models/book');
 
+// get the collection of all books.  
 bookRouter.route('/')
     // get all books
     .get(function (req, res) {
@@ -41,7 +42,6 @@ bookRouter.route('/')
             res.send(updatedBook)
         })
     })
-
 
 bookRouter.route('/bookDetail/:bookID')
     // get a book based on its id in the DB
@@ -82,21 +82,6 @@ bookRouter.route('/isbn/:isbn')
         }, function (err, deletedBook) {
             if (err) res.status(500).send(err)
             res.send(deletedBook)
-        })
-    })
-
-bookRouter.route('/publisher')
-    .post(function (req, res) {
-        var publisher = new Publisher(req.body);
-        publisher.save(function (err, savedPublisher) {
-            if (err) res.status(500).send(err);
-            res.send(savedPublisher);
-        })
-    })
-    .get(function (req, res) {
-        Publisher.find({}, function (err, publisher) {
-            if (err) res.status(500).send(err);
-            res.send(publisher);
         })
     })
 

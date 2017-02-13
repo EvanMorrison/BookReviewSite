@@ -1,5 +1,4 @@
 var express = require('express');
-
 var ReviewsRouter = express.Router();
 var Reviews = require('../models/review')
 
@@ -10,8 +9,8 @@ ReviewsRouter.route('/')
 .get(function(req, res) {
     Reviews.find({}, function(err, reviews){
         if(err) res.status(500).send(err);
-        res.send(reviews);
-    })
+        res.send(reviewList);
+    });
 })
 
 // get all reviews for a specific book using its DB id.

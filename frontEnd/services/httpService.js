@@ -4,7 +4,7 @@ var app = angular.module("BookReviewApp");
 app.service("HttpService", ["$http", function ($http) {
 var self = this;
 
-    // GOOGLEBOOKS API SERVICES
+    // GOOGLEBOOKS API SERVICES - Search Page
     this.searchGoogle = function (searchTerms) {
         self.searchResults = [];
             // get the locally stored API key
@@ -83,9 +83,31 @@ var self = this;
             },
             function (response) {
                 console.log("Error" + response.status + ":" + response.statusText);
+            });
+    };
+
+    // get details for a specific book (not including reviews)
+    this.getBookDetail = function (bookID) {
+        return $http.get('/books/bookDetail/' + bookID)
+        .then(function(response){
+            return response.data;
+        }, function(err) {
+            console.log('error getting book detail: ', err.status)
+        })
+    }
+
+    // get all reviews for a specific book
+    this.getBookReviews = function(bookID) {
+        return $http.get("/reviews/book/" + bookID)
+            .then(function (response) {
+                return response.data;
+            },
+            function (err) {
+                console.log("Error " + err.status + ":" + err.statusText);
 
             });
     };
+
 
 //////////////
 // Routes for User Reviews requiring Authentication
@@ -97,12 +119,10 @@ var self = this;
         return $http.get("/api/userReviews")
 
             .then(function (response) {
-
                 return response.data;
             },
             function (response) {
                 console.log("Error" + response.status + ":" + response.statusText);
-
             });
     };
 
@@ -116,7 +136,6 @@ var self = this;
             },
             function (response) {
                 console.log("Error" + response.status + ":" + response.statusText);
-
             });
     };
 
@@ -124,7 +143,6 @@ var self = this;
     this.saveUpdatedReview = function (updatedReview) {
         console.log('updating review ', updatedReview)
         return $http.put("/api/userReviews/", updatedReview)
-
         .then(function (response) {
                 return response.data;
             },
@@ -143,27 +161,11 @@ var self = this;
             console.log('Error deleting review. Error: ', error)
         })
     }
- // get all information for a specific book
-    this.getBookDetail = function (bookID) {
-        return $http.get('/books/bookDetail/' + bookID)
-        .then(function(response){
-            return response.data;
-        }, function(err) {
-            console.log('error getting book detail: ', err.status)
-        })
-    }
+ 
+ ////////////////
+ // End Authenticated Routes
+ ////////////////
 
-    // get all reviews for a single book
-    this.getBookReviews = function(bookID) {
-        return $http.get("/reviews/book/" + bookID)
-            .then(function (response) {
-                return response.data;
-            },
-            function (err) {
-                console.log("Error " + err.status + ":" + err.statusText);
+ 
 
-            });
-    };
-
-    
 }]);

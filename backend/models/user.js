@@ -21,22 +21,12 @@ var UserSchema = new Schema ({
             ref: 'Book'
         }
     ],
-    // favAuthors: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: 'Author'
-    //     }
-    // ],
     favGenres: [
         {
             type: String,
             enum: genreList.genres
         }
-    ],
-    reviews: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Review'
-    }]
+    ]
 });
 
 UserSchema.pre("save", function(next){
