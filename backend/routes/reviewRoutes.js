@@ -9,7 +9,7 @@ ReviewsRouter.route('/')
 .get(function(req, res) {
     Reviews.find({}, function(err, reviews){
         if(err) res.status(500).send(err);
-        res.send(reviewList);
+        res.send(reviews);
     });
 })
 
