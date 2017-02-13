@@ -1,1 +1,29 @@
 <!-- BookReviewSite newReleases.html -->
+
+<main>
+
+    <div class="row">
+
+        <div class="col-md-2 col-xs-1"></div>
+
+        <div class="col-md-8 col-xs-10">
+
+            <h2 id="HeaderNewReleases">New Releases</h2>
+
+            <div class="row">
+
+                <div class="col-lg-2 col-sm-3 col-xs-4" ng-if="$index < 10" ng-repeat="book in bookReviewsArray track by $index">
+
+                    <a ng-href="#/bookDetails/{{book._id}}"><img id="NewBooksImageStyle" style="height: 160px;" ng-src={{book.thumbnail}}></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2 col-xs-1"></div>
+
+    </div>
+
+</main>
