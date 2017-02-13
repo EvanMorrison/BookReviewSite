@@ -6,9 +6,9 @@ var cors = require('cors');
 var path = require('path');
 var expressJwt = require('express-jwt');
 
-    // CONFIG ENVIRONMENT VARIABLES
-var config = require('./config');
-var port = process.env.PORT || 5000;
+// CONFIG ENVIRONMENT VARIABLES
+var config = require('./backend/config');
+var port = process.env.PORT || 8080;
 
 // SERVER 
 var app = express();
@@ -29,21 +29,18 @@ app.use(bodyParser.urlencoded({
 }));
 
 // SERVE THE FRONTEND
-app.use(express.static(path.join(__dirname, '..', '/frontend')));
+app.use(express.static(path.join(__dirname, '/frontend')));
 
 
 // ROUTES REQUIRING AUTHENTICATION
 // any route with '/api'' will use express-jwt authentication
-app.use('/api', expressJwt({
-    secret: config.db_secret
-}));
-app.use('/api/userReviews', require('./routes/userReviewRoutes'));
-// ROUTES WITHOUT AUTHENTICATION
-app.use('/auth', require('./routes/authRoutes'));
-app.use('/books', require('./routes/bookRoutes'));
+app.use('/api', expressJwt({secret: config.db_secret}));
+app.use('/api/userReviews', require('./backend/routes/userReviewRoutes'));
 
-// ROUTE FOR GOODREADS API REQUESTS (NO CORS, WITH XML RESPONSE)
-app.use('/goodreads', require('./routes/goodReadsRoutes'));
+// ROUTES WITHOUT AUTHENTICATION
+app.use('/auth', require('./backend/routes/authRoutes'));
+app.use('/books', require('./backend/routes/bookRoutes'));
+app.use('/reviews', require('./backend/routes/reviewRoutes'))
 
 
 app.listen(port, function () {

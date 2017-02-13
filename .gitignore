@@ -12,3 +12,7 @@ ignore/
 **/config.js
 
 
+# log and debug files
+*.log
+
+

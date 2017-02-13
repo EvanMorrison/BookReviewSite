@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <!-- Bootstrap Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    
     <link href="bookReviewStyle.css" title="BookReviewStyle" rel="stylesheet" type="text/css">
     <link href="/authentication/templates/authStyle.css" rel="stylesheet" type="text/css">
     <title>BookLovers</title>
@@ -21,10 +23,11 @@
     <div class="row" id="HeaderRow">
         <!-- Header Row -->
         <header role="banner">
-            <div class="col-xs-3 col-md-3">
+            <div class="col-xs-6 col-sm-12 col-md-4">
                 <h1 id="HeaderHome">BookLovers</h1>
+                
             </div>
-            <div class="col-xs-9">
+            <div class="col-xs-6 col-sm-12 col-md-8">
             <!-- The hamburger menu button for small screens-->
                 <div class="navbar-default">
                     <button type="button" class="navbar-toggle collapsed" ng-click="showMenu=!showMenu" aria-expanded="false">
@@ -37,17 +40,17 @@
 
             <!-- the nav and login links show in toolbar on md to large screens and collapse to button menu on small screens-->
                 <nav  class="collapse navbar-collapse pull-right" uib-collapse="!showMenu">
-                        <ul class="nav nav-pills auth-links">
-                            <li role="presentation"><a id="HomeLink" href="#/">Home</a></li>
-                            <li role="presentation"><a id="MyReviewsLink" href="#/myReviews">My Reviews</a></li>
+                        <ul class="nav nav-pills nav-justified auth-links">
+                            <li role="presentation"><a id="HomeLink" href="#/">Popular Titles</a></li>
                             <li role="presentation"><a id="NewReleasesLink" href="#/newReleases">New Releases</a></li>
+                            <li role="presentation"><a id="MyReviewsLink" href="#/myReviews">My Reviews</a></li>
                                 <li role="presentation"><a id="bookSearchLink" href="#/search"><span class="glyphicon glyphicon-search"></span></a></li>
                             <li>
                                 <ul class="nav nav-pills auth-links" ng-controller="AuthController">
                                     <li ng-hide="userService.isAuthenticated()"><a href ng-click="showLogin()">login</a></li>
                                     <li ng-hide="userService.isAuthenticated()"><a href ng-click="showSignup()">signup</a></li>
                                     <li ng-show="userService.isAuthenticated()">
-                                        <a href="#/logout" ng-if="showMenu">logout {{userService.user.name}}</a>
+                                        <a href="#/logout" ng-if="showMenu">logout {{user.name}}</a>
                                         <nav ng-if="!showMenu" uib-dropdown on-toggle="toggled(open)" class="pull-right">
                                             <a href uib-dropdown-toggle><span class="glyphicon glyphicon-menu-hamburger"></span> {{userService.user.name}} </a>
                                             <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu>
@@ -66,7 +69,7 @@
 
     <div ng-view></div>
 
-
+    <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
@@ -74,18 +77,18 @@
     <!-- UI-Bootstrap -->
     <script src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.1.3.js"></script>
 
+    
     <script src="app.js"></script>
     <script src="./services/httpService.js"></script>
     <script src="./services/bookReviewDataService.js"></script>
     <script src="./controllers/homeController.js"></script>
     <script src="./controllers/myReviewsController.js"></script>
     <script src="./controllers/newReleasesController.js"></script>
-    <script src="./controllers/popularAndNewBookController.js"></script>
+    <script src="./controllers/bookDetailsController.js"></script>
     <script src="./authentication/auth.js"></script>
     <script src="./authentication/controllers/signup.js"></script>
     <script src="./authentication/controllers/login.js"></script>
     <script src="./authentication/controllers/logout.js"></script>
-
     <script src="/controllers/goodReadsController.js"></script>
     <script src="/services/apiService.js"></script>
 

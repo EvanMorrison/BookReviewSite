@@ -22,8 +22,8 @@ angular.module('myApp.Auth')
                         } else {
                             $scope.success = true
                             UserService.newSignin = true;
+                            UserService.user.email = $scope.user.email
                             $timeout(function () {
-                                UserService.user.email = $scope.user.email;
                                 $scope.showLogin();
                             }, 2000);
                         }
@@ -31,8 +31,9 @@ angular.module('myApp.Auth')
             }
         }
 
-        $scope.showLogin = function () {
+        $scope.showLogin = function (email) {
             $uibModalInstance.close();
+            if (email) UserService.user.email = email;
             $uibModal.open({
                 templateUrl: '/authentication/templates/login.html',
                 controller: 'LoginController',
