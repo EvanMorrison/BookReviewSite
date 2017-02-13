@@ -6,7 +6,7 @@ var path = require('path');
 var expressJwt = require('express-jwt');
 
 // CONFIG ENVIRONMENT VARIABLES
-// var config = require('./backend/config');
+var config = require('./backend/config');
 var port = process.env.PORT || 8080;
 
 // SERVER 
@@ -23,21 +23,21 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 
 // MIDDLEWARE
-// app.use(logger('dev'));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 
 // ROUTES REQUIRING AUTHENTICATION
 // any route with '/api'' will use express-jwt authentication
-// app.use('/api', expressJwt({secret: config.db_secret}));
-// app.use('/api/userReviews', require('./backend/routes/userReviewRoutes'));
+app.use('/api', expressJwt({secret: config.db_secret}));
+app.use('/api/userReviews', require('./backend/routes/userReviewRoutes'));
 
-// // ROUTES WITHOUT AUTHENTICATION
-// app.use('/auth', require('./backend/routes/authRoutes'));
-// app.use('/books', require('./backend/routes/bookRoutes'));
-// app.use('/reviews', require('./backend/routes/reviewRoutes'))
+// ROUTES WITHOUT AUTHENTICATION
+app.use('/auth', require('./backend/routes/authRoutes'));
+app.use('/books', require('./backend/routes/bookRoutes'));
+app.use('/reviews', require('./backend/routes/reviewRoutes'))
 
 
 app.listen(port, function() {
