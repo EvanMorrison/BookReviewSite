@@ -11,10 +11,14 @@ The team consisted of myself and [Susan Sico] (https://github.com/susansico).
 ### Description
 
 This full-stack SPA was built with Angular, Node, Express Server, and MongoDB, and uses 
-Bootstrap, [UI Bootstrap](https://angular-ui.github.io/bootstrap/), and express server. 
-The web app  uses token authentication to store and track each user's personal book reviews,
- which can be created, edited and deleted.
+Bootstrap, [UI Bootstrap](https://angular-ui.github.io/bootstrap/) for responsive design.  
 
+#### Token Authentication 
+The web app  uses token authentication to store and track each user's personal book reviews,
+ which can be created, edited and deleted. The signup and login dialogs use form validation
+ to ensure required fields are provided and valid.
+
+### Google Books API
 The search view of the web app provides the ability to search for other books through the 
 Google Book API, and add them to the database.
 
