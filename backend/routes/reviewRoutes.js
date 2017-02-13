@@ -7,12 +7,9 @@ var Reviews = require('../models/review')
 ReviewsRouter.route('/')
 // get all reviews in the DB
 .get(function(req, res) {
-    Reviews.find({_id: req.body._id})
-    .populate('book')
-    .populate('user')
-    .exec(function(err, reviews){
+    Reviews.find({}, function(err, reviews){
         if(err) res.status(500).send(err);
-        res.send(reviewList);
+        res.send(reviews);
     });
 })
 
@@ -26,5 +23,6 @@ ReviewsRouter.route('/book/:id')
         res.send(reviews);
     })
 })
+
 
 module.exports = ReviewsRouter;
