@@ -31,6 +31,8 @@ app.use(bodyParser.urlencoded({
 // SERVE THE FRONTEND
 app.use(express.static(path.join(__dirname, '/frontend')));
 
+// ROUTE FOR GOODREADS API REQUESTS (NO CORS, WITH XML RESPONSE)
+app.use('/goodreads', require('./backend/routes/goodReadsRoutes'));
 
 // ROUTES REQUIRING AUTHENTICATION
 // any route with '/api'' will use express-jwt authentication
