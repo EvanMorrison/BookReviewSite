@@ -17,10 +17,17 @@ app.config(function($routeProvider) {
             templateUrl: "./templates/newReleases.html",
             controller: "NewReleasesController"
         })
-        .when("/popularAndNewBook", {
-            templateUrl: "./templates/popularAndNewBook.html",
-            controller: "PopularAndNewBookController"
+        .when("/bookDetails", {
+            templateUrl: "./templates/bookDetails.html",
+            controller: "bookDetailsController"
         })
-       
+        .when("/bookDetails/:bookID", {
+            templateUrl: "./templates/bookDetails.html",
+            controller: "bookDetailsController"
+        })
+        .when('/search', {
+            templateUrl: './templates/googleAPISearch.html',
+            controller: 'GoogleBooksSearchController'
+        })
 });
 

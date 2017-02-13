@@ -4,10 +4,9 @@ var app = angular.module("BookReviewApp");
 
 app.service("BookReviewDataService", function() {
 
-    this.index = 0;
-
+    this.bookDetail = {}
+    this.bookDetailAllReviews = [];
     this.bookReviewsArray = [];
-
     this.userBookReviewsArray = [];
 
     

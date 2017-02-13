@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="container">
+
+        <h3>Search for books with Google Books</h3>
+        <h3 ng-if="error.message">Search failed. Server returned an error: {{error.message}}</h3>
+        <form name="bookSearchForm" class="col-xs-4 col-xs-offset-1">
+            <div class="form-group">
+                <label class="controll-label">title</label>
+                <input type="text" class="form-control" autofocus placeholder="title" ng-model="search.intitle" />
+            </div>
+            <div class="form-group">
+                <label class="controll-label">author</label>
+                <input type="text" class="form-control" placeholder="author" ng-model="search.inauthor" />
+            </div>
+            <div class="form-group">
+                <label class="controll-label">publisher</label>
+                <input type="text" class="form-control" placeholder="publisher" ng-model="search.inpublisher" />
+            </div>
+            <div class="form-group">
+                <label class="controll-label">subject</label>
+                <input type="text" class="form-control" placeholder="subject" ng-model="search.subject" />
+            </div>
+            <div class="form-group">
+                <label class="controll-label">isbn</label>
+                <input type="text" class="form-control" placeholder="isbn" ng-model="search.isbn" />
+            </div>
+            <input type="submit" value="search" class="btn btn-default" ng-click="searchGoogle()">
+            <button class="btn btn-default" ng-click="clearSearch()">reset search</button>
+        </form>
+        <div class="col-xs-7"></div>
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="container">
+        <hr/>
+        <div class="media" ng-repeat="book in resultsList">
+            <div class="media-left">
+                <img ng-src="{{book.thumbnail}}" width="100px" alt="" class="media-object">
+            </div>
+            <div class="media-body">
+                <ul class="list-unstyled">
+                    <li class="media-heading">
+                        <h4>Title: {{book.title}}</h4>
+                    </li>
+                    <li>
+                        by: {{book.author}}
+                    </li>
+                    <li>
+                        Published: {{book.publishedDate}} <br/> by: {{book.publisher}}
+                    </li>
+                    <li>
+                        ISBN: {{book.ISBN}}
+                    </li>
+                    <li ng-if="success" class="text-success">
+                        <strong>Book was successfully added to MongoDB</strong>
+                    </li>
+                    <li>
+                        <button class="btn btn-default" ng-click="saveBook(book)">save to DB</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
