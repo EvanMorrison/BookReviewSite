@@ -27,10 +27,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/test', function(req, res){
-    
-    res.send('Heroku is working!');
-})
 
 // ROUTES REQUIRING AUTHENTICATION
 // any route with '/api'' will use express-jwt authentication
