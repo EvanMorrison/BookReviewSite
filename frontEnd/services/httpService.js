@@ -141,7 +141,6 @@ var self = this;
 
     // Update an existing review
     this.saveUpdatedReview = function (updatedReview) {
-        console.log('updating review ', updatedReview)
         return $http.put("/api/userReviews/", updatedReview)
         .then(function (response) {
                 return response.data;
@@ -152,10 +151,8 @@ var self = this;
     };
 
     this.deleteReview = function(review) {
-        console.log('deleting review ',review);
         return $http.delete("/api/userReviews/" + review._id)
         .then(function(response) {
-            console.log('response ', response)
             return response
         }, function(error) {
             console.log('Error deleting review. Error: ', error)

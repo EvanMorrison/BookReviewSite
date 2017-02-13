@@ -32,7 +32,6 @@ angular.module('myApp.Auth')
                             $uibModalInstance.close({
                             resolve: $location.path('/')
                             })
-                            console.log('login ', response);
                         }
                     })
             }
