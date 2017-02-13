@@ -5,8 +5,13 @@ node_modules/
 DS_Store/
 
 # user created ignore files
-*.ignore
+ignore/
+*.ignore*
 
-# database access
-backend/config.js
+# environment config/authentication
+**/config.js
+
+# log and debug files
+*.log
+
 

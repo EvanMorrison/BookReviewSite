@@ -1,1 +1,64 @@
 <!-- BookReviewSite myReviews.html -->
+
+<main>
+
+    <div class="row">
+
+            <div class="col-md-0 col-sm-1 col-xs-2"></div>
+
+        <div class="col-md-10 col-sm-10 col-xs-8">
+
+            <h2 ng-show="isAuthenticated" id="HeaderMyReviews">My Reviews</h2>
+            <h1 ng-hide="isAuthenticated" id="NotLoggedInMsg">Login or Signup to add your own reviews.</h1>
+            <div class="row">
+
+                <div class="col-xs-12 col-md-6" style="margin-bottom:40px" id="BookImageAndDataItemsMinHeight" ng-repeat="review in userBookReviewsArray track by $index">
+
+                    <div class="row">
+
+                        <div class="col-xs-3 col-sm-2 col-md-3">
+                        <img  id="MyReviewsImageStyle" ng-src={{review.book.thumbnail}}>
+                        </div>
+
+                        <div class="col-xs-9 col-sm-10 col-md-9">
+
+                            <ul class="BookListStyle" style="max-width:400px">
+                                <li class="BookListItemStyle"><h3 id="HeaderBookTitle">{{review.book.title}}</h3></li>
+                                <li class="BookListItemStyle AuthorStyle">by {{review.book. author}}</li>
+                                <li class="BookListItemStyle RatingStyle"><span class="Bold">Rating: </span><span class="Red" uib-rating ng-model="review.rating" max="max" read-only="isReadonly"></span></li>
+                                <li class="BookListItemStyle PagesAndPublisherStyle"><span class="Bold">Hardcover: </span>{{review.book.pageCount}}</li>
+                                <li class="BookListItemStyle PagesAndPublisherStyle"><span class="Bold">Published Date: </span>{{review.book.publishedDate | date:"MMMM d, yyyy"}}</li>
+                                <li class="BookListItemStyle PagesAndPublisherStyle"><span class="Bold">Publisher: </span>{{review.book.publisher}}<div class="BottomGrayDivider"></div></li>
+                             </ul>
+
+                        </div>
+                        
+                        <div class="col-xs-12">
+                        
+                            <h4 id="HeaderReviewsTitle">Your Review</h4>
+                            <h5 class="PagesAndPublisherStyle">created: {{review.createdAt | date: 'MM/dd/yyyy'}}</h5>
+                            <div class="BookSummaryOrReview" ng-hide="showTextareaCursorAndRatingInput && reviewBeingEdited===$index "> <button class="btn" type="button" id="EditReviewButton" ng-click="editReview($index)">Edit Review</button>
+                                <button class="btn" type="button" id="EditReviewButton" ng-click="deleteReview($index)" style="margin-left:20px">Delete Review</button>
+                                <div class="ReviewsBottomGrayDivider"></div>
+                                <p class="ReviewStyle" style="max-width:550px;font-size:12px;line-height:1.5em" >{{review.body}}</p>
+                            </div>
+                            <div ng-show="showTextareaCursorAndRatingInput && reviewBeingEdited===$index">
+                                <button class="btn" type="button" id="SaveUpdatedReviewButton" ng-click="saveUpdatedReview($index)">Save</button>
+                                <button class="btn" type="button" id="CancelEditReviewButton" ng-click="cancelEditReview($index)">Cancel</button>
+                                <div class="SaveCancelBottomGrayDivider"></div>
+                                <span class="Bold">Rating: </span><span class="Red" uib-rating ng-model="review.rating" max="max" read-only="false"></span>
+                                <div class="input-group">
+                                    <textarea class="form-control" id="UpdateUserReview" rows="10" ng-trim="false" ng-model="review.body"></textarea>
+                                </div>
+                            </div>
+                        </div> <!-- cos-xs-12 -->
+                    </div> <!-- row -->
+
+                </div> <!-- col-xs-12 col-md-6 -->
+
+
+            </div> <!-- row -->
+        </div> <!-- col-md-10 col-sm-10 col-xs-8 -->
+    </div> <!--row-->
+
+</main>
