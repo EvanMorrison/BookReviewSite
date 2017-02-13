@@ -13,11 +13,11 @@ var port = process.env.PORT || 8080;
 var app = express();
 
 // DATABASE
-// var database = path.join(config.db_host,config.db_name);
-// mongoose.connect('mongodb://' + config.db_user + ":" + config.db_pass +"@" + database, function(err){
-//     if(err) console.log('Error connecting to MongoDB: ', err.message)
-//     else console.log('Connected to MongoDB ' + database);
-// });
+var database = path.join(config.db_host,config.db_name);
+mongoose.connect('mongodb://' + config.db_user + ":" + config.db_pass +"@" + database, function(err){
+    if(err) console.log('Error connecting to MongoDB: ', err.message)
+    else console.log('Connected to MongoDB ' + database);
+});
 
 // SERVE THE FRONTEND
 app.use(express.static(__dirname + '/public'));
@@ -27,7 +27,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
+app.get('/test', function(req, res){
+    res.send('Heroku is working!');
+})
 
 // ROUTES REQUIRING AUTHENTICATION
 // any route with '/api'' will use express-jwt authentication
