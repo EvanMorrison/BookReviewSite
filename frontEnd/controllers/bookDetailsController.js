@@ -80,19 +80,21 @@ app.controller("bookDetailsController", ["$scope", "$routeParams", "BookReviewDa
     };
 
     $scope.addReview = function () {
+        
         $scope.showAddAndCancelButtonsAndTextarea = false;
         $scope.hasReviewed = true;
         $scope.newUserReview.book = $scope.bookDetail._id;
+        
         HttpService.saveNewBookReview($scope.newUserReview)
         .then(function(response){
             // response includes the user id but not name so add the name back into the $scope
             response.user = { '_id': response.user, 'name': UserService.user.name };
-            BookReviewDataService.bookDetailAllReviews.unshift(response);
-            $scope.reviews = BookReviewDataService.bookDetailAllReviews;
+            // display the new review at the top of the reviews on the current view
+            $scope.reviews.unshift(response);
+
+            // add the new review with full book detail to the array of the user's reivews.            
             response.book = $scope.bookDetail;
             BookReviewDataService.userBookReviewsArray.unshift(response);
-            
-            console.log(BookReviewDataService.userBookReviewsArray);
             
         });
     }

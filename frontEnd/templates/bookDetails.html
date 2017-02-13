@@ -50,7 +50,7 @@
                         <!--light gray line -->
                         <h5 ng-hide="reviews.length">Be the first to review this book. <span ng-hide="isAuthenticated">Login or Signup</span></h5>
                         <ul class="list-group" id="NewUserReview" ng-repeat="review in reviews">
-                            <li class="list-group-item list-group-item-success">
+                            <li class="list-group-item review-header">
                             <p class="ReviewStyle">By: {{review.user.name}}</p>
                             <p class="ReviewStyle">created: {{review.createdAt | date: 'MM/dd/yyyy'}}</p>
                             <p class="ReviewStyle">Rating: <span uib-rating ng-model="review.rating" max="max" read-only="isReadonly"></span>

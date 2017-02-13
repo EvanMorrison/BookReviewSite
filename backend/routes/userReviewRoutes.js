@@ -26,51 +26,54 @@ userReviewRouter.route('/')
     // saves a new book review with the user's id to the database   
     .post(function (req, res) {
         var newReview = new Review(req.body);
-        console.log('new Review ', newReview)
-        console.log('posting new review - req.body ', req.body)
         newReview.user = req.user;
         newReview.save(function (err, savedReview) {
             if (err) res.status(500).send(err);
             res.status(201).send(savedReview);
         })
     })
+
+    // saves an updated review
+    .put(function(req, res){
+            console.log('review id ', req.body._id);
+            console.log('review body ', req.body.body);
+            console.log('book ', req.body.book.title);
+            console.log('book id ', req.body.book._id);
+            var editedReview = req.body;
+            editedReview.user = req.user._id;
+    Review.findOneAndUpdate({'_id': req.body._id}, editedReview, {new:true}, function(err, updatedReview) {
+        if (err) res.status(500).send(err);
+        res.send(updatedReview);
+    })
+})
+
     // delete a review using its DB id no.
     .delete(function(req, res) {
-        console.log('req.body ', req.body)
-        Review.findOneAndRemove({ _id: req.body.reviewId}, function(err, deletedReview) {
+        console.log(req.body)
+        Review.findOneAndRemove({ _id: req.body._id}, function(err, deletedReview) {
                 if(err) res.status(500).send(err);
                 res.status(200).send(deletedReview)
             })
     })
 
 
-userReviewRouter.route('/deleteReview/:reviewID')
-
-.delete(function(req, res) {
-    Review.findOneAndRemove({ _id: req.params.reviewID }, function(err, result) {
-        if (err) res.status(500).send(err);
-        res.status(200).send(result)
-    })
-})
-
-userReviewRouter.route('/getReview/:reviewID')
-.get(function(req, res) {
+userReviewRouter.route('/reviews/:reviewID')
+    .get(function(req, res) {
     Review.find({_id: req.params.reviewID}, function(err, result){
         if (err) res.status(500).send(err);
         res.status(200).send(result);
     })
 })
 
-userReviewRouter.route('/updateReview')
-.post(function(req, res){
-            console.log('req.body ', req.body)
-    var updateReview = new Review(req.body);
-    updateReview.user = req.user;
-    Review.findOneAndUpdate({'_id': req.params.reviewID}, req.body, {new:true}, function(err, updatedReview) {
-        if (err) res.status(500).send(err);
-        res.send(updatedReview);
+
+
+userReviewRouter.route('/:id')
+.delete(function(req, res){
+    console.log('deleting review id # ', req.params)
+    Review.findOneAndRemove({_id: req.params.id}, function(err, deletedReview) {
+        if(err) res.status(500).send(err);
+        res.status(200).send(deletedReview);
     })
-    
 })
 
 module.exports = userReviewRouter;

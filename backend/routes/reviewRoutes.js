@@ -15,7 +15,7 @@ ReviewsRouter.route('/')
 })
 
 // get all reviews for a specific book using its DB id.
-ReviewsRouter.route('/:id')
+ReviewsRouter.route('/book/:id')
 .get(function(req, res) {
     Reviews.find({book: req.params.id})
     .lean().populate('user', 'name')

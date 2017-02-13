@@ -29,9 +29,10 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
         $scope.showTextareaCursorAndRatingInput = false;
 
         //add user.book.review to database
-        HttpService.saveUpdatedUserReview($scope.userBookReviewsArray[index])
+        HttpService.saveUpdatedReview($scope.userBookReviewsArray[index])
         .then(function(response){
-            BookReviewDataService.userBookReviewsArray[index] = response;
+            BookReviewDataService.userBookReviewsArray[index].body = response.body;
+            BookReviewDataService.userBookReviewsArray[index].rating = response.rating;
             $scope.getUserReviews();
         });
     };
@@ -45,10 +46,10 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
     };
 
     $scope.deleteReview = function(index) {
-        HttpService.deleteReview($scope.userBookReviewsArray[index]._id)
+
+        HttpService.deleteReview($scope.userBookReviewsArray[index])
 
         .then(function(response) {
-            $scope.userBookReviewsArray.splice(index,1);
             BookReviewDataService.userBookReviewsArray.splice(index,1);
             // $scope.getUserReviews();
             
@@ -56,6 +57,7 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
             console.log('error deleting review ', err);
         })
     }
+
     // get all the users reviews when the view is loaded
     $scope.getUserReviews = function() {
 
@@ -69,11 +71,13 @@ app.controller("MyReviewsController", ["$scope", "HttpService", "UserService", "
 
                             BookReviewDataService.userBookReviewsArray = userReviews;
                             $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
+                            console.log('got reviews ', $scope.userBookReviewsArray)
                         });
 
             } else {
 
                 $scope.userBookReviewsArray = BookReviewDataService.userBookReviewsArray;
+                console.log('had reviews already ', $scope.userBookReviewsArray)
             }
         } else {
             // display message to login in or signup to add reviews
