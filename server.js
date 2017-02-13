@@ -20,7 +20,7 @@ var app = express();
 // });
 
 // SERVE THE FRONTEND
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/public'));
 
 // MIDDLEWARE
 // app.use(logger('dev'));
