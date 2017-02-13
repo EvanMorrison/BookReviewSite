@@ -9,7 +9,6 @@ ignore/
 *.ignore*
 
 # environment config/authentication
-**/config.js
 
 # log and debug files
 *.log
