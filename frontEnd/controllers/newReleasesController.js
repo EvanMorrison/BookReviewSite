@@ -4,22 +4,19 @@ var app = angular.module("BookReviewApp");
 
 app.controller("NewReleasesController", ["$scope", "BookReviewDataService", "HttpService", function($scope, BookReviewDataService, HttpService) {
 
-
-    $scope.passIndex = function(index) {
-
-        BookReviewDataService.index = index;
-        console.log(BookReviewDataService.index);
-    };
-
+    // load books into the scope, either from app's DataService or http request
     $scope.getBooks = function() {
 
-    HttpService.getBooks()
+        if (BookReviewDataService.bookReviewsArray.length === 0) {
 
-        .then(function(books) {
+            HttpService.getBooks()
+                .then(function(books) {
+                    BookReviewDataService.bookReviewsArray = books;
+                    $scope.bookReviewsArray = BookReviewDataService.bookReviewsArray;
+                });
 
-            BookReviewDataService.bookReviewsArray = books;
+        } else {
             $scope.bookReviewsArray = BookReviewDataService.bookReviewsArray;
-            console.log( BookReviewDataService.bookReviewsArray);
-            });
+        }
     }();
 }]);

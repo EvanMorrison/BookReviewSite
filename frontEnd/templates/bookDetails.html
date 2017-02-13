@@ -1,0 +1,70 @@
+<!-- BookReviewSite bookDetails.html -->
+
+<main>
+
+    <div class="row">
+
+        <div class="col-md-2 col-sm-1"></div>
+
+        <div class="col-md-8 col-sm-10 col-xs-12">
+
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <img style="height: 160px;" ng-src={{bookDetail.thumbnail}}>
+            </div>
+
+            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <ul class="BookListStyle">
+                    <li class="BookListItemStyle"><h2 id="HeaderBookTitle">{{bookDetail.title}}</h2></li>
+                    <li class="BookListItemStyle AuthorStyle">by {{bookDetail.author}}</li>
+                    <li class="BookListItemStyle RatingStyle">Average Rating: <span uib-rating ng-model="bookDetail.averageRating" max="max" read-only="isReadonly">{{bookDetail.averageRating}}</span><p>({{bookDetail.ratingsCount}} ratings/<a href="">{{bookDetail.reviewsCount}} reviews)</a></p></li>
+                    <li class="BookListItemStyle BottomGrayDivider" id="BookSummary"><p>{{bookDetail.description}}</p></li>
+                     <li class="BookListItemStyle PagesAndPublisherStyle">Hardcover: {{bookDetail.pageCount}}</li>
+                     <li class="BookListItemStyle BottomGrayDivider">Publisher: {{bookDetail.publisher}}</li>
+                </ul>
+
+            </div>
+
+            <div class="clearfix"></div>
+                        <!--light gray line -->
+             <div>
+                <ul class="BookListStyle">
+                    <li class="BookListItemStyle">
+                        <button class="btn" type="button" id="ReviewBookButton" ng-show="!showAddAndCancelButtonsAndTextarea && isAuthenticated && !hasReviewed" ng-click="showButtonsAndTextarea()">Review Book</button>
+                        <!--light gray line -->
+                        <div ng-show="showAddAndCancelButtonsAndTextarea">
+                            <button class="btn" type="button" id="AddReviewButton" ng-click="addReview()">Add</button>
+                            <button class="btn" type="button" id="CancelAddReviewButton" ng-click="cancelAddReview()">Cancel</button>
+                            <br/>
+                            <label for="NewUserRating">Rating: </label>
+                            <div uib-rating ng-model="newUserReview.rating" max="max" read-only="false"></div>
+                            <div class="input-group">
+                                <label for="NewUserReview">Rating: </label><br>
+                                <textarea class="form-control" id="NewUserReview" rows="5" autofocus ng-model="newUserReview.body"> </textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="clearfix"></div>
+                    <li class="BookListItemStyle">
+                        <h4 id="HeaderUserReviewsTitle">User Reviews</h4>
+                        <!--light gray line -->
+                        <h5 ng-hide="reviews.length">Be the first to review this book. <span ng-hide="isAuthenticated">Login or Signup</span></h5>
+                        <ul class="list-group" id="NewUserReview" ng-repeat="review in reviews">
+                            <li class="list-group-item review-header">
+                            <p class="ReviewStyle">By: {{review.user.name}}</p>
+                            <p class="ReviewStyle">created: {{review.createdAt | date: 'MM/dd/yyyy'}}</p>
+                            <p class="ReviewStyle">Rating: <span uib-rating ng-model="review.rating" max="max" read-only="isReadonly"></span>
+                            </li>
+                            <li class="list-group-item" ><p class="ReviewStyle">{{review.body}}</p></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div><!-- Eight Columns -->
+
+        <div class="col-md-2"></div>
+
+    </div> <!-- Row -->
+
+</main>

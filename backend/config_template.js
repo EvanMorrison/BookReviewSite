@@ -9,4 +9,5 @@ module.exports = {
     db_user: '',
     db_pass: '',
     db_secret: 'secret',
+    googleBks_apiKey: 'googlebooks api key'
 }

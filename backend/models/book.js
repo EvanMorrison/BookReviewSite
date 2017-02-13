@@ -5,7 +5,7 @@ var BookSchema = new Schema({
     title: String,
     subtitle: String,
     author: String,
-    datePublished: Date,
+    publishedDate: Date,
     publisher: String,
     ISBN: Number,
     thumbnail: String,
