@@ -4,24 +4,24 @@
 
     <div class="row">
 
-        <div class="col-md-2"></div>
+        <div class="col-md-2 col-xs-1"></div>
 
-        <div class="col-md-8">
+        <div class="col-md-8 col-xs-10">
 
            <h2 id="HeaderPopularBooks">Popular Books</h2>
 
             <div class="row">
 
-                <div class="col-md-2"  ng-if="$index > 9" ng-repeat="book in bookReviewsArray track by $index">
+                <div class="col-lg-2 col-sm-3 col-xs-4"  ng-if="$index > 9" ng-repeat="book in bookReviewsArray track by $index">
 
-                    <a href="#/popularAndNewBook" ng-click="passIndex($index)"><img id="PopularBooksImageStyle" style="height: 160px;" ng-src={{book.thumbnail}}></a>
+                    <a ng-href="#/bookDetails/{{book._id}}"><img id="PopularBooksImageStyle" style="height: 160px;" ng-src={{book.thumbnail}}></a>
                 </div>
 
             </div>
 
         </div>
 
-        <div class="col-md-2"></div>
+        <div class="col-md-2 col-xs-1"></div>
 
     </div>
 

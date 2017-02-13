@@ -1,21 +1,28 @@
 var express = require('express');
-var reviewsRouter = express.Router();
+var ReviewsRouter = express.Router();
 var Reviews = require('../models/review')
 
+// Routes pertaining to Reviews, not requiring authentication
 
-// Get all reviews for a specific book, given a book _id number as the route parameter.
-// Does not require user authentication
-reviewsRouter.route('/:bookId')
-.get(function(req, res){
-    var bookId = req.params.bookId
-    Reviews.find({book: bookId})
-    .populate('user')
-    .exec(function(err, reviewList){
+ReviewsRouter.route('/')
+// get all reviews in the DB
+.get(function(req, res) {
+    Reviews.find({}, function(err, reviews){
         if(err) res.status(500).send(err);
         res.send(reviewList);
     });
 })
 
+// get all reviews for a specific book using its DB id.
+ReviewsRouter.route('/book/:id')
+.get(function(req, res) {
+    Reviews.find({book: req.params.id})
+    .lean().populate('user', 'name')
+    .exec(function(err, reviews) {
+        if (err) res.status(500).send(err);
+        res.send(reviews);
+    })
+})
 
 
-module.exports = reviewsRouter;
+module.exports = ReviewsRouter;
