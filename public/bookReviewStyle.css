@@ -52,22 +52,22 @@ textarea {
 /* Ids */
 #HeaderRow {
     padding: 0 0 5px 0;
-    background-color: rgba(100,200,175,.4)
+    background-color: #263238;
+    /*background-color: rgba(100,200,175,.4)*/
 }
 
 #HeaderHome {
-    font: 900 50px Tahoma, Geneva, serif;
-    color: #055;
-    text-shadow: #78909C 2px 2px 1px;
+    font: 900 40px Tahoma, Geneva, serif;
+    color: #0097A7;
     margin: 0;
     padding: 5px 0 0 20px;
     display: block;
 }
 
 #HomeLink, #MyReviewsLink, #NewReleasesLink, ul.auth-links a {
-    font: 16px Roboto, sans-serif;
-    color: #055;
-    text-shadow: #78909C 1px 1px 1px;
+    font: 14px Roboto, sans-serif;
+    font-weight: 500;
+    color: #0097A7;
 }
 
 
@@ -82,7 +82,7 @@ textarea {
 #HomeLink:focus, #MyReviewsLink:focus, #NewReleasesLink:focus, ul.auth-links a:focus {
     color: #055;
     text-shadow: #188 1px 1px 1px;
-    background: rgba(100,200,175,.2);
+    background: rgba(100,200,175,.4);
     border: none;
     box-shadow: none;
 }
