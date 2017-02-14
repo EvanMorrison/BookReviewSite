@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // SERVE THE FRONTEND
-app.use(express.static(path.join(__dirname, '/frontend')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 
 // ROUTES REQUIRING AUTHENTICATION
