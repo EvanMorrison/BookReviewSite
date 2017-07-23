@@ -1,6 +1,7 @@
 # Book Review Site
 
-This is a group project. It is as exercise in team coding and project development, using Github, Trello, and implementing SCRUM and Agile practices.
+This was a group project. It was as exercise in team coding and project development, using Github, Trello, and implementing SCRUM and Agile practices. A live version can be found
+here (as of 7/23/2017) [https://bookreviewspa.evmorrison.com](https://bookreviewspa.evmorrison.com)
 
 
 # Project Requirements:
