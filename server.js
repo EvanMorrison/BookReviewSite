@@ -7,7 +7,7 @@ var expressJwt = require('express-jwt');
 
 // CONFIG ENVIRONMENT VARIABLES
 var config = require('./backend/config');
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8081;
 
 // SERVER 
 var app = express();
