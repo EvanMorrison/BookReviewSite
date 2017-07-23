@@ -19,13 +19,13 @@ mongoose.connect('mongodb://' + config.db_user + ":" + config.db_pass +"@" + dat
     else console.log('Connected to MongoDB ' + database);
 });
 
+// SERVE THE FRONTEND
+app.use(express.static(__dirname + '/public'));
+
 // MIDDLEWARE
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-// SERVE THE FRONTEND
-app.use(express.static(path.join(__dirname, '/frontend')));
 
 
 // ROUTES REQUIRING AUTHENTICATION
@@ -40,6 +40,10 @@ app.use('/reviews', require('./backend/routes/reviewRoutes'))
 
 
 app.listen(port, function() {
+<<<<<<< HEAD
     console.log('Server is listening on port ', port);
+=======
+    console.log('Server is listening closely on port ', port);
+>>>>>>> heroku-master
 
 })
