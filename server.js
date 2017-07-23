@@ -41,5 +41,4 @@ app.use('/reviews', require('./backend/routes/reviewRoutes'))
 
 app.listen(port, function() {
     console.log('Server is listening on port ', port);
-
 })
