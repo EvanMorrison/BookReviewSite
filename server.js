@@ -40,10 +40,6 @@ app.use('/reviews', require('./backend/routes/reviewRoutes'))
 
 
 app.listen(port, function() {
-<<<<<<< HEAD
     console.log('Server is listening on port ', port);
-=======
-    console.log('Server is listening closely on port ', port);
->>>>>>> heroku-master
 
 })
