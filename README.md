@@ -6,7 +6,7 @@ This is a full-stack pair programming project done while at [V School](http://vs
 team coding and project development, using Github, Trello, and implementing SCRUM and Agile 
 practices.
 
-The team consisted of myself and [Susan Sico] (https://github.com/susansico).
+The team consisted of myself and [Susan Sico](http://susansico.com).
 
 ### Description
 
